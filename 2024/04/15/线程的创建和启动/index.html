@@ -20,18 +20,24 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    <meta name="description" content="创建线程创建线程主要通过继承类和实现接口来完成 继承Thread类需要重写Thread类中的run（）方法 实现Runnable接口需要实现接口中的run（）方法 实现Callable接口需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值 启动线程通过start（）方法启动线程阅读start（）源码，探究一下底层实现再看看start0（）做了些啥start0（）是被nativ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线程的创建和启动">
 <meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="it is a blog for sharing and writng something about technology and personal thinking">
+<meta property="og:description" content="创建线程创建线程主要通过继承类和实现接口来完成 继承Thread类需要重写Thread类中的run（）方法 实现Runnable接口需要实现接口中的run（）方法 实现Callable接口需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值 启动线程通过start（）方法启动线程阅读start（）源码，探究一下底层实现再看看start0（）做了些啥start0（）是被nativ">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886633895-e42885b6-7a11-4e59-b054-1a5707eefdec.png#averageHue=%2395754d&clientId=u704e08d6-349d-4&from=paste&height=425&id=u38ae8a0f&originHeight=638&originWidth=982&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=75363&status=done&style=none&taskId=uca06737c-96d9-4311-9883-ceeabffe8d3&title=&width=654.6666666666666">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886681775-f4ffd171-2477-4829-8b6c-f2c3b9538841.png#averageHue=%232d2d2c&clientId=u704e08d6-349d-4&from=paste&height=533&id=ua80a6765&originHeight=799&originWidth=1482&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=117534&status=done&style=none&taskId=ua069e242-2fd0-4b16-a5a9-64e1bdd5146&title=&width=988">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886832645-b1eeaf04-2f51-4292-8e90-ed624166e687.png#averageHue=%232e2d2c&clientId=u704e08d6-349d-4&from=paste&height=467&id=uf014195e&originHeight=701&originWidth=1241&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=89740&status=done&style=none&taskId=ud25365b8-fd92-4087-9c2f-1c897f56d54&title=&width=827.3333333333334">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887308648-6dde3003-e9ee-4b4d-aea3-4d723e3dc793.png#averageHue=%232d2c2c&clientId=u704e08d6-349d-4&from=paste&height=637&id=u5202ce7c&originHeight=956&originWidth=1714&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=200804&status=done&style=none&taskId=u7cd89f12-e3a3-4b48-8f72-ac4dfe5cdf9&title=&width=1142.6666666666667">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887350747-0ba96ff6-ae0e-49fa-9348-a33b6622ec2a.png#averageHue=%232c2c2b&clientId=u704e08d6-349d-4&from=paste&height=226&id=u888f856d&originHeight=339&originWidth=1195&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=36940&status=done&style=none&taskId=u4923b776-90bd-404f-9586-58e3200d1f8&title=&width=796.6666666666666">
 <meta property="article:published_time" content="2024-04-15T01:21:26.000Z">
-<meta property="article:modified_time" content="2024-04-15T01:21:26.218Z">
+<meta property="article:modified_time" content="2024-04-15T01:50:30.787Z">
 <meta property="article:author" content="Cx">
 <meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886633895-e42885b6-7a11-4e59-b054-1a5707eefdec.png#averageHue=%2395754d&clientId=u704e08d6-349d-4&from=paste&height=425&id=u38ae8a0f&originHeight=638&originWidth=982&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=75363&status=done&style=none&taskId=uca06737c-96d9-4311-9883-ceeabffe8d3&title=&width=654.6666666666666">
 
 
 <link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/">
@@ -128,7 +134,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -141,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">创建线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BFThread%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">继承Thread类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.2.</span> <span class="nav-text">实现Runnable接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0Callable%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.3.</span> <span class="nav-text">实现Callable接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">启动线程</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -214,8 +221,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-04-15 09:21:26" itemprop="dateCreated datePublished" datetime="2024-04-15T09:21:26+08:00">2024-04-15</time>
+      <time title="创建时间：2024-04-15 09:21:26 / 修改时间：09:50:30" itemprop="dateCreated datePublished" datetime="2024-04-15T09:21:26+08:00">2024-04-15</time>
     </span>
 
   
@@ -225,7 +233,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>260</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -242,7 +250,13 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><p><a name="Kh76L"></a></p>
+<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><p>创建线程主要通过继承类和实现接口来完成<br><a name="go9bC"></a></p>
+<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><p>需要重写Thread类中的run（）方法<br><a name="SE0Wj"></a></p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>需要实现接口中的run（）方法<br /><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886633895-e42885b6-7a11-4e59-b054-1a5707eefdec.png#averageHue=%2395754d&clientId=u704e08d6-349d-4&from=paste&height=425&id=u38ae8a0f&originHeight=638&originWidth=982&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=75363&status=done&style=none&taskId=uca06737c-96d9-4311-9883-ceeabffe8d3&title=&width=654.6666666666666" alt="image.png"><br><a name="HbiB1"></a></p>
+<h3 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h3><p>需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值<V><br /><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886681775-f4ffd171-2477-4829-8b6c-f2c3b9538841.png#averageHue=%232d2d2c&clientId=u704e08d6-349d-4&from=paste&height=533&id=ua80a6765&originHeight=799&originWidth=1482&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=117534&status=done&style=none&taskId=ua069e242-2fd0-4b16-a5a9-64e1bdd5146&title=&width=988" alt="image.png"><br><a name="s8v8x"></a></p>
+<h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><p>通过start（）方法启动线程<br /><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886832645-b1eeaf04-2f51-4292-8e90-ed624166e687.png#averageHue=%232e2d2c&clientId=u704e08d6-349d-4&from=paste&height=467&id=uf014195e&originHeight=701&originWidth=1241&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=89740&status=done&style=none&taskId=ud25365b8-fd92-4087-9c2f-1c897f56d54&title=&width=827.3333333333334" alt="image.png"><br />阅读start（）源码，探究一下底层实现<br /><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887308648-6dde3003-e9ee-4b4d-aea3-4d723e3dc793.png#averageHue=%232d2c2c&clientId=u704e08d6-349d-4&from=paste&height=637&id=u5202ce7c&originHeight=956&originWidth=1714&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=200804&status=done&style=none&taskId=u7cd89f12-e3a3-4b48-8f72-ac4dfe5cdf9&title=&width=1142.6666666666667" alt="image.png"><br />再看看start0（）做了些啥<br /><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887350747-0ba96ff6-ae0e-49fa-9348-a33b6622ec2a.png#averageHue=%232c2c2b&clientId=u704e08d6-349d-4&from=paste&height=226&id=u888f856d&originHeight=339&originWidth=1195&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=36940&status=done&style=none&taskId=u4923b776-90bd-404f-9586-58e3200d1f8&title=&width=796.6666666666666" alt="image.png"><br />start0（）是被native修饰的方法，说明它是由外部语言（C&#x2F;C++）来实现的，而不是通过JVM虚拟机来执行<br />所以，那具体做了啥呢？<br />（未完，待定）</p>
+
     </div>
 
     
@@ -293,13 +307,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">3k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
   </span>
 </div>
 
