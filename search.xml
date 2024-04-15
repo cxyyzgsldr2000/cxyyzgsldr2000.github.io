@@ -38,6 +38,30 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【zookeeper】安装</title>
+    <url>/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-Apache-Zookeeper官网下载"><a href="#1-Apache-Zookeeper官网下载" class="headerlink" title="1. Apache Zookeeper官网下载"></a>1. Apache Zookeeper官网下载</h1><p> <img src="https://img-blog.csdnimg.cn/direct/418b195344d64e3bac8b3e1e83a990bd.png" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/direct/aa9ade8dd3494fe5bec65b6bba4b2efc.png" alt="在这里插入图片描述"></p>
+<h1 id="2-解压后创建log和data文件夹"><a href="#2-解压后创建log和data文件夹" class="headerlink" title="2. 解压后创建log和data文件夹"></a>2. 解压后创建log和data文件夹</h1><p><img src="https://img-blog.csdnimg.cn/direct/8280b972b4924e3d8b96dd66afeeda58.png" alt="在这里插入图片描述">这个其实不一定要建在zookeeper文件夹下，建在任意一个文件夹里都行，只要配置文件中的路径配置能找到就行</p>
+<h1 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3. 修改配置文件"></a>3. 修改配置文件</h1><p><img src="https://img-blog.csdnimg.cn/direct/e4851cb2ab7849278a595578f18547ed.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/direct/31200127e35c430faa8eb696a9932a06.png" alt="在这里插入图片描述"><br><strong>这里要注意！！！<br>win系统下路径分隔符用</strong></p>
+<blockquote>
+<p>&#x2F;</p>
+</blockquote>
+<p>有点疑问：为什么win系统磁盘中文件的绝对路径的分隔符是\，但在配置文件中文件路径的分隔符要用&#x2F;？</p>
+<p>查询后得出结论：</p>
+<blockquote>
+<p>在Windows操作系统中，文件路径的绝对路径分隔符是反斜杠\，这是因为反斜杠在Windows系统中被用作文件路径分隔符的标准约定。例如，C:\Users\Admin\Desktop\file.txt 是Windows系统中文件的绝对路径表示方式。<br>而在配置文件中，特别是在类Unix系统（如Linux、MacOS等）中，文件路径的分隔符是正斜杠&#x2F;。<strong>这是因为Unix系统中的路径分隔符是正斜杠，而且正斜杠在配置文件中通常用作路径分隔符的约定</strong>。所以，即使在Windows系统中使用的是反斜杠作为文件路径分隔符，<strong>但在配置文件中为了与Unix系统的约定保持一致，通常会使用正斜杠作为文件路径分隔符</strong>。<br>因此，为了确保在不同操作系统和不同环境下都能正确解析文件路径，通常会建议在配置文件中使用正斜杠&#x2F;作为文件路径的分隔符。这样可以避免在不同系统下出现路径解析错误的情况，保证程序的可移植性和通用性。</p>
+</blockquote>
+<h1 id="4-启动zookeeper"><a href="#4-启动zookeeper" class="headerlink" title="4.启动zookeeper"></a>4.启动zookeeper</h1><p><img src="https://img-blog.csdnimg.cn/direct/8d59d2ed4f2c41bbaad96e76dc3f72cf.png" alt="在这里插入图片描述"></p>
+<ol>
+<li>zkServer.cmd正常启动如下<br> <img src="https://img-blog.csdnimg.cn/direct/cf0dc33f4e8f4ff98404c6c118b273ba.png" alt="在这里插入图片描述"><br> 如遇闪退，可以在zkServer.cmd文件末尾加上<strong>pause</strong>，以便查看报错原因<br><img src="https://img-blog.csdnimg.cn/direct/b0793acefc6b40f4a037bc2a464b3973.png" alt="在这里插入图片描述"></li>
+<li>zkCli.cmd正常启动如下<br> <img src="https://img-blog.csdnimg.cn/direct/c0837d2551f54976af44692ffb48f8ca.png" alt="在这里插入图片描述"><br>至此，zookeeper启动成功</li>
+</ol>
+<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
+<p>希望这篇文章能帮到你~</p>
+]]></content>
+  </entry>
+  <entry>
     <title>线程的创建和启动</title>
     <url>/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/</url>
     <content><![CDATA[<p><a name="Kh76L"></a></p>
