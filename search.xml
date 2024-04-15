@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/04/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>【kafka】安装</title>
-    <url>/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="1-安装kafka之前需要先完成zookeeper的安装"><a href="#1-安装kafka之前需要先完成zookeeper的安装" class="headerlink" title="1.安装kafka之前需要先完成zookeeper的安装"></a>1.安装kafka之前需要先完成zookeeper的安装</h1><p><a href="https://blog.csdn.net/weixin_48453504/article/details/137782170?spm=1001.2014.3001.5502">【zookeeper】安装</a></p>
-<h1 id="2-Apache-Kafka官网下载"><a href="#2-Apache-Kafka官网下载" class="headerlink" title="2. Apache Kafka官网下载"></a>2. Apache Kafka官网下载</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"></p>
-<h1 id="3-解压完成后修改server-properties配置文件"><a href="#3-解压完成后修改server-properties配置文件" class="headerlink" title="3. 解压完成后修改server.properties配置文件"></a>3. 解压完成后修改server.properties配置文件</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>修改日志文件存放路径<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"></p>
-<p>查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致<br>（这里默认是2181，<strong>如果zookeeper启动端口没有修改，这里也无需变更</strong>）<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"></p>
-<h1 id="4-启动kafka"><a href="#4-启动kafka" class="headerlink" title="4.启动kafka"></a>4.启动kafka</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">bin\windows\kafka-server-start.bat config\server.properties</span><br></pre></td></tr></table></figure>
-<p>如下，则表示启动成功<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"></p>
-<p>至此，kafka安装启动结束</p>
-<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
-<p>希望这篇文章能帮到你~</p>
-]]></content>
-  </entry>
-  <entry>
     <title>volatile关键字</title>
     <url>/2024/04/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97/</url>
     <content><![CDATA[<p>volitile关键字用于解决多线程并发执行时可能出现的<strong>可见性</strong>问题<br><a name="sYfCx"></a></p>
@@ -54,10 +22,9 @@
   <entry>
     <title>【zookeeper】安装</title>
     <url>/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="1-Apache-Zookeeper官网下载"><a href="#1-Apache-Zookeeper官网下载" class="headerlink" title="1. Apache Zookeeper官网下载"></a>1. Apache Zookeeper官网下载</h1><p> <img src="https://img-blog.csdnimg.cn/direct/418b195344d64e3bac8b3e1e83a990bd.png" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/direct/aa9ade8dd3494fe5bec65b6bba4b2efc.png" alt="在这里插入图片描述"></p>
-<h1 id="2-解压后创建log和data文件夹"><a href="#2-解压后创建log和data文件夹" class="headerlink" title="2. 解压后创建log和data文件夹"></a>2. 解压后创建log和data文件夹</h1><p><img src="https://img-blog.csdnimg.cn/direct/8280b972b4924e3d8b96dd66afeeda58.png" alt="在这里插入图片描述">这个其实不一定要建在zookeeper文件夹下，建在任意一个文件夹里都行，只要配置文件中的路径配置能找到就行</p>
-<h1 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3. 修改配置文件"></a>3. 修改配置文件</h1><p><img src="https://img-blog.csdnimg.cn/direct/e4851cb2ab7849278a595578f18547ed.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/direct/31200127e35c430faa8eb696a9932a06.png" alt="在这里插入图片描述"><br><strong>这里要注意！！！<br>win系统下路径分隔符用</strong></p>
+    <content><![CDATA[<h1 id="1-Apache-Zookeeper官网下载"><a href="#1-Apache-Zookeeper官网下载" class="headerlink" title="1. Apache Zookeeper官网下载"></a>1. Apache Zookeeper官网下载</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"><br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"></p>
+<h1 id="2-解压后创建log和data文件夹"><a href="#2-解压后创建log和data文件夹" class="headerlink" title="2. 解压后创建log和data文件夹"></a>2. 解压后创建log和data文件夹</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic3.png">这个其实不一定要建在zookeeper文件夹下，建在任意一个文件夹里都行，只要配置文件中的路径配置能找到就行</p>
+<h1 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3. 修改配置文件"></a>3. 修改配置文件</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"><br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"><br><strong>这里要注意！！！<br>win系统下路径分隔符用</strong></p>
 <blockquote>
 <p>&#x2F;</p>
 </blockquote>
@@ -66,14 +33,20 @@
 <blockquote>
 <p>在Windows操作系统中，文件路径的绝对路径分隔符是反斜杠\，这是因为反斜杠在Windows系统中被用作文件路径分隔符的标准约定。例如，C:\Users\Admin\Desktop\file.txt 是Windows系统中文件的绝对路径表示方式。<br>而在配置文件中，特别是在类Unix系统（如Linux、MacOS等）中，文件路径的分隔符是正斜杠&#x2F;。<strong>这是因为Unix系统中的路径分隔符是正斜杠，而且正斜杠在配置文件中通常用作路径分隔符的约定</strong>。所以，即使在Windows系统中使用的是反斜杠作为文件路径分隔符，<strong>但在配置文件中为了与Unix系统的约定保持一致，通常会使用正斜杠作为文件路径分隔符</strong>。<br>因此，为了确保在不同操作系统和不同环境下都能正确解析文件路径，通常会建议在配置文件中使用正斜杠&#x2F;作为文件路径的分隔符。这样可以避免在不同系统下出现路径解析错误的情况，保证程序的可移植性和通用性。</p>
 </blockquote>
-<h1 id="4-启动zookeeper"><a href="#4-启动zookeeper" class="headerlink" title="4.启动zookeeper"></a>4.启动zookeeper</h1><p><img src="https://img-blog.csdnimg.cn/direct/8d59d2ed4f2c41bbaad96e76dc3f72cf.png" alt="在这里插入图片描述"></p>
+<h1 id="4-启动zookeeper"><a href="#4-启动zookeeper" class="headerlink" title="4.启动zookeeper"></a>4.启动zookeeper</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic6.png"></p>
 <ol>
-<li>zkServer.cmd正常启动如下<br> <img src="https://img-blog.csdnimg.cn/direct/cf0dc33f4e8f4ff98404c6c118b273ba.png" alt="在这里插入图片描述"><br> 如遇闪退，可以在zkServer.cmd文件末尾加上<strong>pause</strong>，以便查看报错原因<br><img src="https://img-blog.csdnimg.cn/direct/b0793acefc6b40f4a037bc2a464b3973.png" alt="在这里插入图片描述"></li>
-<li>zkCli.cmd正常启动如下<br> <img src="https://img-blog.csdnimg.cn/direct/c0837d2551f54976af44692ffb48f8ca.png" alt="在这里插入图片描述"><br>至此，zookeeper启动成功</li>
+<li>zkServer.cmd正常启动如下<br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic7.png"><br> 如遇闪退，可以在zkServer.cmd文件末尾加上<strong>pause</strong>，以便查看报错原因<br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic8.png"></li>
+<li>zkCli.cmd正常启动如下<br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic9.png"><br>至此，zookeeper启动成功</li>
 </ol>
 <p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
 <p>希望这篇文章能帮到你~</p>
 ]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>分布式</tag>
+      </tags>
   </entry>
   <entry>
     <title>线程的创建和启动</title>
@@ -85,6 +58,26 @@
 <h3 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h3><p>需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值<V><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886681775-f4ffd171-2477-4829-8b6c-f2c3b9538841.png#averageHue=%232d2d2c&clientId=u704e08d6-349d-4&from=paste&height=533&id=ua80a6765&originHeight=799&originWidth=1482&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=117534&status=done&style=none&taskId=ua069e242-2fd0-4b16-a5a9-64e1bdd5146&title=&width=988" alt="image.png"><br><a name="s8v8x"></a></V></p>
 <h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><p>通过start（）方法启动线程<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886832645-b1eeaf04-2f51-4292-8e90-ed624166e687.png#averageHue=%232e2d2c&clientId=u704e08d6-349d-4&from=paste&height=467&id=uf014195e&originHeight=701&originWidth=1241&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=89740&status=done&style=none&taskId=ud25365b8-fd92-4087-9c2f-1c897f56d54&title=&width=827.3333333333334" alt="image.png"><br>阅读start（）源码，探究一下底层实现<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887308648-6dde3003-e9ee-4b4d-aea3-4d723e3dc793.png#averageHue=%232d2c2c&clientId=u704e08d6-349d-4&from=paste&height=637&id=u5202ce7c&originHeight=956&originWidth=1714&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=200804&status=done&style=none&taskId=u7cd89f12-e3a3-4b48-8f72-ac4dfe5cdf9&title=&width=1142.6666666666667" alt="image.png"><br>再看看start0（）做了些啥<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887350747-0ba96ff6-ae0e-49fa-9348-a33b6622ec2a.png#averageHue=%232c2c2b&clientId=u704e08d6-349d-4&from=paste&height=226&id=u888f856d&originHeight=339&originWidth=1195&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=36940&status=done&style=none&taskId=u4923b776-90bd-404f-9586-58e3200d1f8&title=&width=796.6666666666666" alt="image.png"><br>start0（）是被native修饰的方法，说明它是由外部语言（C&#x2F;C++）来实现的，而不是通过JVM虚拟机来执行<br>所以，那具体做了啥呢？<br>（未完，待定）</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>【kafka】安装</title>
+    <url>/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-安装kafka之前需要先完成zookeeper的安装"><a href="#1-安装kafka之前需要先完成zookeeper的安装" class="headerlink" title="1.安装kafka之前需要先完成zookeeper的安装"></a>1.安装kafka之前需要先完成zookeeper的安装</h1><p><a href="https://blog.csdn.net/weixin_48453504/article/details/137782170?spm=1001.2014.3001.5502">【zookeeper】安装</a></p>
+<h1 id="2-Apache-Kafka官网下载"><a href="#2-Apache-Kafka官网下载" class="headerlink" title="2. Apache Kafka官网下载"></a>2. Apache Kafka官网下载</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"></p>
+<h1 id="3-解压完成后修改server-properties配置文件"><a href="#3-解压完成后修改server-properties配置文件" class="headerlink" title="3. 解压完成后修改server.properties配置文件"></a>3. 解压完成后修改server.properties配置文件</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>修改日志文件存放路径<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"></p>
+<p>查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致<br>（这里默认是2181，<strong>如果zookeeper启动端口没有修改，这里也无需变更</strong>）<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"></p>
+<h1 id="4-启动kafka"><a href="#4-启动kafka" class="headerlink" title="4.启动kafka"></a>4.启动kafka</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">bin\windows\kafka-server-start.bat config\server.properties</span><br></pre></td></tr></table></figure>
+<p>如下，则表示启动成功<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"></p>
+<p>至此，kafka安装启动结束</p>
+<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
+<p>希望这篇文章能帮到你~</p>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>分布式</tag>
+      </tags>
   </entry>
   <entry>
     <title>线程的状态</title>

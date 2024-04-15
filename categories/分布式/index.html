@@ -20,34 +20,26 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1.安装kafka之前需要先完成zookeeper的安装【zookeeper】安装 2. Apache Kafka官网下载 3. 解压完成后修改server.properties配置文件修改日志文件存放路径 查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致（这里默认是2181，如果zookeeper启动端口没有修改，这里也无需变更） 4.启动kafka1bin\wind">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【kafka】安装">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/index.html">
+    <meta name="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="1.安装kafka之前需要先完成zookeeper的安装【zookeeper】安装 2. Apache Kafka官网下载 3. 解压完成后修改server.properties配置文件修改日志文件存放路径 查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致（这里默认是2181，如果zookeeper启动端口没有修改，这里也无需变更） 4.启动kafka1bin\wind">
+<meta property="og:description" content="it is a blog for sharing and writng something about technology and personal thinking">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic2.png">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic3.png">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic4.png">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic5.png">
-<meta property="article:published_time" content="2024-04-15T08:54:10.000Z">
-<meta property="article:modified_time" content="2024-04-15T09:58:50.626Z">
 <meta property="article:author" content="Cx">
-<meta property="article:tag" content="分布式">
+<meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/","path":"2024/04/15/【kafka】安装/","title":"【kafka】安装"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/分布式/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>【kafka】安装 | Blog</title>
+<title>分类: 分布式 | Blog</title>
   
 
 
@@ -134,7 +126,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,7 +139,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85kafka%E4%B9%8B%E5%89%8D%E9%9C%80%E8%A6%81%E5%85%88%E5%AE%8C%E6%88%90zookeeper%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1.安装kafka之前需要先完成zookeeper的安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Apache-Kafka%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.</span> <span class="nav-text">2. Apache Kafka官网下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E8%A7%A3%E5%8E%8B%E5%AE%8C%E6%88%90%E5%90%8E%E4%BF%AE%E6%94%B9server-properties%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">3. 解压完成后修改server.properties配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%90%AF%E5%8A%A8kafka"><span class="nav-number">4.</span> <span class="nav-text">4.启动kafka</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -193,123 +184,70 @@
 
     </div>
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner category posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="【kafka】安装 | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          【kafka】安装
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <h1 class="collection-header">分布式
+          <small>分类</small>
         </h1>
+      </div>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
       
-
-      <time title="创建时间：2024-04-15 16:54:10 / 修改时间：17:58:50" itemprop="dateCreated datePublished" datetime="2024-04-15T16:54:10+08:00">2024-04-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>312</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="1-安装kafka之前需要先完成zookeeper的安装"><a href="#1-安装kafka之前需要先完成zookeeper的安装" class="headerlink" title="1.安装kafka之前需要先完成zookeeper的安装"></a>1.安装kafka之前需要先完成zookeeper的安装</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48453504/article/details/137782170?spm=1001.2014.3001.5502">【zookeeper】安装</a></p>
-<h1 id="2-Apache-Kafka官网下载"><a href="#2-Apache-Kafka官网下载" class="headerlink" title="2. Apache Kafka官网下载"></a>2. Apache Kafka官网下载</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"></p>
-<h1 id="3-解压完成后修改server-properties配置文件"><a href="#3-解压完成后修改server-properties配置文件" class="headerlink" title="3. 解压完成后修改server.properties配置文件"></a>3. 解压完成后修改server.properties配置文件</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>修改日志文件存放路径<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"></p>
-<p>查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致<br>（这里默认是2181，<strong>如果zookeeper启动端口没有修改，这里也无需变更</strong>）<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"></p>
-<h1 id="4-启动kafka"><a href="#4-启动kafka" class="headerlink" title="4.启动kafka"></a>4.启动kafka</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin\windows\kafka-server-start.bat config\server.properties</span><br></pre></td></tr></table></figure>
-<p>如下，则表示启动成功<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"></p>
-<p>至此，kafka安装启动结束</p>
-<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
-<p>希望这篇文章能帮到你~</p>
-
+    <div class="collection-year">
+      <span class="collection-header">2024</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2024-04-15T16:54:10+08:00"
+              content="2024-04-15">
+          04-15
+        </time>
+      </div>
 
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag"># 分布式</a>
-          </div>
+      <div class="post-title">
+        <a class="post-title-link" href="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
+          <span itemprop="name">【kafka】安装</span>
+        </a>
+      </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/" rel="prev" title="【zookeeper】安装">
-                  <i class="fa fa-angle-left"></i> 【zookeeper】安装
-                </a>
-            </div>
-            <div class="post-nav-item">
-            </div>
-          </div>
-    </footer>
+      
+    </header>
   </article>
-</div>
 
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2024-04-15T16:06:24+08:00"
+              content="2024-04-15">
+          04-15
+        </time>
+      </div>
 
+      <div class="post-title">
+        <a class="post-title-link" href="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
+          <span itemprop="name">【zookeeper】安装</span>
+        </a>
+      </div>
 
+      
+    </header>
+  </article>
 
-
+    </div>
+  </div>
+  
+  
+  
 
 </div>
   </main>
