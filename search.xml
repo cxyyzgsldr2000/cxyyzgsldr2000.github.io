@@ -5,7 +5,7 @@
     <url>/2024/04/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97/</url>
     <content><![CDATA[<p>volitile关键字用于解决多线程并发执行时可能出现的<strong>可见性</strong>问题<br><a name="sYfCx"></a></p>
 <h2 id="缓存锁定"><a href="#缓存锁定" class="headerlink" title="缓存锁定"></a>缓存锁定</h2><p>处理器在对已经加载到cache当中的共享数据进行修改时，会向总线发出命令，其他处理器通过<strong>嗅探总线</strong>发现有处理器请求写内存地址，而该内存地址为共享地址，处理器就会使存有该共享内存地址的cache行失效。<strong>处理器修改完共享数据后，会将结果写回内存</strong>。这样，其他处理器下次对共享数据的操作就会先从主存当中读取该数据到cache中，然后再进行处理，这样得到的就是最新的数据，避免了可见性问题。</p>
-<p>根据书中所写，对加了volatile关键字的变量进行读写操作时，生成的汇编代码前会加上lock。<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712825586089-1e04ea3b-f99d-40d0-9cf5-2fe53d1f7a8d.png#averageHue=%23f4f4f4&clientId=u8c18e190-44d9-4&from=paste&height=471&id=u37db334b&originHeight=707&originWidth=1317&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=88284&status=done&style=none&taskId=u76a5e643-befd-42f8-b362-331480c4c35&title=&width=878" alt="image.png"><br>于是，我写了这样一段demo</p>
+<p>根据书中所写，对加了volatile关键字的变量进行读写操作时，生成的汇编代码前会加上lock。<br><img src="/2024/04/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97/pic1.png"><br><br>于是，我写了这样一段demo</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        temp++;</span><br><span class="line">        <span class="type">Goods</span> <span class="variable">bottle</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Goods</span>();</span><br><span class="line">        bottle.price++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Goods</span>&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">price</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    Goods()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后通过javac以及javap命令在终端查看它编译后的汇编代码</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">javac -g:none -d out src/test.java</span><br><span class="line">javap -c -v -p out/test.class &gt; out/test.asm</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -18,6 +18,12 @@
 <li><strong>汇编代码层面隐藏</strong>：lock 前缀可能被隐藏在汇编代码的更底层的指令中，不一定会直接出现在你查看的汇编代码中。</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title>【kafka】安装</title>
@@ -37,6 +43,23 @@
       </categories>
       <tags>
         <tag>分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程的创建和启动</title>
+    <url>/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p><a name="Kh76L"></a></p>
+<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><p>创建线程主要通过继承类和实现接口来完成<br><a name="go9bC"></a></p>
+<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><p>需要重写Thread类中的run（）方法<br><a name="SE0Wj"></a></p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>需要实现接口中的run（）方法<br><img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/pic1.png"><br><a name="HbiB1"></a></p>
+<h3 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h3><p>需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值<V><br><img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/pic2.png"><br><a name="s8v8x"></a></V></p>
+<h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><p>通过start（）方法启动线程<img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/pic3.png"><br>阅读start（）源码，探究一下底层实现<br><br><img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/pic4.png"><br><br>再看看start0（）做了些啥<br><br><img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/pic5.png"><br><br>start0（）是被native修饰的方法，说明它是由外部语言（C&#x2F;C++）来实现的，而不是通过JVM虚拟机来执行<br>所以，那具体做了啥呢？<br>（未完，待定）</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -86,16 +109,5 @@
       <tags>
         <tag>分布式</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>线程的创建和启动</title>
-    <url>/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<p><a name="Kh76L"></a></p>
-<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><p>创建线程主要通过继承类和实现接口来完成<br><a name="go9bC"></a></p>
-<h3 id="继承Thread类"><a href="#继承Thread类" class="headerlink" title="继承Thread类"></a>继承Thread类</h3><p>需要重写Thread类中的run（）方法<br><a name="SE0Wj"></a></p>
-<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>需要实现接口中的run（）方法<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886633895-e42885b6-7a11-4e59-b054-1a5707eefdec.png#averageHue=%2395754d&clientId=u704e08d6-349d-4&from=paste&height=425&id=u38ae8a0f&originHeight=638&originWidth=982&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=75363&status=done&style=none&taskId=uca06737c-96d9-4311-9883-ceeabffe8d3&title=&width=654.6666666666666" alt="image.png"><br><a name="HbiB1"></a></p>
-<h3 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h3><p>需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值<V><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886681775-f4ffd171-2477-4829-8b6c-f2c3b9538841.png#averageHue=%232d2d2c&clientId=u704e08d6-349d-4&from=paste&height=533&id=ua80a6765&originHeight=799&originWidth=1482&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=117534&status=done&style=none&taskId=ua069e242-2fd0-4b16-a5a9-64e1bdd5146&title=&width=988" alt="image.png"><br><a name="s8v8x"></a></V></p>
-<h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><p>通过start（）方法启动线程<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886832645-b1eeaf04-2f51-4292-8e90-ed624166e687.png#averageHue=%232e2d2c&clientId=u704e08d6-349d-4&from=paste&height=467&id=uf014195e&originHeight=701&originWidth=1241&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=89740&status=done&style=none&taskId=ud25365b8-fd92-4087-9c2f-1c897f56d54&title=&width=827.3333333333334" alt="image.png"><br>阅读start（）源码，探究一下底层实现<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887308648-6dde3003-e9ee-4b4d-aea3-4d723e3dc793.png#averageHue=%232d2c2c&clientId=u704e08d6-349d-4&from=paste&height=637&id=u5202ce7c&originHeight=956&originWidth=1714&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=200804&status=done&style=none&taskId=u7cd89f12-e3a3-4b48-8f72-ac4dfe5cdf9&title=&width=1142.6666666666667" alt="image.png"><br>再看看start0（）做了些啥<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887350747-0ba96ff6-ae0e-49fa-9348-a33b6622ec2a.png#averageHue=%232c2c2b&clientId=u704e08d6-349d-4&from=paste&height=226&id=u888f856d&originHeight=339&originWidth=1195&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=36940&status=done&style=none&taskId=u4923b776-90bd-404f-9586-58e3200d1f8&title=&width=796.6666666666666" alt="image.png"><br>start0（）是被native修饰的方法，说明它是由外部语言（C&#x2F;C++）来实现的，而不是通过JVM虚拟机来执行<br>所以，那具体做了啥呢？<br>（未完，待定）</p>
-]]></content>
   </entry>
 </search>
