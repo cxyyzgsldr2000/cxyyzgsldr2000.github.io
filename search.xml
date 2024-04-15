@@ -20,6 +20,45 @@
 ]]></content>
   </entry>
   <entry>
+    <title>【kafka】安装</title>
+    <url>/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-安装kafka之前需要先完成zookeeper的安装"><a href="#1-安装kafka之前需要先完成zookeeper的安装" class="headerlink" title="1.安装kafka之前需要先完成zookeeper的安装"></a>1.安装kafka之前需要先完成zookeeper的安装</h1><p><a href="https://blog.csdn.net/weixin_48453504/article/details/137782170?spm=1001.2014.3001.5502">【zookeeper】安装</a></p>
+<h1 id="2-Apache-Kafka官网下载"><a href="#2-Apache-Kafka官网下载" class="headerlink" title="2. Apache Kafka官网下载"></a>2. Apache Kafka官网下载</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"></p>
+<h1 id="3-解压完成后修改server-properties配置文件"><a href="#3-解压完成后修改server-properties配置文件" class="headerlink" title="3. 解压完成后修改server.properties配置文件"></a>3. 解压完成后修改server.properties配置文件</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>修改日志文件存放路径<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"></p>
+<p>查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致<br>（这里默认是2181，<strong>如果zookeeper启动端口没有修改，这里也无需变更</strong>）<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"></p>
+<h1 id="4-启动kafka"><a href="#4-启动kafka" class="headerlink" title="4.启动kafka"></a>4.启动kafka</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">bin\windows\kafka-server-start.bat config\server.properties</span><br></pre></td></tr></table></figure>
+<p>如下，则表示启动成功<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"></p>
+<p>至此，kafka安装启动结束</p>
+<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
+<p>希望这篇文章能帮到你~</p>
+]]></content>
+      <categories>
+        <category>分布式</category>
+      </categories>
+      <tags>
+        <tag>分布式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线程的状态</title>
+    <url>/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<hr>
+<p>与操作系统线程的状态定义不同，Java线程中的状态有6种，各自对应不同的操作系统中的线程状态<br><a name="GWG7A"></a></p>
+<h1 id="NEW"><a href="#NEW" class="headerlink" title="NEW"></a>NEW</h1><p>调用start（）方法之前，对应于操作系统线程的启动态<br><a name="nJaTf"></a></p>
+<h1 id="RUNNABLE"><a href="#RUNNABLE" class="headerlink" title="RUNNABLE"></a>RUNNABLE</h1><p>调用start（）方法之后，对应于操作系统线程的就绪态&#x2F;运行态<br><img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic1.png"></p>
+<p><a name="AbcZk"></a></p>
+<h1 id="BLOCKED"><a href="#BLOCKED" class="headerlink" title="BLOCKED"></a>BLOCKED</h1><p>线程请求资源未能得到满足，对应于操作系统线程的阻塞态<br><a name="DlXdF"></a></p>
+<h1 id="WAITING"><a href="#WAITING" class="headerlink" title="WAITING"></a>WAITING</h1><p>调用Thread.wait()，Thread.join()方法之后，对应于操作系统线程的挂起态<br>需要有其他线程来唤醒它<br><a name="gHUY3"></a></p>
+<h1 id="TIME-WAITING"><a href="#TIME-WAITING" class="headerlink" title="TIME-WAITING"></a>TIME-WAITING</h1><p>调用Thread.sleep(long millis)、Thread.join(long millis)方法之后，对应于操作系统线程的挂起态<br>可以自动唤醒<br><img src="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic2.png"><br><a name="ne74J"></a></p>
+<h1 id="TERMINATED"><a href="#TERMINATED" class="headerlink" title="TERMINATED"></a>TERMINATED</h1><h2 id><a href="#" class="headerlink" title></a><a name="qrcG4"></a></h2>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【zookeeper】安装</title>
     <url>/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h1 id="1-Apache-Zookeeper官网下载"><a href="#1-Apache-Zookeeper官网下载" class="headerlink" title="1. Apache Zookeeper官网下载"></a>1. Apache Zookeeper官网下载</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"><br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"></p>
@@ -58,44 +97,5 @@
 <h3 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h3><p>需要实现接口中的call（）方法，通过这种方式创建的线程，可以有返回值<V><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886681775-f4ffd171-2477-4829-8b6c-f2c3b9538841.png#averageHue=%232d2d2c&clientId=u704e08d6-349d-4&from=paste&height=533&id=ua80a6765&originHeight=799&originWidth=1482&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=117534&status=done&style=none&taskId=ua069e242-2fd0-4b16-a5a9-64e1bdd5146&title=&width=988" alt="image.png"><br><a name="s8v8x"></a></V></p>
 <h2 id="启动线程"><a href="#启动线程" class="headerlink" title="启动线程"></a>启动线程</h2><p>通过start（）方法启动线程<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712886832645-b1eeaf04-2f51-4292-8e90-ed624166e687.png#averageHue=%232e2d2c&clientId=u704e08d6-349d-4&from=paste&height=467&id=uf014195e&originHeight=701&originWidth=1241&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=89740&status=done&style=none&taskId=ud25365b8-fd92-4087-9c2f-1c897f56d54&title=&width=827.3333333333334" alt="image.png"><br>阅读start（）源码，探究一下底层实现<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887308648-6dde3003-e9ee-4b4d-aea3-4d723e3dc793.png#averageHue=%232d2c2c&clientId=u704e08d6-349d-4&from=paste&height=637&id=u5202ce7c&originHeight=956&originWidth=1714&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=200804&status=done&style=none&taskId=u7cd89f12-e3a3-4b48-8f72-ac4dfe5cdf9&title=&width=1142.6666666666667" alt="image.png"><br>再看看start0（）做了些啥<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712887350747-0ba96ff6-ae0e-49fa-9348-a33b6622ec2a.png#averageHue=%232c2c2b&clientId=u704e08d6-349d-4&from=paste&height=226&id=u888f856d&originHeight=339&originWidth=1195&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=36940&status=done&style=none&taskId=u4923b776-90bd-404f-9586-58e3200d1f8&title=&width=796.6666666666666" alt="image.png"><br>start0（）是被native修饰的方法，说明它是由外部语言（C&#x2F;C++）来实现的，而不是通过JVM虚拟机来执行<br>所以，那具体做了啥呢？<br>（未完，待定）</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>【kafka】安装</title>
-    <url>/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="1-安装kafka之前需要先完成zookeeper的安装"><a href="#1-安装kafka之前需要先完成zookeeper的安装" class="headerlink" title="1.安装kafka之前需要先完成zookeeper的安装"></a>1.安装kafka之前需要先完成zookeeper的安装</h1><p><a href="https://blog.csdn.net/weixin_48453504/article/details/137782170?spm=1001.2014.3001.5502">【zookeeper】安装</a></p>
-<h1 id="2-Apache-Kafka官网下载"><a href="#2-Apache-Kafka官网下载" class="headerlink" title="2. Apache Kafka官网下载"></a>2. Apache Kafka官网下载</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"></p>
-<h1 id="3-解压完成后修改server-properties配置文件"><a href="#3-解压完成后修改server-properties配置文件" class="headerlink" title="3. 解压完成后修改server.properties配置文件"></a>3. 解压完成后修改server.properties配置文件</h1><p><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>修改日志文件存放路径<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"></p>
-<p>查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致<br>（这里默认是2181，<strong>如果zookeeper启动端口没有修改，这里也无需变更</strong>）<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"></p>
-<h1 id="4-启动kafka"><a href="#4-启动kafka" class="headerlink" title="4.启动kafka"></a>4.启动kafka</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">bin\windows\kafka-server-start.bat config\server.properties</span><br></pre></td></tr></table></figure>
-<p>如下，则表示启动成功<br><img src="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"></p>
-<p>至此，kafka安装启动结束</p>
-<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
-<p>希望这篇文章能帮到你~</p>
-]]></content>
-      <categories>
-        <category>分布式</category>
-      </categories>
-      <tags>
-        <tag>分布式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线程的状态</title>
-    <url>/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<hr>
-<p>与操作系统线程的状态定义不同，Java线程中的状态有6种，各自对应不同的操作系统中的线程状态<br><a name="GWG7A"></a></p>
-<h1 id="NEW"><a href="#NEW" class="headerlink" title="NEW"></a>NEW</h1><p>调用start（）方法之前，对应于操作系统线程的启动态<br><a name="nJaTf"></a></p>
-<h1 id="RUNNABLE"><a href="#RUNNABLE" class="headerlink" title="RUNNABLE"></a>RUNNABLE</h1><p>调用start（）方法之后，对应于操作系统线程的就绪态&#x2F;运行态<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712981543133-34f400d0-202d-4e31-b48d-564bc128c08a.png#averageHue=%232e2d2c&clientId=u463b2391-e066-4&from=paste&height=596&id=ucb92ced2&originHeight=894&originWidth=1230&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=131136&status=done&style=none&taskId=u0120c266-01f5-4432-986c-81aeab8ddfa&title=&width=820" alt="image.png"></p>
-<p><a name="AbcZk"></a></p>
-<h1 id="BLOCKED"><a href="#BLOCKED" class="headerlink" title="BLOCKED"></a>BLOCKED</h1><p>线程请求资源未能得到满足，对应于操作系统线程的阻塞态<br><a name="DlXdF"></a></p>
-<h1 id="WAITING"><a href="#WAITING" class="headerlink" title="WAITING"></a>WAITING</h1><p>调用Thread.wait()，Thread.join()方法之后，对应于操作系统线程的挂起态<br>需要有其他线程来唤醒它<br><a name="gHUY3"></a></p>
-<h1 id="TIME-WAITING"><a href="#TIME-WAITING" class="headerlink" title="TIME-WAITING"></a>TIME-WAITING</h1><p>调用Thread.sleep(long millis)、Thread.join(long millis)方法之后，对应于操作系统线程的挂起态<br>可以自动唤醒<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712977925658-88e6dcfd-87da-4dd9-87fb-a0fe8a6d3687.png#averageHue=%232c2b2b&clientId=u463b2391-e066-4&from=paste&height=177&id=uc65db5c6&originHeight=265&originWidth=1369&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=48652&status=done&style=none&taskId=u5dd6500d-c0e8-488b-800a-84146768b8d&title=&width=912.6666666666666" alt="image.png"><br><a name="ne74J"></a></p>
-<h1 id="TERMINATED"><a href="#TERMINATED" class="headerlink" title="TERMINATED"></a>TERMINATED</h1><h2 id><a href="#" class="headerlink" title></a><a name="qrcG4"></a></h2>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
   </entry>
 </search>
