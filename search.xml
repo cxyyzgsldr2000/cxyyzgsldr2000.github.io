@@ -85,4 +85,18 @@
 <h1 id="TIME-WAITING"><a href="#TIME-WAITING" class="headerlink" title="TIME-WAITING"></a>TIME-WAITING</h1><p>调用Thread.sleep(long millis)、Thread.join(long millis)方法之后，对应于操作系统线程的挂起态<br />可以自动唤醒<br /><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1712977925658-88e6dcfd-87da-4dd9-87fb-a0fe8a6d3687.png#averageHue=%232c2b2b&clientId=u463b2391-e066-4&from=paste&height=177&id=uc65db5c6&originHeight=265&originWidth=1369&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=48652&status=done&style=none&taskId=u5dd6500d-c0e8-488b-800a-84146768b8d&title=&width=912.6666666666666" alt="image.png"><br><a name="ne74J"></a></p>
 <h1 id="TERMINATED"><a href="#TERMINATED" class="headerlink" title="TERMINATED"></a>TERMINATED</h1><h2 id=""><a href="#" class="headerlink" title=""></a><a name="qrcG4"></a></h2>]]></content>
   </entry>
+  <entry>
+    <title>【kafka】安装</title>
+    <url>/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="1-安装kafka之前需要先完成zookeeper的安装"><a href="#1-安装kafka之前需要先完成zookeeper的安装" class="headerlink" title="1.安装kafka之前需要先完成zookeeper的安装"></a>1.安装kafka之前需要先完成zookeeper的安装</h1><p><a href="https://blog.csdn.net/weixin_48453504/article/details/137782170?spm=1001.2014.3001.5502">【zookeeper】安装</a></p>
+<h1 id="2-Apache-Kafka官网下载"><a href="#2-Apache-Kafka官网下载" class="headerlink" title="2. Apache Kafka官网下载"></a>2. Apache Kafka官网下载</h1><p><img src="https://img-blog.csdnimg.cn/direct/d6a78f5a5c1846038ee6c0851a0b497a.png" alt="在这里插入图片描述"></p>
+<h1 id="3-解压完成后修改server-properties配置文件"><a href="#3-解压完成后修改server-properties配置文件" class="headerlink" title="3. 解压完成后修改server.properties配置文件"></a>3. 解压完成后修改server.properties配置文件</h1><p><img src="https://img-blog.csdnimg.cn/direct/92c0d084e682451d8dd121ce76b39eec.png" alt="在这里插入图片描述"><br>修改日志文件存放路径<br><img src="https://img-blog.csdnimg.cn/direct/74432f359ff4478bbf989349623dfc6d.png" alt="在这里插入图片描述"></p>
+<p>查看与zookeeper连接的端口是否和zookeeper服务所在的端口一致<br>（这里默认是2181，<strong>如果zookeeper启动端口没有修改，这里也无需变更</strong>）<br><img src="https://img-blog.csdnimg.cn/direct/59019ede373545bba6ee4faa25fa2410.png" alt="在这里插入图片描述"></p>
+<h1 id="4-启动kafka"><a href="#4-启动kafka" class="headerlink" title="4.启动kafka"></a>4.启动kafka</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">bin\windows\kafka-server-start.bat config\server.properties</span><br></pre></td></tr></table></figure>
+<p>如下，则表示启动成功<br><img src="https://img-blog.csdnimg.cn/direct/7868610b65bc4c9fb7b066c5b353437e.png" alt="在这里插入图片描述"></p>
+<p>至此，kafka安装启动结束</p>
+<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
+<p>希望这篇文章能帮到你~</p>
+]]></content>
+  </entry>
 </search>
