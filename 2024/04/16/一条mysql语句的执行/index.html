@@ -20,26 +20,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/index.html">
+    <meta name="description" content="客户端首先和MySQL服务器建立连接 建立连接后将MySQL语句发送给服务器 解析器首先对语句进行解析（词法、语法分析） 解析完成后交由预处理器进行预处理操作 判断查询语句的表和字段是否存在 将select * 拓展成查询全列（select id,…)的语句   然后交由优化器给出执行方案 最后交给执行器执行 执行器通过调用存储引擎提供的API接口进行数据的存取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一条mysql语句的执行">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="it is a blog for sharing and writng something about technology and personal thinking">
+<meta property="og:description" content="客户端首先和MySQL服务器建立连接 建立连接后将MySQL语句发送给服务器 解析器首先对语句进行解析（词法、语法分析） 解析完成后交由预处理器进行预处理操作 判断查询语句的表和字段是否存在 将select * 拓展成查询全列（select id,…)的语句   然后交由优化器给出执行方案 最后交给执行器执行 执行器通过调用存储引擎提供的API接口进行数据的存取">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg">
+<meta property="article:published_time" content="2024-04-16T02:05:08.000Z">
+<meta property="article:modified_time" content="2024-04-16T02:08:41.022Z">
 <meta property="article:author" content="Cx">
-<meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/分布式/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/","path":"2024/04/16/一条mysql语句的执行/","title":"一条mysql语句的执行"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: 分布式 | Blog</title>
+<title>一条mysql语句的执行 | Blog</title>
   
 
 
@@ -184,70 +188,129 @@
 
     </div>
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">分布式
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一条mysql语句的执行 | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一条mysql语句的执行
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+
+      <time title="创建时间：2024-04-16 10:05:08 / 修改时间：10:08:41" itemprop="dateCreated datePublished" datetime="2024-04-16T10:05:08+08:00">2024-04-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>169</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<p><img src="/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg"></p>
+<ol>
+<li>客户端首先和MySQL服务器建立连接</li>
+<li>建立连接后将MySQL语句发送给服务器</li>
+<li>解析器首先对语句进行解析（词法、语法分析）</li>
+<li>解析完成后交由预处理器进行预处理操作<ol>
+<li>判断查询语句的表和字段是否存在</li>
+<li>将select * 拓展成查询全列（select id,…)的语句</li>
+</ol>
+</li>
+<li>然后交由优化器给出执行方案</li>
+<li>最后交给执行器执行</li>
+<li>执行器通过调用存储引擎提供的API接口进行数据的存取</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T16:54:10+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
-          <span itemprop="name">【kafka】安装</span>
-        </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/" rel="prev" title="【kafka】安装">
+                  <i class="fa fa-angle-left"></i> 【kafka】安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T16:06:24+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
-          <span itemprop="name">【zookeeper】安装</span>
-        </a>
-      </div>
 
-      
-    </header>
-  </article>
 
-    </div>
-  </div>
-  
-  
-  
+
 
 </div>
   </main>
