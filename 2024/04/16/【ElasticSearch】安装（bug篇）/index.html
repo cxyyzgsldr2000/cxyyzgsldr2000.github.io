@@ -20,26 +20,38 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/archives/2024/index.html">
+    <meta name="description" content="以下解决办法参考自网友们的分享 1. JDK绑定问题但其实这样也没有问题，因为内嵌的jdk版本与当前的es版本是适配的 但是，如果内嵌的jdk与当前es不适配，那就要修改配置文件 &#x2F; 添加环境变量，让es启动的时候能扫描到我们本地的jdk  添加环境变量    修改配置文件  2. SSL问题输入localhost:9200后，报错查看报错信息，发现需要同服务端建立https连接这里有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ElasticSearch】安装（bug篇）">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="it is a blog for sharing and writng something about technology and personal thinking">
+<meta property="og:description" content="以下解决办法参考自网友们的分享 1. JDK绑定问题但其实这样也没有问题，因为内嵌的jdk版本与当前的es版本是适配的 但是，如果内嵌的jdk与当前es不适配，那就要修改配置文件 &#x2F; 添加环境变量，让es启动的时候能扫描到我们本地的jdk  添加环境变量    修改配置文件  2. SSL问题输入localhost:9200后，报错查看报错信息，发现需要同服务端建立https连接这里有">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic1.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic2.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic3.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic4.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic5.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic6.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic7.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic8.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic9.png">
+<meta property="article:published_time" content="2024-04-16T14:31:39.000Z">
+<meta property="article:modified_time" content="2024-04-16T14:36:19.892Z">
 <meta property="article:author" content="Cx">
-<meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
+<meta property="article:tag" content="ES">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic1.png">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/archives/2024/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2024/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/","path":"2024/04/16/【ElasticSearch】安装（bug篇）/","title":"【ElasticSearch】安装（bug篇）"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Blog</title>
+<title>【ElasticSearch】安装（bug篇） | Blog</title>
   
 
 
@@ -72,7 +84,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Blog</h1>
+      <p class="site-title">Blog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">patience is the key in life</p>
@@ -126,7 +138,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -139,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-JDK%E7%BB%91%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">1. JDK绑定问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-SSL%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">2. SSL问题</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -186,189 +199,135 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 8 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【ElasticSearch】安装（bug篇） | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【ElasticSearch】安装（bug篇）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+
+      <time title="创建时间：2024-04-16 22:31:39 / 修改时间：22:36:19" itemprop="dateCreated datePublished" datetime="2024-04-16T22:31:39+08:00">2024-04-16</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>356</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<p>以下解决办法参考自网友们的分享</p>
+<h1 id="1-JDK绑定问题"><a href="#1-JDK绑定问题" class="headerlink" title="1. JDK绑定问题"></a>1. JDK绑定问题</h1><p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic1.png"><br>但其实这样也没有问题，因为内嵌的jdk版本与当前的es版本是适配的</p>
+<p><strong>但是</strong>，如果内嵌的jdk与当前es不适配，那就要修改<strong>配置文件</strong> <strong>&#x2F; 添加环境变量</strong>，让es启动的时候能扫描到我们本地的jdk</p>
+<ol>
+<li>添加环境变量</li>
+</ol>
+<p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic2.png"></p>
+<ol start="2">
+<li>修改配置文件<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic3.png"></li>
+</ol>
+<h1 id="2-SSL问题"><a href="#2-SSL问题" class="headerlink" title="2. SSL问题"></a>2. SSL问题</h1><p>输入localhost:9200后，报错<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic4.png"><br>查看报错信息，发现需要同服务端建立https连接<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic5.png"><br>这里有两个解决办法。</p>
+<ol>
+<li>通过带https前缀的url去访问</li>
+</ol>
+<p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic6.png"><br> 需要登录，但这里用户名和密码不知道，有说是&lt;elastic，changeme&gt;的，但试过发现不正确</p>
+<p>于是尝试重新设置用户名和密码<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic7.png"><br>但是报错<br>（插个眼，先放一边，回头再找解决办法。。）</p>
+<ol start="2">
+<li>关闭安全措施<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic8.png"><br>可以正常访问，不再报错<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic9.png"></li>
+</ol>
+<hr>
+<p><strong>感谢将遇到的问题的解决方案分享出来的朋友们！</strong></p>
+<p>希望这篇文章能对你有所帮助~</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-16T22:31:39+08:00"
-              content="2024-04-16">
-          04-16
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/" itemprop="url">
-          <span itemprop="name">【ElasticSearch】安装（bug篇）</span>
-        </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES/" rel="tag"># ES</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/" rel="prev" title="【ElasticSearch】安装">
+                  <i class="fa fa-angle-left"></i> 【ElasticSearch】安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-16T22:27:46+08:00"
-              content="2024-04-16">
-          04-16
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
-          <span itemprop="name">【ElasticSearch】安装</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-16T10:05:08+08:00"
-              content="2024-04-16">
-          04-16
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/16/%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/" itemprop="url">
-          <span itemprop="name">一条mysql语句的执行</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T16:54:10+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
-          <span itemprop="name">【kafka】安装</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T16:06:24+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/" itemprop="url">
-          <span itemprop="name">【zookeeper】安装</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T09:21:37+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97/" itemprop="url">
-          <span itemprop="name">volatile关键字</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T09:21:26+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/" itemprop="url">
-          <span itemprop="name">线程的创建和启动</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-15T09:21:00+08:00"
-              content="2024-04-15">
-          04-15
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/15/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/" itemprop="url">
-          <span itemprop="name">线程的状态</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>

@@ -136,4 +136,48 @@
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【ElasticSearch】安装</title>
+    <url>/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<hr>
+<h1 id="1-官网寻找合适版本下载"><a href="#1-官网寻找合适版本下载" class="headerlink" title="1.官网寻找合适版本下载"></a>1.官网寻找合适版本下载</h1><p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"><br>这里我选择的是8.11.1</p>
+<h1 id="2-解压并启动"><a href="#2-解压并启动" class="headerlink" title="2.解压并启动"></a>2.解压并启动</h1><p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>然后在浏览器输入<a href="http://localhost:9200/%EF%BC%8C%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F">http://localhost:9200/，判断是否启动成功</a></p>
+<p>如下所示，则表示启动成功<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"><br>安装过程中遇到过几个bug，记录在这篇文章中</p>
+<p><a href="https://blog.csdn.net/weixin_48453504/article/details/137819854?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22137819854%22,%22source%22:%22weixin_48453504%22%7D">【ElasticSearch】安装（bug篇）</a></p>
+]]></content>
+      <tags>
+        <tag>ES</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【ElasticSearch】安装（bug篇）</title>
+    <url>/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<hr>
+<p>以下解决办法参考自网友们的分享</p>
+<h1 id="1-JDK绑定问题"><a href="#1-JDK绑定问题" class="headerlink" title="1. JDK绑定问题"></a>1. JDK绑定问题</h1><p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic1.png"><br>但其实这样也没有问题，因为内嵌的jdk版本与当前的es版本是适配的</p>
+<p><strong>但是</strong>，如果内嵌的jdk与当前es不适配，那就要修改<strong>配置文件</strong> <strong>&#x2F; 添加环境变量</strong>，让es启动的时候能扫描到我们本地的jdk</p>
+<ol>
+<li>添加环境变量</li>
+</ol>
+<p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic2.png"></p>
+<ol start="2">
+<li>修改配置文件<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic3.png"></li>
+</ol>
+<h1 id="2-SSL问题"><a href="#2-SSL问题" class="headerlink" title="2. SSL问题"></a>2. SSL问题</h1><p>输入localhost:9200后，报错<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic4.png"><br>查看报错信息，发现需要同服务端建立https连接<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic5.png"><br>这里有两个解决办法。</p>
+<ol>
+<li>通过带https前缀的url去访问</li>
+</ol>
+<p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic6.png"><br> 需要登录，但这里用户名和密码不知道，有说是&lt;elastic，changeme&gt;的，但试过发现不正确</p>
+<p>于是尝试重新设置用户名和密码<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic7.png"><br>但是报错<br>（插个眼，先放一边，回头再找解决办法。。）</p>
+<ol start="2">
+<li>关闭安全措施<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic8.png"><br>可以正常访问，不再报错<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/pic9.png"></li>
+</ol>
+<hr>
+<p><strong>感谢将遇到的问题的解决方案分享出来的朋友们！</strong></p>
+<p>希望这篇文章能对你有所帮助~</p>
+]]></content>
+      <tags>
+        <tag>ES</tag>
+      </tags>
+  </entry>
 </search>
