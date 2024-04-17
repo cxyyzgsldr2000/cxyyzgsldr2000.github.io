@@ -145,6 +145,9 @@
 <p>如下所示，则表示启动成功<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"><br>安装过程中遇到过几个bug，记录在这篇文章中</p>
 <p><a href="https://blog.csdn.net/weixin_48453504/article/details/137819854?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22137819854%22,%22source%22:%22weixin_48453504%22%7D">【ElasticSearch】安装（bug篇）</a></p>
 ]]></content>
+      <categories>
+        <category>ES</category>
+      </categories>
       <tags>
         <tag>ES</tag>
       </tags>
@@ -176,8 +179,41 @@
 <p><strong>感谢将遇到的问题的解决方案分享出来的朋友们！</strong></p>
 <p>希望这篇文章能对你有所帮助~</p>
 ]]></content>
+      <categories>
+        <category>ES</category>
+      </categories>
       <tags>
         <tag>ES</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【Redis】基本数据类型</title>
+    <url>/2024/04/17/%E3%80%90Redis%E3%80%91%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li>String</li>
+</ol>
+<p>底层由SDS（simple dynamic string）实现。主要应用场景有：计数、分布式锁、共享session信息等</p>
+<ol start="2">
+<li>List</li>
+</ol>
+<p>底层由双向链表实现。主要应用场景有：消息队列</p>
+<ol start="3">
+<li>HashMap</li>
+</ol>
+<p>底层由HashMap实现。主要应用场景有：购物车等需要存储一个对象信息（多个<a href="key:value">key:value</a>值）的场景</p>
+<ol start="4">
+<li>Set</li>
+</ol>
+<p>底层由HashMap或整数集合（intset）实现。主要应用场景有：点赞、收藏、关注等唯一性（A只能点赞一次B）场景。</p>
+<ol start="5">
+<li>Zset</li>
+</ol>
+<p>底层由跳表（kiplist）实现。主要应用场景有：排行榜等需要根据一定规则来进行排序的场景</p>
+<p>未完待续。</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
   </entry>
 </search>
