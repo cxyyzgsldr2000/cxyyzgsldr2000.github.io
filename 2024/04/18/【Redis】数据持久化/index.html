@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="redis是基于内存的数据库，数据如果没有及时更新至磁盘，在系统遭遇故障后，就会造成数据丢失。因此，redis提供了两种数据持久化的方式。分别是AOF和RDB  AOF（appending only file）  客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数sync（）写回磁盘。redis对AOF持">
+    <meta name="description" content="redis是基于内存的数据库，数据如果没有及时更新至磁盘，在系统遭遇故障后，就会造成数据丢失。因此，redis提供了两种数据持久化的方式。分别是AOF和RDB  AOF（appending only file）  客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数fsync（）写回磁盘。redis对AOF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Redis】数据持久化">
 <meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/18/%E3%80%90Redis%E3%80%91%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="redis是基于内存的数据库，数据如果没有及时更新至磁盘，在系统遭遇故障后，就会造成数据丢失。因此，redis提供了两种数据持久化的方式。分别是AOF和RDB  AOF（appending only file）  客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数sync（）写回磁盘。redis对AOF持">
+<meta property="og:description" content="redis是基于内存的数据库，数据如果没有及时更新至磁盘，在系统遭遇故障后，就会造成数据丢失。因此，redis提供了两种数据持久化的方式。分别是AOF和RDB  AOF（appending only file）  客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数fsync（）写回磁盘。redis对AOF">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-18T01:57:39.000Z">
-<meta property="article:modified_time" content="2024-04-18T02:26:59.830Z">
+<meta property="article:modified_time" content="2024-04-18T03:35:43.084Z">
 <meta property="article:author" content="Cx">
 <meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
@@ -229,7 +229,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-04-18 09:57:39 / 修改时间：10:26:59" itemprop="dateCreated datePublished" datetime="2024-04-18T09:57:39+08:00">2024-04-18</time>
+      <time title="创建时间：2024-04-18 09:57:39 / 修改时间：11:35:43" itemprop="dateCreated datePublished" datetime="2024-04-18T09:57:39+08:00">2024-04-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>664</span>
+      <span>665</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -277,7 +277,7 @@
 <ol>
 <li>AOF（appending only file）</li>
 </ol>
-<p>客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数sync（）写回磁盘。<br>redis对AOF持久化方式提供了三种写回磁盘的时机。</p>
+<p>客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数fsync（）写回磁盘。<br>redis对AOF持久化方式提供了三种写回磁盘的时机。</p>
 <ol>
 <li><p>always ：每当有新的数据写入文件中，就立即将该数据写回磁盘。因为刷盘的频率最高，所以这种方式的安全性最高，但性能最差。</p>
 </li>
