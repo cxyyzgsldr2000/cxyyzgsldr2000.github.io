@@ -224,8 +224,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-04-18 09:57:39" itemprop="dateCreated datePublished" datetime="2024-04-18T09:57:39+08:00">2024-04-18</time>
+      <time title="创建时间：2024-04-18 09:57:39 / 修改时间：10:26:59" itemprop="dateCreated datePublished" datetime="2024-04-18T09:57:39+08:00">2024-04-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
     </span>
 
   
@@ -235,7 +245,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>664</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -253,7 +263,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <hr>
+<p>redis是基于内存的数据库，数据如果没有及时更新至磁盘，在系统遭遇故障后，就会造成数据丢失。因此，redis提供了两种数据持久化的方式。分别是AOF和RDB</p>
+<ol>
+<li>AOF（appending only file）</li>
+</ol>
+<p>客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数sync（）写回磁盘。<br>redis对AOF持久化方式提供了三种写回磁盘的时机。</p>
+<ol>
+<li><p>always ：每当有新的数据写入文件中，就立即将该数据写回磁盘。因为刷盘的频率最高，所以这种方式的安全性最高，但性能最差。</p>
+</li>
+<li><p>every second ：刷盘的频率为1s，所以安全性和性能都中等。</p>
+</li>
+<li><p>no ：不按照一定的时间间隔刷盘，而是将时机的选择交由操作系统自身来决定，具有随机性。频率最低，因此安全性最低，性能最好</p>
+</li>
+<li><p>RDB快照</p>
+</li>
+</ol>
+<p>相较于AOF是将数据库的变更以命令行的形式追加到文件中去，RDB采取的是全量复制的形式，而且是以二进制的形式进行数据的复制。也正因为每次复制都是全量复制，因此这种持久化方式的频率要比AOF低很多，但是因为是以二进制的形式存储数据，相较于AOF每次恢复的时候还需要执行命令，RDB恢复数据的时候就会快很多，直接读取即可。<br>redis针对RDB同样也提供了两种持久化模式。</p>
+<ol>
+<li>同步操作：由主线程来完成数据的复制操作，备份期间，由于主线程去忙其他任务了，所以期间到来的任务没有办法得到及时处理。</li>
+<li>异步操作：创建一个子线程，由子线程异步地来完成数据复制。子线程会先复制主线程的页表，然后，根据页表，映射到内存</li>
+</ol>
+
       
     </div>
 
@@ -1260,13 +1291,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8 分钟</span>
+    <span title="站点阅读时长">9 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
