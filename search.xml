@@ -245,4 +245,26 @@
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【ES】springboot集成ES</title>
+    <url>/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/</url>
+    <content><![CDATA[<hr>
+<h1 id="1-去Spring官方文档确认版本兼容性"><a href="#1-去Spring官方文档确认版本兼容性" class="headerlink" title="1. 去Spring官方文档确认版本兼容性"></a>1. 去Spring官方文档确认版本兼容性</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic1.png"><br>这一版的文档里没有给出springboot的版本对应，但我在一个博主的文章里看到的es8.0以前的官方文档中就有给出来，所以还需要再去寻找spring framework和springboot的对应关系？？？<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic2.png"></p>
+<p>还有有个疑问，因为我选择的es依赖包是spring-boot-starter-data-elasticsearch，但官方文档里只给出了Spring Data Elasticsearch的信息，而这两者的版本对应关系我目前只能从加载的依赖包中找到，或许有其他的办法？（还请广大网友指点一下）<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic3.png"></p>
+<h1 id="2-es的安装和配置"><a href="#2-es的安装和配置" class="headerlink" title="2. es的安装和配置"></a>2. es的安装和配置</h1><p>找到合适的es版本后，就可以去es官网进行下载安装了<br><a href="https://blog.csdn.net/weixin_48453504/article/details/137818042?spm=1001.2014.3001.5501">ES安装</a></p>
+<h1 id="3-添加依赖"><a href="#3-添加依赖" class="headerlink" title="3. 添加依赖"></a>3. 添加依赖</h1><p>安装好es后就可以添加spring boot starter data elasticsearch的依赖包了<br>spring boot starter data elasticsearch的依赖包中集成了Spring Data Elasticsearch<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic4.png"><br>如下，我的springboot版本是3.1.7<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic5.png"></p>
+<p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic6.png"></p>
+<h1 id="4-修改application-properties文件"><a href="#4-修改application-properties文件" class="headerlink" title="4. 修改application.properties文件"></a>4. 修改application.properties文件</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic7.png"></p>
+<h1 id="5-给实体类添加注解"><a href="#5-给实体类添加注解" class="headerlink" title="5. 给实体类添加注解"></a>5. 给实体类添加注解</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic8.png"></p>
+<h1 id="6-测试"><a href="#6-测试" class="headerlink" title="6. 测试"></a>6. 测试</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic9.png"><br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic10.png"></p>
+<p>过程遇到太多坑了，尤其要注意<strong>版本适配性</strong>问题！！！</p>
+<p>参考了很多网友的解决方案，感谢！</p>
+]]></content>
+      <categories>
+        <category>ES</category>
+      </categories>
+      <tags>
+        <tag>ES</tag>
+      </tags>
+  </entry>
 </search>

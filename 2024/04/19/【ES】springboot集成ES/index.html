@@ -20,30 +20,39 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="volitile关键字用于解决多线程并发执行时可能出现的可见性问题 缓存锁定处理器在对已经加载到cache当中的共享数据进行修改时，会向总线发出命令，其他处理器通过嗅探总线发现有处理器请求写内存地址，而该内存地址为共享地址，处理器就会使存有该共享内存地址的cache行失效。处理器修改完共享数据后，会将结果写回内存。这样，其他处理器下次对共享数据的操作就会先从主存当中读取该数据到cache中，然后再">
+    <meta name="description" content="1. 去Spring官方文档确认版本兼容性这一版的文档里没有给出springboot的版本对应，但我在一个博主的文章里看到的es8.0以前的官方文档中就有给出来，所以还需要再去寻找spring framework和springboot的对应关系？？？ 还有有个疑问，因为我选择的es依赖包是spring-boot-starter-data-elasticsearch，但官方文档里只给出了Sprin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="volatile关键字">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:title" content="【ES】springboot集成ES">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="volitile关键字用于解决多线程并发执行时可能出现的可见性问题 缓存锁定处理器在对已经加载到cache当中的共享数据进行修改时，会向总线发出命令，其他处理器通过嗅探总线发现有处理器请求写内存地址，而该内存地址为共享地址，处理器就会使存有该共享内存地址的cache行失效。处理器修改完共享数据后，会将结果写回内存。这样，其他处理器下次对共享数据的操作就会先从主存当中读取该数据到cache中，然后再">
+<meta property="og:description" content="1. 去Spring官方文档确认版本兼容性这一版的文档里没有给出springboot的版本对应，但我在一个博主的文章里看到的es8.0以前的官方文档中就有给出来，所以还需要再去寻找spring framework和springboot的对应关系？？？ 还有有个疑问，因为我选择的es依赖包是spring-boot-starter-data-elasticsearch，但官方文档里只给出了Sprin">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/pic1.png">
-<meta property="article:published_time" content="2024-04-15T01:21:37.000Z">
-<meta property="article:modified_time" content="2024-04-15T13:50:33.397Z">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic1.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic2.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic3.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic4.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic5.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic6.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic7.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic8.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic9.png">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic10.png">
+<meta property="article:published_time" content="2024-04-19T07:43:30.000Z">
+<meta property="article:modified_time" content="2024-04-19T07:49:57.778Z">
 <meta property="article:author" content="Cx">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="ES">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/pic1.png">
+<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic1.png">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/","path":"2024/04/15/【Java并发编程】volatile关键字/","title":"volatile关键字"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/","path":"2024/04/19/【ES】springboot集成ES/","title":"【ES】springboot集成ES"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>volatile关键字 | Blog</title>
+<title>【ES】springboot集成ES | Blog</title>
   
 
 
@@ -143,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%94%81%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">缓存锁定</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%8E%BBSpring%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%A1%AE%E8%AE%A4%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">1. 去Spring官方文档确认版本兼容性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-es%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">2. es的安装和配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="nav-number">3.</span> <span class="nav-text">3. 添加依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E4%BF%AE%E6%94%B9application-properties%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">4. 修改application.properties文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E7%BB%99%E5%AE%9E%E4%BD%93%E7%B1%BB%E6%B7%BB%E5%8A%A0%E6%B3%A8%E8%A7%A3"><span class="nav-number">5.</span> <span class="nav-text">5. 给实体类添加注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E6%B5%8B%E8%AF%95"><span class="nav-number">6.</span> <span class="nav-text">6. 测试</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,7 +211,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -215,12 +224,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="volatile关键字 | Blog">
+      <meta itemprop="name" content="【ES】springboot集成ES | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          volatile关键字
+          【ES】springboot集成ES
         </h1>
 
         <div class="post-meta-container">
@@ -232,7 +241,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-04-15 09:21:37 / 修改时间：21:50:33" itemprop="dateCreated datePublished" datetime="2024-04-15T09:21:37+08:00">2024-04-15</time>
+      <time title="创建时间：2024-04-19 15:43:30 / 修改时间：15:49:57" itemprop="dateCreated datePublished" datetime="2024-04-19T15:43:30+08:00">2024-04-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -240,7 +249,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+          <a href="/categories/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a>
         </span>
     </span>
 
@@ -258,14 +267,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
+      <span>532</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>1 分钟</span>
     </span>
 </div>
 
@@ -275,20 +284,17 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>volitile关键字用于解决多线程并发执行时可能出现的<strong>可见性</strong>问题<br><a name="sYfCx"></a></p>
-<h2 id="缓存锁定"><a href="#缓存锁定" class="headerlink" title="缓存锁定"></a>缓存锁定</h2><p>处理器在对已经加载到cache当中的共享数据进行修改时，会向总线发出命令，其他处理器通过<strong>嗅探总线</strong>发现有处理器请求写内存地址，而该内存地址为共享地址，处理器就会使存有该共享内存地址的cache行失效。<strong>处理器修改完共享数据后，会将结果写回内存</strong>。这样，其他处理器下次对共享数据的操作就会先从主存当中读取该数据到cache中，然后再进行处理，这样得到的就是最新的数据，避免了可见性问题。</p>
-<p>根据书中所写，对加了volatile关键字的变量进行读写操作时，生成的汇编代码前会加上lock。<br><img src="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/pic1.png"><br><br>于是，我写了这样一段demo</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        temp++;</span><br><span class="line">        <span class="type">Goods</span> <span class="variable">bottle</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Goods</span>();</span><br><span class="line">        bottle.price++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Goods</span>&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">price</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    Goods()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后通过javac以及javap命令在终端查看它编译后的汇编代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javac -g:none -d out src/test.java</span><br><span class="line">javap -c -v -p out/test.class &gt; out/test.asm</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>得到的汇编文件中关键代码部分如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  static volatile int temp;</span><br><span class="line">    descriptor: I</span><br><span class="line">    flags: (0x0048) ACC_STATIC, ACC_VOLATILE</span><br><span class="line"></span><br><span class="line">  public test();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: (0x0001) ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=1, args_size=1</span><br><span class="line">         0: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">         4: return</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    descriptor: ([Ljava/lang/String;)V</span><br><span class="line">    flags: (0x0009) ACC_PUBLIC, ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=3, locals=2, args_size=1</span><br><span class="line">         0: getstatic     #7                  // Field temp:I</span><br><span class="line">         3: iconst_1</span><br><span class="line">         4: iadd</span><br><span class="line">         5: putstatic     #7                  // Field temp:I</span><br><span class="line">         8: new           #13                 // class Goods</span><br><span class="line">        11: dup</span><br><span class="line">        12: invokespecial #15                 // Method Goods.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">        15: astore_1</span><br><span class="line">        16: aload_1</span><br><span class="line">        17: dup</span><br><span class="line">        18: getfield      #16                 // Field Goods.price:I</span><br><span class="line">        21: iconst_1</span><br><span class="line">        22: iadd</span><br><span class="line">        23: putfield      #16                 // Field Goods.price:I</span><br><span class="line">        26: return</span><br><span class="line"></span><br><span class="line">  static &#123;&#125;;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: (0x0008) ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=0, args_size=0</span><br><span class="line">         0: bipush        10</span><br><span class="line">         2: putstatic     #7                  // Field temp:I</span><br><span class="line">         5: return</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>没有找到带有lock前缀的汇编指令，于是我去求助了一下gpt，得到的解答如下<br>当你查看 Java 代码编译后的汇编代码时，如果发现加了 volatile 的变量对应的汇编语句没有出现 lock 前缀，可能有以下几个原因：</p>
-<ol>
-<li><strong>编译器优化</strong>：编译器在生成汇编代码时可能会进行优化，将 volatile 变量的读写操作优化为更高效的方式，而不是简单地添加 lock 前缀。</li>
-<li><strong>硬件层面支持</strong>：某些处理器对 volatile 变量的操作可能有硬件层面的支持，因此在汇编代码中不需要显式添加 lock。</li>
-<li><strong>汇编代码层面隐藏</strong>：lock 前缀可能被隐藏在汇编代码的更底层的指令中，不一定会直接出现在你查看的汇编代码中。</li>
-</ol>
+    <div class="post-body" itemprop="articleBody"><hr>
+<h1 id="1-去Spring官方文档确认版本兼容性"><a href="#1-去Spring官方文档确认版本兼容性" class="headerlink" title="1. 去Spring官方文档确认版本兼容性"></a>1. 去Spring官方文档确认版本兼容性</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic1.png"><br>这一版的文档里没有给出springboot的版本对应，但我在一个博主的文章里看到的es8.0以前的官方文档中就有给出来，所以还需要再去寻找spring framework和springboot的对应关系？？？<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic2.png"></p>
+<p>还有有个疑问，因为我选择的es依赖包是spring-boot-starter-data-elasticsearch，但官方文档里只给出了Spring Data Elasticsearch的信息，而这两者的版本对应关系我目前只能从加载的依赖包中找到，或许有其他的办法？（还请广大网友指点一下）<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic3.png"></p>
+<h1 id="2-es的安装和配置"><a href="#2-es的安装和配置" class="headerlink" title="2. es的安装和配置"></a>2. es的安装和配置</h1><p>找到合适的es版本后，就可以去es官网进行下载安装了<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48453504/article/details/137818042?spm=1001.2014.3001.5501">ES安装</a></p>
+<h1 id="3-添加依赖"><a href="#3-添加依赖" class="headerlink" title="3. 添加依赖"></a>3. 添加依赖</h1><p>安装好es后就可以添加spring boot starter data elasticsearch的依赖包了<br>spring boot starter data elasticsearch的依赖包中集成了Spring Data Elasticsearch<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic4.png"><br>如下，我的springboot版本是3.1.7<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic5.png"></p>
+<p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic6.png"></p>
+<h1 id="4-修改application-properties文件"><a href="#4-修改application-properties文件" class="headerlink" title="4. 修改application.properties文件"></a>4. 修改application.properties文件</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic7.png"></p>
+<h1 id="5-给实体类添加注解"><a href="#5-给实体类添加注解" class="headerlink" title="5. 给实体类添加注解"></a>5. 给实体类添加注解</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic8.png"></p>
+<h1 id="6-测试"><a href="#6-测试" class="headerlink" title="6. 测试"></a>6. 测试</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic9.png"><br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic10.png"></p>
+<p>过程遇到太多坑了，尤其要注意<strong>版本适配性</strong>问题！！！</p>
+<p>参考了很多网友的解决方案，感谢！</p>
 
     </div>
 
@@ -298,21 +304,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/ES/" rel="tag"># ES</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/" rel="prev" title="线程的创建和启动">
-                  <i class="fa fa-angle-left"></i> 线程的创建和启动
+                <a href="/2024/04/18/%E3%80%90Redis%E3%80%91%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" rel="prev" title="【Redis】数据持久化">
+                  <i class="fa fa-angle-left"></i> 【Redis】数据持久化
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/" rel="next" title="【zookeeper】安装">
-                  【zookeeper】安装 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
