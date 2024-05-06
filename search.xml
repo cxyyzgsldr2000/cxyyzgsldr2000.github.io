@@ -291,6 +291,22 @@
   <entry>
     <title>【Redis】缓存问题</title>
     <url>/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<hr>
+<ol>
+<li>缓存击穿</li>
+</ol>
+<p>含义：热点数据过期被删除后，大量用户对热点数据的访问无法直接通过内存数据库得到，进而转向访问硬盘数据库，对硬盘数据库造成极大的压力，影响性能。<br>解决办法：建立可靠的redis集群、设置互斥锁、不对热点数据设置过期时间</p>
+<ol start="2">
+<li>缓存雪崩</li>
+</ol>
+<p>含义：内存数据库宕机或者大量数据在同一时间段内过期。用户对这些数据的访问无法通过走内存数据库得到，必须访问硬盘数据库。<br>解决办法：建立可靠的redis集群、设置互斥锁、设置离散的过期时间</p>
+<ol start="3">
+<li>缓存穿透</li>
+</ol>
+<p>含义：用户访问数据库中不存在的数据</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
   </entry>
 </search>
