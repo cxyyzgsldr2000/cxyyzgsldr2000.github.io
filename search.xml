@@ -267,4 +267,25 @@
         <tag>ES</tag>
       </tags>
   </entry>
+  <entry>
+    <title>【Redis】过期删除策略</title>
+    <url>/2024/05/06/%E3%80%90Redis%E3%80%91%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li>定时删除</li>
+</ol>
+<p>给每个存入redis的数据设置一个过期删除事件，过期时间一到，就自动触发事件，删除该数据</p>
+<ol start="2">
+<li>懒惰删除</li>
+</ol>
+<p>只有当使用到数据的时候，才判断该数据是否过期，过期则删除，否则，不做处理。</p>
+<ol start="3">
+<li>定期删除</li>
+</ol>
+<p>redis定期从过期字典里随机抽取一定数量（可以设置）的数据进行判断，如果超过一定比例（可以设置）的数据都过期了，则再进行一次随机检验，直到过期数据所占比例未达到设定值或者检验时间超时了。</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+  </entry>
 </search>
