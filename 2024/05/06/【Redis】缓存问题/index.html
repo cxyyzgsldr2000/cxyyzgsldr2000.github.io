@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="String  底层由SDS（simple dynamic string）实现。主要应用场景有：计数、分布式锁、共享session信息等  List  底层由双向链表实现。主要应用场景有：消息队列  HashMap  底层由HashMap实现。主要应用场景有：购物车等需要存储一个对象信息（多个key:value值）的场景  Set  底层由HashMap或整数集合（intset）实现。主要应用">
+    <meta name="description" content="it is a blog for sharing and writng something about technology and personal thinking">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Redis】基本数据类型">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/17/%E3%80%90Redis%E3%80%91%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:title" content="【Redis】缓存问题">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="String  底层由SDS（simple dynamic string）实现。主要应用场景有：计数、分布式锁、共享session信息等  List  底层由双向链表实现。主要应用场景有：消息队列  HashMap  底层由HashMap实现。主要应用场景有：购物车等需要存储一个对象信息（多个key:value值）的场景  Set  底层由HashMap或整数集合（intset）实现。主要应用">
+<meta property="og:description" content="it is a blog for sharing and writng something about technology and personal thinking">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-17T02:25:35.000Z">
-<meta property="article:modified_time" content="2024-04-17T02:26:12.576Z">
+<meta property="article:published_time" content="2024-05-06T03:45:46.000Z">
+<meta property="article:modified_time" content="2024-05-06T03:45:46.638Z">
 <meta property="article:author" content="Cx">
 <meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/17/%E3%80%90Redis%E3%80%91%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/17/%E3%80%90Redis%E3%80%91%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/","path":"2024/04/17/【Redis】基本数据类型/","title":"【Redis】基本数据类型"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/","path":"2024/05/06/【Redis】缓存问题/","title":"【Redis】缓存问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>【Redis】基本数据类型 | Blog</title>
+<title>【Redis】缓存问题 | Blog</title>
   
 
 
@@ -199,7 +199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/17/%E3%80%90Redis%E3%80%91%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -212,12 +212,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="【Redis】基本数据类型 | Blog">
+      <meta itemprop="name" content="【Redis】缓存问题 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【Redis】基本数据类型
+          【Redis】缓存问题
         </h1>
 
         <div class="post-meta-container">
@@ -227,18 +227,8 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-04-17 10:25:35 / 修改时间：10:26:12" itemprop="dateCreated datePublished" datetime="2024-04-17T10:25:35+08:00">2024-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-        </span>
+      <time title="创建时间：2024-05-06 11:45:46" itemprop="dateCreated datePublished" datetime="2024-05-06T11:45:46+08:00">2024-05-06</time>
     </span>
 
   
@@ -255,7 +245,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>265</span>
+      <span>0</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -272,29 +262,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><hr>
-<ol>
-<li>String</li>
-</ol>
-<p>底层由SDS（simple dynamic string）实现。主要应用场景有：计数、分布式锁、共享session信息等</p>
-<ol start="2">
-<li>List</li>
-</ol>
-<p>底层由双向链表实现。主要应用场景有：消息队列</p>
-<ol start="3">
-<li>HashMap</li>
-</ol>
-<p>底层由HashMap实现。主要应用场景有：购物车等需要存储一个对象信息（多个<a href="key:value">key:value</a>值）的场景</p>
-<ol start="4">
-<li>Set</li>
-</ol>
-<p>底层由HashMap或整数集合（intset）实现。主要应用场景有：点赞、收藏、关注等唯一性（A只能点赞一次B）场景。</p>
-<ol start="5">
-<li>Zset</li>
-</ol>
-<p>底层由跳表（kiplist）实现。主要应用场景有：排行榜等需要根据一定规则来进行排序的场景</p>
-<p>未完待续。</p>
-
+    <div class="post-body" itemprop="articleBody">
     </div>
 
     
@@ -307,14 +275,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85%EF%BC%88bug%E7%AF%87%EF%BC%89/" rel="prev" title="【ElasticSearch】安装（bug篇）">
-                  <i class="fa fa-angle-left"></i> 【ElasticSearch】安装（bug篇）
+                <a href="/2024/05/06/%E3%80%90Redis%E3%80%91%E8%BF%87%E6%9C%9F%E5%88%A0%E9%99%A4%E7%AD%96%E7%95%A5/" rel="prev" title="【Redis】过期删除策略">
+                  <i class="fa fa-angle-left"></i> 【Redis】过期删除策略
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/04/18/%E3%80%90Redis%E3%80%91%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" rel="next" title="【Redis】数据持久化">
-                  【Redis】数据持久化 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
