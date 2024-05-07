@@ -309,4 +309,28 @@
         <category>Redis</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Redis】缓存一致性问题</title>
+    <url>/2024/05/07/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<hr>
+<p>可以有多种方式来对缓存和数据库进行同步：先修改缓存再修改数据库、先修改数据库再修改缓存、先删除缓存再修改数据库、先修改数据库再删除缓存</p>
+<p>redis选择通过先修改数据库再删除缓存来确保redis的缓存和数据库内容是一致的</p>
+<p>但是删除缓存如果失败的话，就会造成下一次访问到的数据是脏数据。因此就需要一些机制来确保缓存删除成功。如：消息队列、订阅binlog</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Redis】集群</title>
+    <url>/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/</url>
+    <content><![CDATA[<hr>
+<p>redis通过采取一主多从的模式形成一个集群，以增强系统的可靠性和安全性</p>
+<p>主服务器：负责处理读写请求，与从服务器建立连接后就将数据以全量复制的形式同步给从服务器，后续数据的更新以基于长连接的命令完成</p>
+<p>从服务器：负责处理读请求，分散主服务器的压力</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+  </entry>
 </search>
