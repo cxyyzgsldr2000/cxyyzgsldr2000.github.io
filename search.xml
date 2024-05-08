@@ -333,4 +333,27 @@
         <category>Redis</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Redis】集群-哨兵机制</title>
+    <url>/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<hr>
+<p>redis通过哨兵机制来实现<strong>故障转移</strong></p>
+<p>哨兵的监测机制：<br>哨兵有多个，并且会每隔一段时间通过ping命令和主服务器建立连接来判断主服务器是否出现故障。当有一个哨兵<strong>主观判定</strong>主服务器出现故障下线后，该哨兵会请求其他哨兵再进行一次判断，如果超过一定比例的哨兵都主观认定该主服务器下线，则redis<strong>客观判定</strong>该主服务器下线。</p>
+<p>新的主服务器选拔流程：<br>当旧主服务器被客观判定下线后，哨兵们会选出一个leader，一般由第一个主观判定主服务器下线的哨兵当选。<br>leader通过以下规则从从服务器中选出新的主服务器：1. <strong>优先级</strong> 2.<strong>从服务器复制主服务器数据的进程</strong> 3.<strong>从服务器的id号</strong><br>选出新的主服务器后，哨兵就要通过slave命令将新的主服务器的ip地址和端口号告知所有从服务器，让从服务器与新的主服务器建立连接。并且还要通过<strong>发布者&#x2F;订阅模式</strong>将该地址发布到哨兵的频道上，以便客户端能够重新和新的主服务器建立连接<br>当旧的主服务器重新上线后，哨兵也要将该主服务器的地址告知它</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Redis】集群-脑裂现象</title>
+    <url>/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E8%84%91%E8%A3%82%E7%8E%B0%E8%B1%A1/</url>
+    <content><![CDATA[<hr>
+<p>当出现主从故障转移，但客户端并不知道或是延迟了一段时间才知道的情况下，就发生了脑裂现象</p>
+<p>发生原因：当主服务被判定客观下线后，但客户端并没有及时被通知到并与新的主服务器建立连接。这就造成了客户端还是将要写入的数据发送给旧主服务器。然而当该旧主服务器重新上线后，它不再是主服务器，而是成为了从服务器，需要全量复制新的主服务器的数据，而这些全量复制的数据会覆盖原先已有的数据。这就造成了这一段时间内客户端写入的数据丢失。</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+  </entry>
 </search>

@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="redis通过采取一主多从的模式形成一个集群，以增强系统的可靠性和安全性 主服务器：负责处理读写请求，与从服务器建立连接后就将数据以全量复制的形式同步给从服务器，后续数据的更新以基于长连接的命令完成 从服务器：负责处理读请求，分散主服务器的压力">
+    <meta name="description" content="redis通过哨兵机制来实现故障转移 哨兵的监测机制：哨兵有多个，并且会每隔一段时间通过ping命令和主服务器建立连接来判断主服务器是否出现故障。当有一个哨兵主观判定主服务器出现故障下线后，该哨兵会请求其他哨兵再进行一次判断，如果超过一定比例的哨兵都主观认定该主服务器下线，则redis客观判定该主服务器下线。 新的主服务器选拔流程：当旧主服务器被客观判定下线后，哨兵们会选出一个leader，一般">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Redis】集群">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/index.html">
+<meta property="og:title" content="【Redis】集群-哨兵机制">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="redis通过采取一主多从的模式形成一个集群，以增强系统的可靠性和安全性 主服务器：负责处理读写请求，与从服务器建立连接后就将数据以全量复制的形式同步给从服务器，后续数据的更新以基于长连接的命令完成 从服务器：负责处理读请求，分散主服务器的压力">
+<meta property="og:description" content="redis通过哨兵机制来实现故障转移 哨兵的监测机制：哨兵有多个，并且会每隔一段时间通过ping命令和主服务器建立连接来判断主服务器是否出现故障。当有一个哨兵主观判定主服务器出现故障下线后，该哨兵会请求其他哨兵再进行一次判断，如果超过一定比例的哨兵都主观认定该主服务器下线，则redis客观判定该主服务器下线。 新的主服务器选拔流程：当旧主服务器被客观判定下线后，哨兵们会选出一个leader，一般">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-07T07:31:24.000Z">
-<meta property="article:modified_time" content="2024-05-07T07:33:20.746Z">
+<meta property="article:published_time" content="2024-05-08T02:14:12.000Z">
+<meta property="article:modified_time" content="2024-05-08T02:15:17.936Z">
 <meta property="article:author" content="Cx">
 <meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/","path":"2024/05/07/【Redis】集群/","title":"【Redis】集群"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/","path":"2024/05/08/【Redis】集群-哨兵机制/","title":"【Redis】集群-哨兵机制"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>【Redis】集群 | Blog</title>
+<title>【Redis】集群-哨兵机制 | Blog</title>
   
 
 
@@ -199,7 +199,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -212,12 +212,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="【Redis】集群 | Blog">
+      <meta itemprop="name" content="【Redis】集群-哨兵机制 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【Redis】集群
+          【Redis】集群-哨兵机制
         </h1>
 
         <div class="post-meta-container">
@@ -229,7 +229,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-05-07 15:31:24 / 修改时间：15:33:20" itemprop="dateCreated datePublished" datetime="2024-05-07T15:31:24+08:00">2024-05-07</time>
+      <time title="创建时间：2024-05-08 10:14:12 / 修改时间：10:15:17" itemprop="dateCreated datePublished" datetime="2024-05-08T10:14:12+08:00">2024-05-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>120</span>
+      <span>423</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -273,9 +273,9 @@
     
     
     <div class="post-body" itemprop="articleBody"><hr>
-<p>redis通过采取一主多从的模式形成一个集群，以增强系统的可靠性和安全性</p>
-<p>主服务器：负责处理读写请求，与从服务器建立连接后就将数据以全量复制的形式同步给从服务器，后续数据的更新以基于长连接的命令完成</p>
-<p>从服务器：负责处理读请求，分散主服务器的压力</p>
+<p>redis通过哨兵机制来实现<strong>故障转移</strong></p>
+<p>哨兵的监测机制：<br>哨兵有多个，并且会每隔一段时间通过ping命令和主服务器建立连接来判断主服务器是否出现故障。当有一个哨兵<strong>主观判定</strong>主服务器出现故障下线后，该哨兵会请求其他哨兵再进行一次判断，如果超过一定比例的哨兵都主观认定该主服务器下线，则redis<strong>客观判定</strong>该主服务器下线。</p>
+<p>新的主服务器选拔流程：<br>当旧主服务器被客观判定下线后，哨兵们会选出一个leader，一般由第一个主观判定主服务器下线的哨兵当选。<br>leader通过以下规则从从服务器中选出新的主服务器：1. <strong>优先级</strong> 2.<strong>从服务器复制主服务器数据的进程</strong> 3.<strong>从服务器的id号</strong><br>选出新的主服务器后，哨兵就要通过slave命令将新的主服务器的ip地址和端口号告知所有从服务器，让从服务器与新的主服务器建立连接。并且还要通过<strong>发布者&#x2F;订阅模式</strong>将该地址发布到哨兵的频道上，以便客户端能够重新和新的主服务器建立连接<br>当旧的主服务器重新上线后，哨兵也要将该主服务器的地址告知它</p>
 
     </div>
 
@@ -289,13 +289,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/05/07/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98/" rel="prev" title="【Redis】缓存一致性问题">
-                  <i class="fa fa-angle-left"></i> 【Redis】缓存一致性问题
+                <a href="/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/" rel="prev" title="【Redis】集群">
+                  <i class="fa fa-angle-left"></i> 【Redis】集群
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/" rel="next" title="【Redis】集群-哨兵机制">
-                  【Redis】集群-哨兵机制 <i class="fa fa-angle-right"></i>
+                <a href="/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E8%84%91%E8%A3%82%E7%8E%B0%E8%B1%A1/" rel="next" title="【Redis】集群-脑裂现象">
+                  【Redis】集群-脑裂现象 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
