@@ -224,8 +224,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-05-10 15:23:03" itemprop="dateCreated datePublished" datetime="2024-05-10T15:23:03+08:00">2024-05-10</time>
+      <time title="创建时间：2024-05-10 15:23:03 / 修改时间：15:25:18" itemprop="dateCreated datePublished" datetime="2024-05-10T15:23:03+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
     </span>
 
   
@@ -235,7 +245,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>152</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -253,7 +263,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <hr>
+<p>Redis确保在事务内的命令是<strong>顺序</strong>、<strong>一次性</strong>、<strong>不被中断</strong>地执行的</p>
+<p>Redis以multi（）开始一个事务，以execute（）执行一个事务</p>
+<p>Redis是<strong>单线程执行任务</strong>的，因此，当它开始执行一个事务时，就会一直到该事务结束才会去处理其他请求，期间不会被其他线程干扰</p>
+<p>Redis事务内部<strong>不支持回滚</strong>，确保了内部简单、轻便</p>
+
       
     </div>
 
@@ -307,8 +322,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-05-10 15:22:52" itemprop="dateCreated datePublished" datetime="2024-05-10T15:22:52+08:00">2024-05-10</time>
+      <time title="创建时间：2024-05-10 15:22:52 / 修改时间：15:24:46" itemprop="dateCreated datePublished" datetime="2024-05-10T15:22:52+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
     </span>
 
   
@@ -318,7 +343,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>83</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -336,7 +361,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <hr>
+<p>redis大key是指占用内存过大的key</p>
+<p>大key可能会对以下持久化方式产生影响：</p>
+<ol>
+<li><strong>always</strong>的AOF持久化方式</li>
+<li>发生<strong>写时复制</strong>时</li>
+</ol>
+<p>产生的影响可能是<strong>网络阻塞</strong>、<strong>客户端请求阻塞</strong></p>
+
       
     </div>
 
@@ -1200,7 +1233,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">13 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

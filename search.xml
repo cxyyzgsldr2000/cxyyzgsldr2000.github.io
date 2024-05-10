@@ -359,11 +359,30 @@
   <entry>
     <title>【Redis】事务</title>
     <url>/2024/05/10/%E3%80%90Redis%E3%80%91%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<hr>
+<p>Redis确保在事务内的命令是<strong>顺序</strong>、<strong>一次性</strong>、<strong>不被中断</strong>地执行的</p>
+<p>Redis以multi（）开始一个事务，以execute（）执行一个事务</p>
+<p>Redis是<strong>单线程执行任务</strong>的，因此，当它开始执行一个事务时，就会一直到该事务结束才会去处理其他请求，期间不会被其他线程干扰</p>
+<p>Redis事务内部<strong>不支持回滚</strong>，确保了内部简单、轻便</p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
   </entry>
   <entry>
     <title>【Redis】大key对持久化的影响</title>
     <url>/2024/05/10/%E3%80%90Redis%E3%80%91%E5%A4%A7key%E5%AF%B9%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E5%BD%B1%E5%93%8D/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<hr>
+<p>redis大key是指占用内存过大的key</p>
+<p>大key可能会对以下持久化方式产生影响：</p>
+<ol>
+<li><strong>always</strong>的AOF持久化方式</li>
+<li>发生<strong>写时复制</strong>时</li>
+</ol>
+<p>产生的影响可能是<strong>网络阻塞</strong>、<strong>客户端请求阻塞</strong></p>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
   </entry>
 </search>
