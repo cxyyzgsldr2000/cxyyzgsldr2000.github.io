@@ -20,26 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/tags/MySQL/index.html">
+    <meta name="description" content="索引分类按个数单列索引、联合索引 按物理存储主键索引、二级索引 按数据结构B+树索引、B树索引 索引失效 对索引字段使用函数、表达式计算；发生隐式类型转换 左模糊、左右模糊匹配 未遵循最左匹配原则（针对聚簇索引）  索引优化 避免索引失效 避免回表，如果可以，覆盖索引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Mysql】索引">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="it is a blog for sharing and writng something about technology and personal thinking">
+<meta property="og:description" content="索引分类按个数单列索引、联合索引 按物理存储主键索引、二级索引 按数据结构B+树索引、B树索引 索引失效 对索引字段使用函数、表达式计算；发生隐式类型转换 左模糊、左右模糊匹配 未遵循最左匹配原则（针对聚簇索引）  索引优化 避免索引失效 避免回表，如果可以，覆盖索引">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-11T09:03:24.000Z">
+<meta property="article:modified_time" content="2024-05-11T09:03:55.003Z">
 <meta property="article:author" content="Cx">
 <meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/tags/MySQL/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/MySQL/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/","path":"2024/05/11/【Mysql】索引/","title":"【Mysql】索引"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: MySQL | Blog</title>
+<title>【Mysql】索引 | Blog</title>
   
 
 
@@ -126,7 +128,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -139,6 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">索引分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%B8%AA%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">按个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8"><span class="nav-number">1.2.</span> <span class="nav-text">按物理存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">按数据结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88"><span class="nav-number">2.</span> <span class="nav-text">索引失效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">索引优化</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -186,50 +189,131 @@
 
     </div>
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">MySQL
-          <small>标签</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【Mysql】索引 | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Mysql】索引
         </h1>
-      </div>
 
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+
+      <time title="创建时间：2024-05-11 17:03:24 / 修改时间：17:03:55" itemprop="dateCreated datePublished" datetime="2024-05-11T17:03:24+08:00">2024-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>124</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<h2 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h2><h3 id="按个数"><a href="#按个数" class="headerlink" title="按个数"></a>按个数</h3><p>单列索引、联合索引</p>
+<h3 id="按物理存储"><a href="#按物理存储" class="headerlink" title="按物理存储"></a>按物理存储</h3><p>主键索引、二级索引</p>
+<h3 id="按数据结构"><a href="#按数据结构" class="headerlink" title="按数据结构"></a>按数据结构</h3><p>B+树索引、B树索引</p>
+<h2 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h2><ol>
+<li>对索引字段使用函数、表达式计算；发生隐式类型转换</li>
+<li>左模糊、左右模糊匹配</li>
+<li>未遵循最左匹配原则（针对聚簇索引）</li>
+</ol>
+<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><ol>
+<li>避免索引失效</li>
+<li>避免回表，如果可以，覆盖索引</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-04-16T10:05:08+08:00"
-              content="2024-04-16">
-          04-16
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/" itemprop="url">
-          <span itemprop="name">一条mysql语句的执行</span>
-        </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/05/10/%E3%80%90Redis%E3%80%91%E4%BA%8B%E5%8A%A1/" rel="prev" title="【Redis】事务">
+                  <i class="fa fa-angle-left"></i> 【Redis】事务
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
+
 
 </div>
   </main>

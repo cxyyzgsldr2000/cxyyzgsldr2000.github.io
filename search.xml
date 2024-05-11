@@ -385,4 +385,25 @@
         <category>Redis</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】索引</title>
+    <url>/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<hr>
+<h2 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h2><h3 id="按个数"><a href="#按个数" class="headerlink" title="按个数"></a>按个数</h3><p>单列索引、联合索引</p>
+<h3 id="按物理存储"><a href="#按物理存储" class="headerlink" title="按物理存储"></a>按物理存储</h3><p>主键索引、二级索引</p>
+<h3 id="按数据结构"><a href="#按数据结构" class="headerlink" title="按数据结构"></a>按数据结构</h3><p>B+树索引、B树索引</p>
+<h2 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h2><ol>
+<li>对索引字段使用函数、表达式计算；发生隐式类型转换</li>
+<li>左模糊、左右模糊匹配</li>
+<li>未遵循最左匹配原则（针对聚簇索引）</li>
+</ol>
+<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><ol>
+<li>避免索引失效</li>
+<li>避免回表，如果可以，覆盖索引</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>
