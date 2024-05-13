@@ -406,4 +406,21 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】索引-索引结构</title>
+    <url>/2024/05/13/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<hr>
+<h2 id="为什么Innodb存储引擎使用B-树作为存储索引的数据结构"><a href="#为什么Innodb存储引擎使用B-树作为存储索引的数据结构" class="headerlink" title="为什么Innodb存储引擎使用B+树作为存储索引的数据结构"></a>为什么Innodb存储引擎使用B+树作为存储索引的数据结构</h2><ol>
+<li>查询效率高</li>
+</ol>
+<p>因为B+树的非叶子节点只存储索引值而不存储数据值，所以每一个节点能够存储更多的值，进而整个树就呈现一种“矮胖”的感觉。而树的查询效率又跟树高呈正相关，树高越小，查询效率越高。所以B+树的查询效率高。</p>
+<ol start="2">
+<li>支持范围查询</li>
+</ol>
+<p>B+树的叶子节点存储所有索引对应的value的数据，并以链表（单向&#x2F;双向）的形式串联起来，</p>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>

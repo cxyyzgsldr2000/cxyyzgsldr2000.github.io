@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,108 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/13/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/13/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">【Mysql】索引-索引结构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-13 14:07:58 / 修改时间：14:08:31" itemprop="dateCreated datePublished" datetime="2024-05-13T14:07:58+08:00">2024-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>189</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="为什么Innodb存储引擎使用B-树作为存储索引的数据结构"><a href="#为什么Innodb存储引擎使用B-树作为存储索引的数据结构" class="headerlink" title="为什么Innodb存储引擎使用B+树作为存储索引的数据结构"></a>为什么Innodb存储引擎使用B+树作为存储索引的数据结构</h2><ol>
+<li>查询效率高</li>
+</ol>
+<p>因为B+树的非叶子节点只存储索引值而不存储数据值，所以每一个节点能够存储更多的值，进而整个树就呈现一种“矮胖”的感觉。而树的查询效率又跟树高呈正相关，树高越小，查询效率越高。所以B+树的查询效率高。</p>
+<ol start="2">
+<li>支持范围查询</li>
+</ol>
+<p>B+树的叶子节点存储所有索引对应的value的数据，并以链表（单向&#x2F;双向）的形式串联起来，</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1092,112 +1194,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/" class="post-title-link" itemprop="url">【ES】springboot集成ES</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-04-19 15:43:30 / 修改时间：15:49:57" itemprop="dateCreated datePublished" datetime="2024-04-19T15:43:30+08:00">2024-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>532</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="1-去Spring官方文档确认版本兼容性"><a href="#1-去Spring官方文档确认版本兼容性" class="headerlink" title="1. 去Spring官方文档确认版本兼容性"></a>1. 去Spring官方文档确认版本兼容性</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic1.png"><br>这一版的文档里没有给出springboot的版本对应，但我在一个博主的文章里看到的es8.0以前的官方文档中就有给出来，所以还需要再去寻找spring framework和springboot的对应关系？？？<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic2.png"></p>
-<p>还有有个疑问，因为我选择的es依赖包是spring-boot-starter-data-elasticsearch，但官方文档里只给出了Spring Data Elasticsearch的信息，而这两者的版本对应关系我目前只能从加载的依赖包中找到，或许有其他的办法？（还请广大网友指点一下）<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic3.png"></p>
-<h1 id="2-es的安装和配置"><a href="#2-es的安装和配置" class="headerlink" title="2. es的安装和配置"></a>2. es的安装和配置</h1><p>找到合适的es版本后，就可以去es官网进行下载安装了<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48453504/article/details/137818042?spm=1001.2014.3001.5501">ES安装</a></p>
-<h1 id="3-添加依赖"><a href="#3-添加依赖" class="headerlink" title="3. 添加依赖"></a>3. 添加依赖</h1><p>安装好es后就可以添加spring boot starter data elasticsearch的依赖包了<br>spring boot starter data elasticsearch的依赖包中集成了Spring Data Elasticsearch<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic4.png"><br>如下，我的springboot版本是3.1.7<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic5.png"></p>
-<p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic6.png"></p>
-<h1 id="4-修改application-properties文件"><a href="#4-修改application-properties文件" class="headerlink" title="4. 修改application.properties文件"></a>4. 修改application.properties文件</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic7.png"></p>
-<h1 id="5-给实体类添加注解"><a href="#5-给实体类添加注解" class="headerlink" title="5. 给实体类添加注解"></a>5. 给实体类添加注解</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic8.png"></p>
-<h1 id="6-测试"><a href="#6-测试" class="headerlink" title="6. 测试"></a>6. 测试</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic9.png"><br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic10.png"></p>
-<p>过程遇到太多坑了，尤其要注意<strong>版本适配性</strong>问题！！！</p>
-<p>参考了很多网友的解决方案，感谢！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
