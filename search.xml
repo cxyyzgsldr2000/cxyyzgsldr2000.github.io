@@ -423,4 +423,15 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】count函数</title>
+    <url>/2024/05/13/%E3%80%90Mysql%E3%80%91count%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<hr>
+<p><strong>count（参数）用来统计符合查询条件的记录中参数值不为null的条数</strong></p>
+<p>性能排序：<br>count（<em>）&#x3D; count（1）&gt; count（主键）&gt; count（普通字段）<br>count（</em>）实际上优化器会将其转换成count（0），在查询效率上等同于count（1），因为二者都是恒为非null的，因此，只要判断查询出来的记录条数即是最终查询结果<br>count（主键）在将符合条件的记录通过走索引表查询出来后还要判断记录的主键值是否为空。<br>count（普通字段）由于没有建立索引，所以需要走全表扫描，查询效率最差。</p>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>
