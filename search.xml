@@ -434,4 +434,29 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】事务</title>
+    <url>/2024/05/14/%E3%80%90Mysql%E3%80%91%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<hr>
+<h2 id="四大特性"><a href="#四大特性" class="headerlink" title="四大特性"></a>四大特性</h2><ol>
+<li>原子性 （由回滚机制保证）</li>
+<li>隔离性 （由事务的隔离级别保证）</li>
+<li>持久性 （由日志保证）</li>
+<li>一致性 （由前三者共同保证）</li>
+</ol>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p>隔离脏读、不可重复读以及幻读三种可能出现的问题</p>
+<h3 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h3><p>什么都避免不了</p>
+<h3 id="读提交"><a href="#读提交" class="headerlink" title="读提交"></a>读提交</h3><p>可以避免脏读</p>
+<h3 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h3><p>可以避免脏读、不可重复读以及很大程度上避免幻读</p>
+<h3 id="串行化"><a href="#串行化" class="headerlink" title="串行化"></a>串行化</h3><p>全可以避免</p>
+<h2 id="MVCC（多版本并发控制）"><a href="#MVCC（多版本并发控制）" class="headerlink" title="MVCC（多版本并发控制）"></a>MVCC（多版本并发控制）</h2><p>在读提交和可重复读隔离级别下，都采用了多版本并发控制的方式来实现事务之间的隔离，MVCC是通过Read View来实现的</p>
+<p>Read View中存储了<strong>当前活跃（创建了的但还未提交）事务的id列表</strong>、<strong>活跃事务中最小的id</strong>、<strong>活跃事务中最大的id+1（下一个新建的事务id）</strong>、<strong>当前事务id</strong></p>
+<p>每一条数据记录中还有两列隐藏列，分别是<strong>最近一次修改该条记录的事务id</strong>以及<strong>undo指针</strong></p>
+<h3 id="读提交："><a href="#读提交：" class="headerlink" title="读提交："></a>读提交：</h3><p>在每一次查询前都创建一个Read View，如果所查询的这条记录中最近一次修改的事务id值小于Read View中活跃事务id列表中最小的id值，说明查询到的这条数据是已经在之前提交过的了，因此可以读取。反之，则要通过undo指针寻找到之前的记录，直到该条记录的最近一次修改的事务id值小于活跃事务id列表中最小的id值</p>
+<h3 id="可重复读-1"><a href="#可重复读-1" class="headerlink" title="可重复读"></a>可重复读</h3><p>只在事务开始阶段创建一个Read View，期间不管发生多少次查询，都使用的是一开始创建的这个Read View。其余规则同读提交一样。</p>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>

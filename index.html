@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/14/%E3%80%90Mysql%E3%80%91%E4%BA%8B%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/14/%E3%80%90Mysql%E3%80%91%E4%BA%8B%E5%8A%A1/" class="post-title-link" itemprop="url">【Mysql】事务</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-14 10:49:53 / 修改时间：10:51:13" itemprop="dateCreated datePublished" datetime="2024-05-14T10:49:53+08:00">2024-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>559</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="四大特性"><a href="#四大特性" class="headerlink" title="四大特性"></a>四大特性</h2><ol>
+<li>原子性 （由回滚机制保证）</li>
+<li>隔离性 （由事务的隔离级别保证）</li>
+<li>持久性 （由日志保证）</li>
+<li>一致性 （由前三者共同保证）</li>
+</ol>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p>隔离脏读、不可重复读以及幻读三种可能出现的问题</p>
+<h3 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h3><p>什么都避免不了</p>
+<h3 id="读提交"><a href="#读提交" class="headerlink" title="读提交"></a>读提交</h3><p>可以避免脏读</p>
+<h3 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h3><p>可以避免脏读、不可重复读以及很大程度上避免幻读</p>
+<h3 id="串行化"><a href="#串行化" class="headerlink" title="串行化"></a>串行化</h3><p>全可以避免</p>
+<h2 id="MVCC（多版本并发控制）"><a href="#MVCC（多版本并发控制）" class="headerlink" title="MVCC（多版本并发控制）"></a>MVCC（多版本并发控制）</h2><p>在读提交和可重复读隔离级别下，都采用了多版本并发控制的方式来实现事务之间的隔离，MVCC是通过Read View来实现的</p>
+<p>Read View中存储了<strong>当前活跃（创建了的但还未提交）事务的id列表</strong>、<strong>活跃事务中最小的id</strong>、<strong>活跃事务中最大的id+1（下一个新建的事务id）</strong>、<strong>当前事务id</strong></p>
+<p>每一条数据记录中还有两列隐藏列，分别是<strong>最近一次修改该条记录的事务id</strong>以及<strong>undo指针</strong></p>
+<h3 id="读提交："><a href="#读提交：" class="headerlink" title="读提交："></a>读提交：</h3><p>在每一次查询前都创建一个Read View，如果所查询的这条记录中最近一次修改的事务id值小于Read View中活跃事务id列表中最小的id值，说明查询到的这条数据是已经在之前提交过的了，因此可以读取。反之，则要通过undo指针寻找到之前的记录，直到该条记录的最近一次修改的事务id值小于活跃事务id列表中最小的id值</p>
+<h3 id="可重复读-1"><a href="#可重复读-1" class="headerlink" title="可重复读"></a>可重复读</h3><p>只在事务开始阶段创建一个Read View，期间不管发生多少次查询，都使用的是一开始创建的这个Read View。其余规则同读提交一样。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1078,112 +1188,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/06/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">【Redis】缓存问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-06 11:45:46 / 修改时间：11:47:00" itemprop="dateCreated datePublished" datetime="2024-05-06T11:45:46+08:00">2024-05-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>228</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
-<li>缓存击穿</li>
-</ol>
-<p>含义：热点数据过期被删除后，大量用户对热点数据的访问无法直接通过内存数据库得到，进而转向访问硬盘数据库，对硬盘数据库造成极大的压力，影响性能。<br>解决办法：建立可靠的redis集群、设置互斥锁、不对热点数据设置过期时间</p>
-<ol start="2">
-<li>缓存雪崩</li>
-</ol>
-<p>含义：内存数据库宕机或者大量数据在同一时间段内过期。用户对这些数据的访问无法通过走内存数据库得到，必须访问硬盘数据库。<br>解决办法：建立可靠的redis集群、设置互斥锁、设置离散的过期时间</p>
-<ol start="3">
-<li>缓存穿透</li>
-</ol>
-<p>含义：用户访问数据库中不存在的数据</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1213,7 +1217,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
