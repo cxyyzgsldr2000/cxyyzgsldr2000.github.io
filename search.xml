@@ -459,4 +459,37 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【RPC】简易版rpc框架</title>
+    <url>/2024/05/14/%E3%80%90RPC%E3%80%91%E7%AE%80%E6%98%93%E7%89%88rpc%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<hr>
+<p>照着代码自己敲了一遍，能理解的不多，疏通了一下RPC的宏观过程</p>
+<p>一个RPC的实现需要三个主体：<strong>服务提供者、服务调用者、注册中心</strong></p>
+<ol>
+<li>服务调用者发送HTTP请求给服务提供者<ol>
+<li>首先需要将封装好的HTTP请求对象序列化</li>
+<li>将序列化的对象发送出去</li>
+</ol>
+</li>
+<li>服务提供者对HTTP请求做处理，将处理结果发送HTTP响应给服务调用者<ol>
+<li>对收到的序列化字节数组进行反序列化</li>
+<li>对反序列化后的HTTP请求进行处理（根据接收到的参数通过<strong>本地注册服务器</strong>将获取对应的服务类，并通过<strong>反射</strong>调用请求方法）</li>
+<li>将处理结果封装成响应对象</li>
+<li>对响应对象进行序列化</li>
+<li>将序列化后的字节数组发送给服务请求者</li>
+</ol>
+</li>
+<li>服务请求者提取响应对象中的数据<ol>
+<li>将收到的序列化字节数组进行反序列化</li>
+<li>根据业务逻辑对响应对象中的数据进行相关处理</li>
+</ol>
+</li>
+</ol>
+<p>服务调用者怎么知道服务提供者的ip地址和端口呢？<br>这就是注册中心该干的事了</p>
+<p>如果有多个服务提供者，那服务调用者应该向哪一个提供者发送请求呢？<br>这就是负载均衡机制的事了</p>
+]]></content>
+      <categories>
+        <category>RPC</category>
+      </categories>
+  </entry>
 </search>
