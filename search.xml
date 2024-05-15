@@ -509,4 +509,19 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】锁-死锁</title>
+    <url>/2024/05/15/%E3%80%90Mysql%E3%80%91%E9%94%81-%E6%AD%BB%E9%94%81/</url>
+    <content><![CDATA[<hr>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>两个或两个以上的事务存在一个互相持有对方想要获得的锁且同时又请求获得对方持有的锁的循环链</p>
+<h2 id="产生的必要条件"><a href="#产生的必要条件" class="headerlink" title="产生的必要条件"></a>产生的必要条件</h2><p>互斥、不可剥夺、请求和保持、循环等待</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>为每个事务设置一个定时器，超时则回滚该事务，释放拥有的锁资源</li>
+<li>监测死锁，释放死锁关系中某一个事务所拥有的锁资源</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>
