@@ -492,4 +492,21 @@
         <category>RPC</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】锁</title>
+    <url>/2024/05/15/%E3%80%90Mysql%E3%80%91%E9%94%81/</url>
+    <content><![CDATA[<hr>
+<h2 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h2><p>对行记录上锁，但本质上是对行记录的<strong>索引</strong>上锁</p>
+<h3 id="记录锁"><a href="#记录锁" class="headerlink" title="记录锁"></a>记录锁</h3><p>对一条记录上锁，被上锁的记录不能被删除、修改</p>
+<h3 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h3><p>对一个范围内的记录上锁，范围内的数据不能被删除、修改；增加新的数据到范围内</p>
+<h3 id="next-key-lock"><a href="#next-key-lock" class="headerlink" title="next-key lock"></a>next-key lock</h3><p>记录锁+间隙锁，左开右闭</p>
+<ul>
+<li>一般的select语句并不会对记录上锁，因为innodb默认的隔离级别是可重复读，采用<strong>快照读</strong>的形式，通过MVCC做事务的隔离。</li>
+<li>只有当使用<strong>select … for update</strong>语句的时候，采取的是<strong>当前读</strong>的形式，会对范围内的数据加next-key lock。但在一些特殊情况下，next-key lock会退化成间隙锁或记录锁</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>
