@@ -524,4 +524,44 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】慢查询</title>
+    <url>/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%85%A2%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<hr>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>当一条查询语句的执行时间超出了设定的查询时间，就发生了慢查询</p>
+<h2 id="排查与解决办法"><a href="#排查与解决办法" class="headerlink" title="排查与解决办法"></a>排查与解决办法</h2><h3 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h3><pre><code>   可以通过查询慢查询日志得知是否发生了慢查询
+</code></pre>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><pre><code>  1. 优化查询语句
+     1. 减少查询不必要的列（尽量避免使用select *）
+     2. 避免联表查询
+  2. 优化索引
+     1. 前缀索引优化
+     2. 覆盖索引优化
+     3. 避免索引失效
+</code></pre>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Mysql】日志</title>
+    <url>/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<hr>
+<h2 id="undo-log"><a href="#undo-log" class="headerlink" title="undo log"></a>undo log</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>记录事务执行操作前的数据，用于事务的回滚操作，确保了事务的<strong>原子性</strong>。同时也应用于<strong>MVCC</strong>中定位查询语句可见的记录</p>
+<h3 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h3><ol>
+<li>insert语句 ：undo log就记录下insert插入记录的主键id，这样回滚时通过id可以将这条记录删除</li>
+<li>update语句：记录下update所操作的记录的字段的旧值，回滚时，恢复旧值即可</li>
+<li>delete语句：记录下delete操作的记录，回滚时，insert该条记录</li>
+</ol>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>每一条undo log记录会先保存至buffer pool中的undo log页面，时机合适（间隔一段时间）将undo log页面刷回磁盘</p>
+<h2 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>因为事务提交后，修改的数据是保存在buffer pool中的数据页当中，也就是脏页，但因为IO耗时的原因，脏页并不会马上刷盘。因此，在这期间，如果数据据崩溃，就会造成提交的事务中对数据的修改的丢失。所以，引入了redo log，将每一次提交的事务对数据的修改保存在redo log中，redo log会保存至redo log buffer当中，根据一定的规则将redo log以<strong>顺序写</strong>的形式写回磁，确保了事务提交后的<strong>持久性</strong></p>
+<h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><p>磁盘中存放redo log的文件有大小限制，当文件满时，就需要对没用的数据进行覆盖。而数据是否有用则取决于对应的数据页（脏页）是否落盘，对那些已经落盘的数据可以清理，避免文件不够用</p>
+<h2 id="bin-log"><a href="#bin-log" class="headerlink" title="bin log"></a>bin log</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>bin log存储了所有数据表结构变更和数据表数据修改的操作，主要用于主从复制和备份恢复</p>
+<h3 id="注意点-2"><a href="#注意点-2" class="headerlink" title="注意点"></a>注意点</h3><p>bin log采取的是追加写的备份形式，一个bin log文件写满了，就再新建一个，也正因此，bin log保存了数据库中所有数据变更的内容，也因此可以用于主从复制的全量复制以及备份恢复</p>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>
