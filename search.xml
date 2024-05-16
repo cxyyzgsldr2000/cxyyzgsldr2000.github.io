@@ -564,4 +564,23 @@
         <category>Mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【RPC】mock模拟对象</title>
+    <url>/2024/05/16/%E3%80%90RPC%E3%80%91mock%E6%A8%A1%E6%8B%9F%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<hr>
+<h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2><p>实际开发中可能出现远程服务在维护暂时访问不了的情况出现，利用mock模拟调用真实的远程服务可以便于接口的测试、调试、开发</p>
+<h2 id="怎么实现"><a href="#怎么实现" class="headerlink" title="怎么实现"></a>怎么实现</h2><p>利用动态代理技术生成接口实现类的对象，并在处理器中重写相关的逻辑，返回特定的值</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>根据传入的参数让JVM自动实现静态代理部分的代码，也就是动态生成了接口的实现类</p>
+<ol>
+<li><p>重写invocationHandler中的invoke方法，可以根据method的返回类型来给出要返回的默认值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">    <span class="comment">// 根据方法的返回值类型，生成特定的默认值对象</span></span><br><span class="line">    Class&lt;?&gt; methodReturnType = method.getReturnType();</span><br><span class="line">    <span class="comment">//        log.info(&quot;mock invoke &#123;&#125;&quot;, method.getName());</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> getDefaultObject(methodReturnType);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> Object <span class="title function_">getDefaultObject</span><span class="params">(Class&lt;?&gt; type)</span>&#123;</span><br><span class="line">    <span class="comment">// 基本类型</span></span><br><span class="line">    <span class="keyword">if</span>(type.isPrimitive())&#123;</span><br><span class="line">        <span class="keyword">if</span>(type == <span class="type">boolean</span>.class)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(type == <span class="type">short</span>.class)&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">short</span>)<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(type == <span class="type">int</span>.class)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(type == <span class="type">long</span>.class)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0L</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 对象类型</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后就可以通过Proxy.newProxyInstance()方法依次传入要实现的类的加载器classLoader、类数组、自定义的处理器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">getMockProxy</span><span class="params">(Class&lt;T&gt; serviceClass)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (T)Proxy.newProxyInstance(</span><br><span class="line">            serviceClass.getClassLoader(),</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;serviceClass&#125;,</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">MockServiceProxy</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>RPC</category>
+      </categories>
+  </entry>
 </search>
