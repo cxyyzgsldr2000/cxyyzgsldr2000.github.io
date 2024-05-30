@@ -153,12 +153,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -187,6 +187,214 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/13/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/13/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95-%E7%B4%A2%E5%BC%95%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">【Mysql】索引-索引结构</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-13 14:07:58 / 修改时间：14:08:31" itemprop="dateCreated datePublished" datetime="2024-05-13T14:07:58+08:00">2024-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>189</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="为什么Innodb存储引擎使用B-树作为存储索引的数据结构"><a href="#为什么Innodb存储引擎使用B-树作为存储索引的数据结构" class="headerlink" title="为什么Innodb存储引擎使用B+树作为存储索引的数据结构"></a>为什么Innodb存储引擎使用B+树作为存储索引的数据结构</h2><ol>
+<li>查询效率高</li>
+</ol>
+<p>因为B+树的非叶子节点只存储索引值而不存储数据值，所以每一个节点能够存储更多的值，进而整个树就呈现一种“矮胖”的感觉。而树的查询效率又跟树高呈正相关，树高越小，查询效率越高。所以B+树的查询效率高。</p>
+<ol start="2">
+<li>支持范围查询</li>
+</ol>
+<p>B+树的叶子节点存储所有索引对应的value的数据，并以链表（单向&#x2F;双向）的形式串联起来，</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/11/%E3%80%90Mysql%E3%80%91%E7%B4%A2%E5%BC%95/" class="post-title-link" itemprop="url">【Mysql】索引</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-11 17:03:24 / 修改时间：17:03:55" itemprop="dateCreated datePublished" datetime="2024-05-11T17:03:24+08:00">2024-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>124</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="索引分类"><a href="#索引分类" class="headerlink" title="索引分类"></a>索引分类</h2><h3 id="按个数"><a href="#按个数" class="headerlink" title="按个数"></a>按个数</h3><p>单列索引、联合索引</p>
+<h3 id="按物理存储"><a href="#按物理存储" class="headerlink" title="按物理存储"></a>按物理存储</h3><p>主键索引、二级索引</p>
+<h3 id="按数据结构"><a href="#按数据结构" class="headerlink" title="按数据结构"></a>按数据结构</h3><p>B+树索引、B树索引</p>
+<h2 id="索引失效"><a href="#索引失效" class="headerlink" title="索引失效"></a>索引失效</h2><ol>
+<li>对索引字段使用函数、表达式计算；发生隐式类型转换</li>
+<li>左模糊、左右模糊匹配</li>
+<li>未遵循最左匹配原则（针对聚簇索引）</li>
+</ol>
+<h2 id="索引优化"><a href="#索引优化" class="headerlink" title="索引优化"></a>索引优化</h2><ol>
+<li>避免索引失效</li>
+<li>避免回表，如果可以，覆盖索引</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -986,226 +1194,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/" class="post-title-link" itemprop="url">【ES】springboot集成ES</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-04-19 15:43:30 / 修改时间：15:49:57" itemprop="dateCreated datePublished" datetime="2024-04-19T15:43:30+08:00">2024-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>532</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h1 id="1-去Spring官方文档确认版本兼容性"><a href="#1-去Spring官方文档确认版本兼容性" class="headerlink" title="1. 去Spring官方文档确认版本兼容性"></a>1. 去Spring官方文档确认版本兼容性</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic1.png"><br>这一版的文档里没有给出springboot的版本对应，但我在一个博主的文章里看到的es8.0以前的官方文档中就有给出来，所以还需要再去寻找spring framework和springboot的对应关系？？？<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic2.png"></p>
-<p>还有有个疑问，因为我选择的es依赖包是spring-boot-starter-data-elasticsearch，但官方文档里只给出了Spring Data Elasticsearch的信息，而这两者的版本对应关系我目前只能从加载的依赖包中找到，或许有其他的办法？（还请广大网友指点一下）<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic3.png"></p>
-<h1 id="2-es的安装和配置"><a href="#2-es的安装和配置" class="headerlink" title="2. es的安装和配置"></a>2. es的安装和配置</h1><p>找到合适的es版本后，就可以去es官网进行下载安装了<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48453504/article/details/137818042?spm=1001.2014.3001.5501">ES安装</a></p>
-<h1 id="3-添加依赖"><a href="#3-添加依赖" class="headerlink" title="3. 添加依赖"></a>3. 添加依赖</h1><p>安装好es后就可以添加spring boot starter data elasticsearch的依赖包了<br>spring boot starter data elasticsearch的依赖包中集成了Spring Data Elasticsearch<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic4.png"><br>如下，我的springboot版本是3.1.7<br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic5.png"></p>
-<p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic6.png"></p>
-<h1 id="4-修改application-properties文件"><a href="#4-修改application-properties文件" class="headerlink" title="4. 修改application.properties文件"></a>4. 修改application.properties文件</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic7.png"></p>
-<h1 id="5-给实体类添加注解"><a href="#5-给实体类添加注解" class="headerlink" title="5. 给实体类添加注解"></a>5. 给实体类添加注解</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic8.png"></p>
-<h1 id="6-测试"><a href="#6-测试" class="headerlink" title="6. 测试"></a>6. 测试</h1><p><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic9.png"><br><img src="/2024/04/19/%E3%80%90ES%E3%80%91springboot%E9%9B%86%E6%88%90ES/pic10.png"></p>
-<p>过程遇到太多坑了，尤其要注意<strong>版本适配性</strong>问题！！！</p>
-<p>参考了很多网友的解决方案，感谢！</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/18/%E3%80%90Redis%E3%80%91%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/18/%E3%80%90Redis%E3%80%91%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/" class="post-title-link" itemprop="url">【Redis】数据持久化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-04-18 09:57:39 / 修改时间：11:35:43" itemprop="dateCreated datePublished" datetime="2024-04-18T09:57:39+08:00">2024-04-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>665</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>redis是基于内存的数据库，数据如果没有及时更新至磁盘，在系统遭遇故障后，就会造成数据丢失。因此，redis提供了两种数据持久化的方式。分别是AOF和RDB</p>
-<ol>
-<li>AOF（appending only file）</li>
-</ol>
-<p>客户端每对数据库做出一次操作，redis就会将操作以命令行的形式存入内核缓冲区的aof文件中，并根据设定的规则，按时将文件中的数据通过系统函数fsync（）写回磁盘。<br>redis对AOF持久化方式提供了三种写回磁盘的时机。</p>
-<ol>
-<li><p>always ：每当有新的数据写入文件中，就立即将该数据写回磁盘。因为刷盘的频率最高，所以这种方式的安全性最高，但性能最差。</p>
-</li>
-<li><p>every second ：刷盘的频率为1s，所以安全性和性能都中等。</p>
-</li>
-<li><p>no ：不按照一定的时间间隔刷盘，而是将时机的选择交由操作系统自身来决定，具有随机性。频率最低，因此安全性最低，性能最好</p>
-</li>
-<li><p>RDB快照</p>
-</li>
-</ol>
-<p>相较于AOF是将数据库的变更以命令行的形式追加到文件中去，RDB采取的是全量复制的形式，而且是以二进制的形式进行数据的复制。也正因为每次复制都是全量复制，因此这种持久化方式的频率要比AOF低很多，但是因为是以二进制的形式存储数据，相较于AOF每次恢复的时候还需要执行命令，RDB恢复数据的时候就会快很多，直接读取即可。<br>redis针对RDB同样也提供了两种持久化模式。</p>
-<ol>
-<li>同步操作：由主线程来完成数据的复制操作，备份期间，由于主线程去忙其他任务了，所以期间到来的任务没有办法得到及时处理。</li>
-<li>异步操作：创建一个子线程，由子线程异步地来完成数据复制。子线程会先复制主线程的页表，然后，根据页表，映射到内存</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

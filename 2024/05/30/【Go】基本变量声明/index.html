@@ -20,28 +20,36 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="undo log定义记录事务执行操作前的数据，用于事务的回滚操作，确保了事务的原子性。同时也应用于MVCC中定位查询语句可见的记录 运用 insert语句 ：undo log就记录下insert插入记录的主键id，这样回滚时通过id可以将这条记录删除 update语句：记录下update所操作的记录的字段的旧值，回滚时，恢复旧值即可 delete语句：记录下delete操作的记录，回滚时，ins">
+    <meta name="description" content="Go的声明变量的方式相比Java简单了很多  带var 和 变量类型  int默认值是0  带var 但 不带变量类型    不带var 也 不带变量类型    多变量声明">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Mysql】日志">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:title" content="【Go】基本变量声明">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/05/30/%E3%80%90Go%E3%80%91%E5%9F%BA%E6%9C%AC%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="undo log定义记录事务执行操作前的数据，用于事务的回滚操作，确保了事务的原子性。同时也应用于MVCC中定位查询语句可见的记录 运用 insert语句 ：undo log就记录下insert插入记录的主键id，这样回滚时通过id可以将这条记录删除 update语句：记录下update所操作的记录的字段的旧值，回滚时，恢复旧值即可 delete语句：记录下delete操作的记录，回滚时，ins">
+<meta property="og:description" content="Go的声明变量的方式相比Java简单了很多  带var 和 变量类型  int默认值是0  带var 但 不带变量类型    不带var 也 不带变量类型    多变量声明">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-16T07:55:38.000Z">
-<meta property="article:modified_time" content="2024-05-16T07:56:36.848Z">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079205067-0fde02a9-a1ba-4e76-b803-49390641b7c6.png#averageHue=%231f2023&clientId=ua814c986-28b4-4&from=paste&height=169&id=u8bf7c3a6&originHeight=254&originWidth=455&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14714&status=done&style=none&taskId=u24cbe019-af7e-4d15-8786-a99131cae2d&title=&width=303.3333333333333">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079220321-1c87d5c6-3464-4717-abcf-4ae829fc2eb9.png#averageHue=%2324262a&clientId=ua814c986-28b4-4&from=paste&height=55&id=u9390a491&originHeight=83&originWidth=134&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2022&status=done&style=none&taskId=u20701a6e-7c6f-4800-ad56-4967d9814cd&title=&width=89.33333333333333">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079303850-46c1a6f5-0808-4589-b0e1-3d521390caad.png#averageHue=%2323252a&clientId=ua814c986-28b4-4&from=paste&height=49&id=u3b735109&originHeight=73&originWidth=404&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=4835&status=done&style=none&taskId=u2b755801-0158-4c31-b5ec-294afc06f08&title=&width=269.3333333333333">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079353608-85636d4f-d234-4cfe-9c7e-a4267dc4328b.png#averageHue=%23222327&clientId=ua814c986-28b4-4&from=paste&height=45&id=u4fb46c2b&originHeight=68&originWidth=193&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2123&status=done&style=none&taskId=u380ba136-0dad-4a67-842d-443638f140b&title=&width=128.66666666666666">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079245062-d128b18d-22d7-4b38-8d02-c9c9a5158c56.png#averageHue=%231f2125&clientId=ua814c986-28b4-4&from=paste&height=100&id=u566ba826&originHeight=150&originWidth=505&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=13197&status=done&style=none&taskId=uc073cfb8-16f0-43b1-aed9-fe6b373212a&title=&width=336.6666666666667">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079256192-4e7b712a-99aa-4247-8dfd-638d09d3e02b.png#averageHue=%23222428&clientId=ua814c986-28b4-4&from=paste&height=46&id=ua8c19874&originHeight=69&originWidth=194&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2501&status=done&style=none&taskId=uf8ddb9a4-7290-4f83-bdab-e6b92e1151d&title=&width=129.33333333333334">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079277414-374c1294-b7ec-4c37-9bf2-0cdafba45b51.png#averageHue=%231e2023&clientId=ua814c986-28b4-4&from=paste&height=293&id=ub52752c1&originHeight=440&originWidth=634&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=29865&status=done&style=none&taskId=u9f1eec7e-b08a-4e4c-8bb2-822ddacdf2b&title=&width=422.6666666666667">
+<meta property="article:published_time" content="2024-05-30T14:33:01.000Z">
+<meta property="article:modified_time" content="2024-05-30T14:38:22.191Z">
 <meta property="article:author" content="Cx">
 <meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079205067-0fde02a9-a1ba-4e76-b803-49390641b7c6.png#averageHue=%231f2023&clientId=ua814c986-28b4-4&from=paste&height=169&id=u8bf7c3a6&originHeight=254&originWidth=455&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14714&status=done&style=none&taskId=u24cbe019-af7e-4d15-8786-a99131cae2d&title=&width=303.3333333333333">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%97%A5%E5%BF%97/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/05/30/%E3%80%90Go%E3%80%91%E5%9F%BA%E6%9C%AC%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%97%A5%E5%BF%97/","path":"2024/05/16/【Mysql】日志/","title":"【Mysql】日志"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/05/30/%E3%80%90Go%E3%80%91%E5%9F%BA%E6%9C%AC%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/","path":"2024/05/30/【Go】基本变量声明/","title":"【Go】基本变量声明"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>【Mysql】日志 | Blog</title>
+<title>【Go】基本变量声明 | Blog</title>
   
 
 
@@ -128,7 +136,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -141,7 +149,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undo-log"><span class="nav-number">1.</span> <span class="nav-text">undo log</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">运用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redo-log"><span class="nav-number">2.</span> <span class="nav-text">redo log</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-1"><span class="nav-number">2.2.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bin-log"><span class="nav-number">3.</span> <span class="nav-text">bin log</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-2"><span class="nav-number">3.2.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -200,7 +207,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%97%A5%E5%BF%97/">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/30/%E3%80%90Go%E3%80%91%E5%9F%BA%E6%9C%AC%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -213,12 +220,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="【Mysql】日志 | Blog">
+      <meta itemprop="name" content="【Go】基本变量声明 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【Mysql】日志
+          【Go】基本变量声明
         </h1>
 
         <div class="post-meta-container">
@@ -230,7 +237,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-05-16 15:55:38 / 修改时间：15:56:36" itemprop="dateCreated datePublished" datetime="2024-05-16T15:55:38+08:00">2024-05-16</time>
+      <time title="创建时间：2024-05-30 22:33:01 / 修改时间：22:38:22" itemprop="dateCreated datePublished" datetime="2024-05-30T22:33:01+08:00">2024-05-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -238,7 +245,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
         </span>
     </span>
 
@@ -256,7 +263,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>716</span>
+      <span>66</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -274,17 +281,23 @@
     
     
     <div class="post-body" itemprop="articleBody"><hr>
-<h2 id="undo-log"><a href="#undo-log" class="headerlink" title="undo log"></a>undo log</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>记录事务执行操作前的数据，用于事务的回滚操作，确保了事务的<strong>原子性</strong>。同时也应用于<strong>MVCC</strong>中定位查询语句可见的记录</p>
-<h3 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h3><ol>
-<li>insert语句 ：undo log就记录下insert插入记录的主键id，这样回滚时通过id可以将这条记录删除</li>
-<li>update语句：记录下update所操作的记录的字段的旧值，回滚时，恢复旧值即可</li>
-<li>delete语句：记录下delete操作的记录，回滚时，insert该条记录</li>
+<p>Go的声明变量的方式相比Java简单了很多</p>
+<ol>
+<li>带var 和 变量类型</li>
 </ol>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>每一条undo log记录会先保存至buffer pool中的undo log页面，时机合适（间隔一段时间）将undo log页面刷回磁盘</p>
-<h2 id="redo-log"><a href="#redo-log" class="headerlink" title="redo log"></a>redo log</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>因为事务提交后，修改的数据是保存在buffer pool中的数据页当中，也就是脏页，但因为IO耗时的原因，脏页并不会马上刷盘。因此，在这期间，如果数据据崩溃，就会造成提交的事务中对数据的修改的丢失。所以，引入了redo log，将每一次提交的事务对数据的修改保存在redo log中，redo log会保存至redo log buffer当中，根据一定的规则将redo log以<strong>顺序写</strong>的形式写回磁，确保了事务提交后的<strong>持久性</strong></p>
-<h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><p>磁盘中存放redo log的文件有大小限制，当文件满时，就需要对没用的数据进行覆盖。而数据是否有用则取决于对应的数据页（脏页）是否落盘，对那些已经落盘的数据可以清理，避免文件不够用</p>
-<h2 id="bin-log"><a href="#bin-log" class="headerlink" title="bin log"></a>bin log</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>bin log存储了所有数据表结构变更和数据表数据修改的操作，主要用于主从复制和备份恢复</p>
-<h3 id="注意点-2"><a href="#注意点-2" class="headerlink" title="注意点"></a>注意点</h3><p>bin log采取的是追加写的备份形式，一个bin log文件写满了，就再新建一个，也正因此，bin log保存了数据库中所有数据变更的内容，也因此可以用于主从复制的全量复制以及备份恢复</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079205067-0fde02a9-a1ba-4e76-b803-49390641b7c6.png#averageHue=%231f2023&clientId=ua814c986-28b4-4&from=paste&height=169&id=u8bf7c3a6&originHeight=254&originWidth=455&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14714&status=done&style=none&taskId=u24cbe019-af7e-4d15-8786-a99131cae2d&title=&width=303.3333333333333" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079220321-1c87d5c6-3464-4717-abcf-4ae829fc2eb9.png#averageHue=%2324262a&clientId=ua814c986-28b4-4&from=paste&height=55&id=u9390a491&originHeight=83&originWidth=134&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2022&status=done&style=none&taskId=u20701a6e-7c6f-4800-ad56-4967d9814cd&title=&width=89.33333333333333" alt="image.png"><br>int默认值是0</p>
+<ol start="2">
+<li>带var 但 不带变量类型</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079303850-46c1a6f5-0808-4589-b0e1-3d521390caad.png#averageHue=%2323252a&clientId=ua814c986-28b4-4&from=paste&height=49&id=u3b735109&originHeight=73&originWidth=404&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=4835&status=done&style=none&taskId=u2b755801-0158-4c31-b5ec-294afc06f08&title=&width=269.3333333333333" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079353608-85636d4f-d234-4cfe-9c7e-a4267dc4328b.png#averageHue=%23222327&clientId=ua814c986-28b4-4&from=paste&height=45&id=u4fb46c2b&originHeight=68&originWidth=193&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2123&status=done&style=none&taskId=u380ba136-0dad-4a67-842d-443638f140b&title=&width=128.66666666666666" alt="image.png"></p>
+<ol start="3">
+<li>不带var 也 不带变量类型</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079245062-d128b18d-22d7-4b38-8d02-c9c9a5158c56.png#averageHue=%231f2125&clientId=ua814c986-28b4-4&from=paste&height=100&id=u566ba826&originHeight=150&originWidth=505&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=13197&status=done&style=none&taskId=uc073cfb8-16f0-43b1-aed9-fe6b373212a&title=&width=336.6666666666667" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079256192-4e7b712a-99aa-4247-8dfd-638d09d3e02b.png#averageHue=%23222428&clientId=ua814c986-28b4-4&from=paste&height=46&id=ua8c19874&originHeight=69&originWidth=194&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2501&status=done&style=none&taskId=uf8ddb9a4-7290-4f83-bdab-e6b92e1151d&title=&width=129.33333333333334" alt="image.png"></p>
+<ol start="4">
+<li>多变量声明</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079277414-374c1294-b7ec-4c37-9bf2-0cdafba45b51.png#averageHue=%231e2023&clientId=ua814c986-28b4-4&from=paste&height=293&id=ub52752c1&originHeight=440&originWidth=634&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=29865&status=done&style=none&taskId=u9f1eec7e-b08a-4e4c-8bb2-822ddacdf2b&title=&width=422.6666666666667" alt="image.png"></p>
 
     </div>
 
@@ -298,14 +311,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%85%A2%E6%9F%A5%E8%AF%A2/" rel="prev" title="【Mysql】慢查询">
-                  <i class="fa fa-angle-left"></i> 【Mysql】慢查询
+                <a href="/2024/05/30/%E3%80%90Go%E3%80%91helloworld/" rel="prev" title="【Go】helloworld">
+                  <i class="fa fa-angle-left"></i> 【Go】helloworld
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/05/16/%E3%80%90RPC%E3%80%91mock%E6%A8%A1%E6%8B%9F%E5%AF%B9%E8%B1%A1/" rel="next" title="【RPC】mock模拟对象">
-                  【RPC】mock模拟对象 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

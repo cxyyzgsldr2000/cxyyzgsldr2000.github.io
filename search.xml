@@ -583,4 +583,40 @@
         <category>RPC</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】helloworld</title>
+    <url>/2024/05/30/%E3%80%90Go%E3%80%91helloworld/</url>
+    <content><![CDATA[<hr>
+<p>Go的主函数声明需要在文件头处声明包是main包，这与真实的文件名helloworld.go并不冲突<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717078682822-50470808-4ccf-49b4-b2df-45a169841229.png#averageHue=%23383b40&clientId=udd58d072-7818-4&from=paste&height=55&id=u40876ef5&originHeight=82&originWidth=421&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=3906&status=done&style=none&taskId=ue57a6aec-7057-4dd6-994d-8002e24f723&title=&width=280.6666666666667" alt="image.png"><br>一个包下只能有一个主函数<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717078942223-03aaa2e4-ed88-4ff0-8eb8-dbe2456cfdfb.png#averageHue=%232e333b&clientId=udd58d072-7818-4&from=paste&height=90&id=u18a84a61&originHeight=135&originWidth=940&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14730&status=done&style=none&taskId=u498e0a63-d7a5-49ca-bc43-e7764a9b77d&title=&width=626.6666666666666" alt="image.png"><br>这样的话这一个包下如果有很多函数，这些函数都得在唯一的一个main函数里头测试吗？<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717078574914-c0f47c1d-db35-46db-97e4-cda3e69c97ef.png#averageHue=%231e2023&clientId=udd58d072-7818-4&from=paste&height=377&id=ufd0590db&originHeight=566&originWidth=1461&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=51690&status=done&style=none&taskId=ub80a1941-4920-4b57-b4f6-74a57fb3785&title=&width=974" alt="image.png"></p>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Go】基本变量声明</title>
+    <url>/2024/05/30/%E3%80%90Go%E3%80%91%E5%9F%BA%E6%9C%AC%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/</url>
+    <content><![CDATA[<hr>
+<p>Go的声明变量的方式相比Java简单了很多</p>
+<ol>
+<li>带var 和 变量类型</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079205067-0fde02a9-a1ba-4e76-b803-49390641b7c6.png#averageHue=%231f2023&clientId=ua814c986-28b4-4&from=paste&height=169&id=u8bf7c3a6&originHeight=254&originWidth=455&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14714&status=done&style=none&taskId=u24cbe019-af7e-4d15-8786-a99131cae2d&title=&width=303.3333333333333" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079220321-1c87d5c6-3464-4717-abcf-4ae829fc2eb9.png#averageHue=%2324262a&clientId=ua814c986-28b4-4&from=paste&height=55&id=u9390a491&originHeight=83&originWidth=134&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2022&status=done&style=none&taskId=u20701a6e-7c6f-4800-ad56-4967d9814cd&title=&width=89.33333333333333" alt="image.png"><br>int默认值是0</p>
+<ol start="2">
+<li>带var 但 不带变量类型</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079303850-46c1a6f5-0808-4589-b0e1-3d521390caad.png#averageHue=%2323252a&clientId=ua814c986-28b4-4&from=paste&height=49&id=u3b735109&originHeight=73&originWidth=404&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=4835&status=done&style=none&taskId=u2b755801-0158-4c31-b5ec-294afc06f08&title=&width=269.3333333333333" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079353608-85636d4f-d234-4cfe-9c7e-a4267dc4328b.png#averageHue=%23222327&clientId=ua814c986-28b4-4&from=paste&height=45&id=u4fb46c2b&originHeight=68&originWidth=193&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2123&status=done&style=none&taskId=u380ba136-0dad-4a67-842d-443638f140b&title=&width=128.66666666666666" alt="image.png"></p>
+<ol start="3">
+<li>不带var 也 不带变量类型</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079245062-d128b18d-22d7-4b38-8d02-c9c9a5158c56.png#averageHue=%231f2125&clientId=ua814c986-28b4-4&from=paste&height=100&id=u566ba826&originHeight=150&originWidth=505&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=13197&status=done&style=none&taskId=uc073cfb8-16f0-43b1-aed9-fe6b373212a&title=&width=336.6666666666667" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079256192-4e7b712a-99aa-4247-8dfd-638d09d3e02b.png#averageHue=%23222428&clientId=ua814c986-28b4-4&from=paste&height=46&id=ua8c19874&originHeight=69&originWidth=194&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=2501&status=done&style=none&taskId=uf8ddb9a4-7290-4f83-bdab-e6b92e1151d&title=&width=129.33333333333334" alt="image.png"></p>
+<ol start="4">
+<li>多变量声明</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717079277414-374c1294-b7ec-4c37-9bf2-0cdafba45b51.png#averageHue=%231e2023&clientId=ua814c986-28b4-4&from=paste&height=293&id=ub52752c1&originHeight=440&originWidth=634&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=29865&status=done&style=none&taskId=u9f1eec7e-b08a-4e4c-8bb2-822ddacdf2b&title=&width=422.6666666666667" alt="image.png"></p>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
