@@ -619,4 +619,48 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】常量</title>
+    <url>/2024/06/01/%E3%80%90Go%E3%80%91%E5%B8%B8%E9%87%8F/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li><p>const</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// const 定义常量</span></span><br><span class="line"><span class="keyword">const</span> length = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	SHANGHAI = <span class="number">1</span></span><br><span class="line">	BEIJING  = <span class="number">2</span></span><br><span class="line">	SHENZHEN = <span class="number">3</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iota</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// iota初始值为0 逐行递增 只能在常量中声明</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	XIAMEN = <span class="literal">iota</span></span><br><span class="line">	QUANZHOU</span><br><span class="line">	ZHANGZHOU</span><br><span class="line">	FUZHOU</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行结果</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;length = &quot;</span>, length)</span><br><span class="line">	fmt.Println(<span class="string">&quot;SHANGHAI = &quot;</span>, SHANGHAI)</span><br><span class="line">	fmt.Println(<span class="string">&quot;BEIJING = &quot;</span>, BEIJING)</span><br><span class="line">	fmt.Println(<span class="string">&quot;SHENZHEN = &quot;</span>, SHENZHEN)</span><br><span class="line">	fmt.Println(<span class="string">&quot;XIAMEN = &quot;</span>, XIAMEN)</span><br><span class="line">	fmt.Println(<span class="string">&quot;QUANZHOU = &quot;</span>, QUANZHOU)</span><br><span class="line">	fmt.Println(<span class="string">&quot;ZHANGZHOU = &quot;</span>, ZHANGZHOU)</span><br><span class="line">	fmt.Println(<span class="string">&quot;FUZHOU = &quot;</span>, FUZHOU)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%B8%B8%E9%87%8F/1.png"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Go】函数返回值</title>
+    <url>/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li><p>单个返回值</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单个函数返回值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">(a <span class="type">string</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----fun1-----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	c := <span class="number">100</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果<br><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/1.png"></p>
+</li>
+<li><p>多个返回值（不带形参名称）</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多个函数返回值-无形参名称</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun2</span><span class="params">()</span></span> (<span class="type">string</span>, <span class="type">int</span>) &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----fun2-----&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>, <span class="number">100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/2.png"></p>
+</li>
+<li><p>多个返回值（带形参名称）</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 多个函数返回值-有形参名称</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun3</span><span class="params">()</span></span> (r1 <span class="type">string</span>, r2 <span class="type">int</span>) &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----fun3-----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;r1 = &quot;</span>, r1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;r2 = &quot;</span>, r2)</span><br><span class="line"></span><br><span class="line">	r1 = <span class="string">&quot;hello world&quot;</span></span><br><span class="line">	r2 = <span class="number">100</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/3.png"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
