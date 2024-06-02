@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/" class="post-title-link" itemprop="url">【Go】指针</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-02 12:25:55 / 修改时间：12:27:00" itemprop="dateCreated datePublished" datetime="2024-06-02T12:25:55+08:00">2024-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>574</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<ol>
+<li><p>值传递</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 值传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap1</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = a</span><br><span class="line">	a = b</span><br><span class="line">	b = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用传递</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap2</span><span class="params">(pa *<span class="type">int</span>, pb *<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = *pa</span><br><span class="line">	*pa = *pb</span><br><span class="line">	*pb = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="type">int</span> = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="type">int</span> = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// swap前</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----初始值----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 值传递后</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----值传递后----&quot;</span>)</span><br><span class="line">	swap1(a, b)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 引用传递后</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----引用传递后----&quot;</span>)</span><br><span class="line">	swap2(&amp;a, &amp;b)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/1.png"></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1124,124 +1230,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/14/%E3%80%90RPC%E3%80%91%E7%AE%80%E6%98%93%E7%89%88rpc%E6%A1%86%E6%9E%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/14/%E3%80%90RPC%E3%80%91%E7%AE%80%E6%98%93%E7%89%88rpc%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">【RPC】简易版rpc框架</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-14 16:41:27 / 修改时间：16:42:31" itemprop="dateCreated datePublished" datetime="2024-05-14T16:41:27+08:00">2024-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/RPC/" itemprop="url" rel="index"><span itemprop="name">RPC</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>394</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>照着代码自己敲了一遍，能理解的不多，疏通了一下RPC的宏观过程</p>
-<p>一个RPC的实现需要三个主体：<strong>服务提供者、服务调用者、注册中心</strong></p>
-<ol>
-<li>服务调用者发送HTTP请求给服务提供者<ol>
-<li>首先需要将封装好的HTTP请求对象序列化</li>
-<li>将序列化的对象发送出去</li>
-</ol>
-</li>
-<li>服务提供者对HTTP请求做处理，将处理结果发送HTTP响应给服务调用者<ol>
-<li>对收到的序列化字节数组进行反序列化</li>
-<li>对反序列化后的HTTP请求进行处理（根据接收到的参数通过<strong>本地注册服务器</strong>将获取对应的服务类，并通过<strong>反射</strong>调用请求方法）</li>
-<li>将处理结果封装成响应对象</li>
-<li>对响应对象进行序列化</li>
-<li>将序列化后的字节数组发送给服务请求者</li>
-</ol>
-</li>
-<li>服务请求者提取响应对象中的数据<ol>
-<li>将收到的序列化字节数组进行反序列化</li>
-<li>根据业务逻辑对响应对象中的数据进行相关处理</li>
-</ol>
-</li>
-</ol>
-<p>服务调用者怎么知道服务提供者的ip地址和端口呢？<br>这就是注册中心该干的事了</p>
-<p>如果有多个服务提供者，那服务调用者应该向哪一个提供者发送请求呢？<br>这就是负载均衡机制的事了</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1265,13 +1253,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">13k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">22 分钟</span>
+    <span title="站点阅读时长">23 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

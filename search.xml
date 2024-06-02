@@ -663,4 +663,25 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】指针</title>
+    <url>/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li><p>值传递</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 值传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap1</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = a</span><br><span class="line">	a = b</span><br><span class="line">	b = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用传递</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 引用传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap2</span><span class="params">(pa *<span class="type">int</span>, pb *<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = *pa</span><br><span class="line">	*pa = *pb</span><br><span class="line">	*pb = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="type">int</span> = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="type">int</span> = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// swap前</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----初始值----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 值传递后</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----值传递后----&quot;</span>)</span><br><span class="line">	swap1(a, b)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 引用传递后</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----引用传递后----&quot;</span>)</span><br><span class="line">	swap2(&amp;a, &amp;b)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/1.png"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
