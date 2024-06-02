@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">【Go】静态数组</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-02 16:28:51 / 修改时间：16:30:10" itemprop="dateCreated datePublished" datetime="2024-06-02T16:28:51+08:00">2024-06-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>780</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<ol>
+<li>不赋值</li>
+<li>全赋值</li>
+<li>部分赋值</li>
+<li>参数传递（<strong>值传递、数组长度必须一致</strong>）</li>
+</ol>
+<p>测试1.2.3</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1.静态数组</span></span><br><span class="line">	<span class="keyword">var</span> arr1 [<span class="number">5</span>]<span class="type">int</span>                   <span class="comment">// 不赋值</span></span><br><span class="line">	<span class="keyword">var</span> arr2 = [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;  <span class="comment">// 全赋值</span></span><br><span class="line">	<span class="keyword">var</span> arr3 = [<span class="number">10</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125; <span class="comment">// 部分赋值</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 测试</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----静态数组----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr1:&quot;</span>, arr1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr2:&quot;</span>, arr2)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr3:&quot;</span>, arr3)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/1.png"></p>
+<p>测试4</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试静态数组参数传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test2</span><span class="params">(array [5]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	array[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1.静态数组</span></span><br><span class="line">	<span class="keyword">var</span> arr1 [<span class="number">5</span>]<span class="type">int</span> <span class="comment">// 不赋值</span></span><br><span class="line">	<span class="keyword">var</span> arr3 = [<span class="number">10</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125; <span class="comment">// 部分赋值</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 测试</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----静态数组----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr1:&quot;</span>, arr1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr3:&quot;</span>, arr3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 测试值传递</span></span><br><span class="line">	test2(arr1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;----函数调用后----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr1:&quot;</span>, arr1)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试数组长度不一致的参数传递</span></span><br><span class="line">    test2(arr3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试值传递结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/2.png"><br>测试数组长度不一致结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/3.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1132,106 +1238,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/15/%E3%80%90Mysql%E3%80%91%E9%94%81-%E6%AD%BB%E9%94%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/15/%E3%80%90Mysql%E3%80%91%E9%94%81-%E6%AD%BB%E9%94%81/" class="post-title-link" itemprop="url">【Mysql】锁-死锁</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-15 16:19:25 / 修改时间：16:19:58" itemprop="dateCreated datePublished" datetime="2024-05-15T16:19:25+08:00">2024-05-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>129</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>两个或两个以上的事务存在一个互相持有对方想要获得的锁且同时又请求获得对方持有的锁的循环链</p>
-<h2 id="产生的必要条件"><a href="#产生的必要条件" class="headerlink" title="产生的必要条件"></a>产生的必要条件</h2><p>互斥、不可剥夺、请求和保持、循环等待</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
-<li>为每个事务设置一个定时器，超时则回滚该事务，释放拥有的锁资源</li>
-<li>监测死锁，释放死锁关系中某一个事务所拥有的锁资源</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1255,13 +1261,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">13k</span>
+    <span title="站点总字数">14k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -703,4 +703,25 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】静态数组</title>
+    <url>/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li>不赋值</li>
+<li>全赋值</li>
+<li>部分赋值</li>
+<li>参数传递（<strong>值传递、数组长度必须一致</strong>）</li>
+</ol>
+<p>测试1.2.3</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1.静态数组</span></span><br><span class="line">	<span class="keyword">var</span> arr1 [<span class="number">5</span>]<span class="type">int</span>                   <span class="comment">// 不赋值</span></span><br><span class="line">	<span class="keyword">var</span> arr2 = [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;  <span class="comment">// 全赋值</span></span><br><span class="line">	<span class="keyword">var</span> arr3 = [<span class="number">10</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125; <span class="comment">// 部分赋值</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 测试</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----静态数组----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr1:&quot;</span>, arr1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr2:&quot;</span>, arr2)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr3:&quot;</span>, arr3)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/1.png"></p>
+<p>测试4</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试静态数组参数传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test2</span><span class="params">(array [5]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	array[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1.静态数组</span></span><br><span class="line">	<span class="keyword">var</span> arr1 [<span class="number">5</span>]<span class="type">int</span> <span class="comment">// 不赋值</span></span><br><span class="line">	<span class="keyword">var</span> arr3 = [<span class="number">10</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125; <span class="comment">// 部分赋值</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 测试</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----静态数组----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr1:&quot;</span>, arr1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr3:&quot;</span>, arr3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 测试值传递</span></span><br><span class="line">	test2(arr1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;----函数调用后----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;arr1:&quot;</span>, arr1)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试数组长度不一致的参数传递</span></span><br><span class="line">    test2(arr3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试值传递结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/2.png"><br>测试数组长度不一致结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84/3.png"></p>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
