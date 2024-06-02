@@ -684,4 +684,23 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】defer</title>
+    <url>/2024/06/02/%E3%80%90Go%E3%80%91defer/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li><p>defer的执行顺序（执行到defer关键字时，将该行代码压栈，方法执行结束后，逐个弹栈并执行方法）</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1.defer的执行顺序</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">func1</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;func1 ...&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">func2</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;func2 ...&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">func3</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;func3 ...&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 测试defer执行顺序</span></span><br><span class="line">	<span class="keyword">defer</span> func1()</span><br><span class="line">	<span class="keyword">defer</span> func2()</span><br><span class="line">	<span class="keyword">defer</span> func3()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91defer/1.png"></p>
+</li>
+<li><p>defer和return谁先谁后</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2. defer和return的先后顺序</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deferFunc</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;deferFunc ...&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">returnFunc</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;returnFunc ...&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testDeferAndReturn</span><span class="params">()</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">defer</span> deferFunc()</span><br><span class="line">	<span class="keyword">return</span> returnFunc()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 测试defer和return的执行顺序</span></span><br><span class="line">	testDeferAndReturn()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91defer/2.png"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
