@@ -724,4 +724,29 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】切片</title>
+    <url>/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li><p>声明变量-》分配空间-》赋值</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 声明切片，但不赋值</span></span><br><span class="line"><span class="keyword">var</span> slice1 []<span class="type">int</span> <span class="comment">// 声明切片</span></span><br><span class="line">slice1 = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">3</span>) <span class="comment">// 开辟空间</span></span><br><span class="line">slice1[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// 赋值</span></span><br><span class="line">slice1[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">slice1[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">fmt.Println(slice1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明变量并分配空间-》赋值</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2. 声明切片并分配空间</span></span><br><span class="line">slice2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">3</span>) <span class="comment">// 声明并分配空间</span></span><br><span class="line">slice2[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// 赋值</span></span><br><span class="line">slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">slice2[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">fmt.Println(slice2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>截取</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 3.截取 [startIndex:endIndex) 左闭右开</span></span><br><span class="line">slice3 := slice2[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">fmt.Println(slice3)</span><br><span class="line"><span class="comment">// slice3指向slice2所在内存空间的起始地址处</span></span><br><span class="line">slice3[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">fmt.Println(<span class="string">&quot;slice2 :&quot;</span>, slice2)</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/1.png"></p>
+</li>
+<li><p>复制 （若没有分配内存空间，则无法进行有效复制）</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 4.复制 需要分配内存空间才能有效复制</span></span><br><span class="line"><span class="keyword">var</span> slice4 []<span class="type">int</span></span><br><span class="line">fmt.Println(<span class="string">&quot;----未分配内存空间的复制----&quot;</span>)</span><br><span class="line"><span class="built_in">copy</span>(slice4, slice2)</span><br><span class="line">fmt.Println(<span class="string">&quot;slice4 :&quot;</span>, slice4)</span><br><span class="line">fmt.Println(<span class="string">&quot;----分配完内存空间的复制----&quot;</span>)</span><br><span class="line">slice4 = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(slice2))</span><br><span class="line"><span class="built_in">copy</span>(slice4, slice2)</span><br><span class="line">fmt.Println(<span class="string">&quot;slice4 :&quot;</span>, slice4)</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/2.png"></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
