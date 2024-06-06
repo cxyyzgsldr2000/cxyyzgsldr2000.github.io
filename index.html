@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,107 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91json/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/06/%E3%80%90Go%E3%80%91json/" class="post-title-link" itemprop="url">【Go】json</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-06 11:23:28 / 修改时间：11:24:09" itemprop="dateCreated datePublished" datetime="2024-06-06T11:23:28+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>719</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p><strong>注意点：变量命名时大小写问题！</strong></p>
+<ol>
+<li>编码：struct &#x3D;&#x3D;》json</li>
+<li>解码：json &#x3D;&#x3D;》 struct</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;encoding/json&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个结构体</span></span><br><span class="line"><span class="keyword">type</span> Music <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name   <span class="type">string</span> <span class="string">`json:&quot;名称&quot;`</span> <span class="comment">// 字段大小写命名问题！！！</span></span><br><span class="line">	Singer <span class="type">string</span> <span class="string">`json:&quot;歌手&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建结构体变量并赋值</span></span><br><span class="line">	music := Music&#123;<span class="string">&quot;关忆北&quot;</span>, <span class="string">&quot;宋冬野&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 编码：结构体-》json字符串</span></span><br><span class="line">	myMusic, err := json.Marshal(music) <span class="comment">// 结构体-》字节数组</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(myMusic)</span><br><span class="line">		fmt.Println(<span class="type">string</span>(myMusic)) <span class="comment">// 字节数组-》json字符串</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 解码：json字符串-》结构体</span></span><br><span class="line">	music2 := Music&#123;&#125;</span><br><span class="line">	err = json.Unmarshal(myMusic, &amp;music2)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(music2)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/06/%E3%80%90Go%E3%80%91json/1.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1153,101 +1254,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/30/%E3%80%90Go%E3%80%91helloworld/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/30/%E3%80%90Go%E3%80%91helloworld/" class="post-title-link" itemprop="url">【Go】helloworld</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-30 22:32:36 / 修改时间：22:38:18" itemprop="dateCreated datePublished" datetime="2024-05-30T22:32:36+08:00">2024-05-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>103</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>Go的主函数声明需要在文件头处声明包是main包，这与真实的文件名helloworld.go并不冲突<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717078682822-50470808-4ccf-49b4-b2df-45a169841229.png#averageHue=%23383b40&clientId=udd58d072-7818-4&from=paste&height=55&id=u40876ef5&originHeight=82&originWidth=421&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=3906&status=done&style=none&taskId=ue57a6aec-7057-4dd6-994d-8002e24f723&title=&width=280.6666666666667" alt="image.png"><br>一个包下只能有一个主函数<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717078942223-03aaa2e4-ed88-4ff0-8eb8-dbe2456cfdfb.png#averageHue=%232e333b&clientId=udd58d072-7818-4&from=paste&height=90&id=u18a84a61&originHeight=135&originWidth=940&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=14730&status=done&style=none&taskId=u498e0a63-d7a5-49ca-bc43-e7764a9b77d&title=&width=626.6666666666666" alt="image.png"><br>这样的话这一个包下如果有很多函数，这些函数都得在唯一的一个main函数里头测试吗？<br><img src="https://cdn.nlark.com/yuque/0/2024/png/43333018/1717078574914-c0f47c1d-db35-46db-97e4-cda3e69c97ef.png#averageHue=%231e2023&clientId=udd58d072-7818-4&from=paste&height=377&id=ufd0590db&originHeight=566&originWidth=1461&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=51690&status=done&style=none&taskId=ub80a1941-4920-4b57-b4f6-74a57fb3785&title=&width=974" alt="image.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1271,13 +1277,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">19k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">33 分钟</span>
+    <span title="站点阅读时长">34 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

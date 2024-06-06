@@ -793,4 +793,20 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】json</title>
+    <url>/2024/06/06/%E3%80%90Go%E3%80%91json/</url>
+    <content><![CDATA[<hr>
+<p><strong>注意点：变量命名时大小写问题！</strong></p>
+<ol>
+<li>编码：struct &#x3D;&#x3D;》json</li>
+<li>解码：json &#x3D;&#x3D;》 struct</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;encoding/json&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个结构体</span></span><br><span class="line"><span class="keyword">type</span> Music <span class="keyword">struct</span> &#123;</span><br><span class="line">	Name   <span class="type">string</span> <span class="string">`json:&quot;名称&quot;`</span> <span class="comment">// 字段大小写命名问题！！！</span></span><br><span class="line">	Singer <span class="type">string</span> <span class="string">`json:&quot;歌手&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建结构体变量并赋值</span></span><br><span class="line">	music := Music&#123;<span class="string">&quot;关忆北&quot;</span>, <span class="string">&quot;宋冬野&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 编码：结构体-》json字符串</span></span><br><span class="line">	myMusic, err := json.Marshal(music) <span class="comment">// 结构体-》字节数组</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(myMusic)</span><br><span class="line">		fmt.Println(<span class="type">string</span>(myMusic)) <span class="comment">// 字节数组-》json字符串</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 解码：json字符串-》结构体</span></span><br><span class="line">	music2 := Music&#123;&#125;</span><br><span class="line">	err = json.Unmarshal(myMusic, &amp;music2)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(music2)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/06/%E3%80%90Go%E3%80%91json/1.png"></p>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
