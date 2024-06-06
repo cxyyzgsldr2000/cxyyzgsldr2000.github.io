@@ -809,4 +809,27 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】Modules</title>
+    <url>/2024/06/06/%E3%80%90Go%E3%80%91Modules/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li><p>先通过go env命令查看相关变量的值</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/06/06/%E3%80%90Go%E3%80%91Modules/1.png"></p>
+</li>
+<li><p>设置GO111MODULE</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GO111MODULE=on // 启用gomodule</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置GOPROXY</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GOPROXY=https://goproxy.cn,direct // 使用国内代理</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在GOPRIVATE中设置私有库地址</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">go env -w GOPRIVATE=XXX</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>

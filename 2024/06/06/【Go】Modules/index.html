@@ -20,31 +20,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="与操作系统线程的状态定义不同，Java线程中的状态有6种，各自对应不同的操作系统中的线程状态 NEW调用start（）方法之前，对应于操作系统线程的启动态 RUNNABLE调用start（）方法之后，对应于操作系统线程的就绪态&#x2F;运行态  BLOCKED线程请求资源未能得到满足，对应于操作系统线程的阻塞态 WAITING调用Thread.wait()，Thread.join()方法之后，">
+    <meta name="description" content="先通过go env命令查看相关变量的值 1go env   设置GO111MODULE 1go env -w GO111MODULE&#x3D;on &#x2F;&#x2F; 启用gomodule  设置GOPROXY 1go env -w GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.cn,direct &#x2F;&#x2F; 使用国内代理  在GOPRIVATE中设置私有库地址 1go env -w GOPRIVATE&#x3D;XXX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线程的状态">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/index.html">
+<meta property="og:title" content="【Go】Modules">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91Modules/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="与操作系统线程的状态定义不同，Java线程中的状态有6种，各自对应不同的操作系统中的线程状态 NEW调用start（）方法之前，对应于操作系统线程的启动态 RUNNABLE调用start（）方法之后，对应于操作系统线程的就绪态&#x2F;运行态  BLOCKED线程请求资源未能得到满足，对应于操作系统线程的阻塞态 WAITING调用Thread.wait()，Thread.join()方法之后，">
+<meta property="og:description" content="先通过go env命令查看相关变量的值 1go env   设置GO111MODULE 1go env -w GO111MODULE&#x3D;on &#x2F;&#x2F; 启用gomodule  设置GOPROXY 1go env -w GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.cn,direct &#x2F;&#x2F; 使用国内代理  在GOPRIVATE中设置私有库地址 1go env -w GOPRIVATE&#x3D;XXX">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic1.png">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic2.png">
-<meta property="article:published_time" content="2024-04-15T01:21:00.000Z">
-<meta property="article:modified_time" content="2024-04-15T10:04:35.719Z">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91Modules/1.png">
+<meta property="article:published_time" content="2024-06-06T08:57:46.000Z">
+<meta property="article:modified_time" content="2024-06-06T08:58:36.566Z">
 <meta property="article:author" content="Cx">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic1.png">
+<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91Modules/1.png">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91Modules/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/","path":"2024/04/15/【Java并发编程】线程的状态/","title":"线程的状态"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91Modules/","path":"2024/06/06/【Go】Modules/","title":"【Go】Modules"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>线程的状态 | Blog</title>
+<title>【Go】Modules | Blog</title>
   
 
 
@@ -131,7 +130,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -144,7 +143,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NEW"><span class="nav-number">1.</span> <span class="nav-text">NEW</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RUNNABLE"><span class="nav-number">2.</span> <span class="nav-text">RUNNABLE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BLOCKED"><span class="nav-number">3.</span> <span class="nav-text">BLOCKED</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WAITING"><span class="nav-number">4.</span> <span class="nav-text">WAITING</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TIME-WAITING"><span class="nav-number">5.</span> <span class="nav-text">TIME-WAITING</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TERMINATED"><span class="nav-number">6.</span> <span class="nav-text">TERMINATED</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">6.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -203,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/06/%E3%80%90Go%E3%80%91Modules/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -216,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="线程的状态 | Blog">
+      <meta itemprop="name" content="【Go】Modules | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          线程的状态
+          【Go】Modules
         </h1>
 
         <div class="post-meta-container">
@@ -233,7 +231,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-04-15 09:21:00 / 修改时间：18:04:35" itemprop="dateCreated datePublished" datetime="2024-04-15T09:21:00+08:00">2024-04-15</time>
+      <time title="创建时间：2024-06-06 16:57:46 / 修改时间：16:58:36" itemprop="dateCreated datePublished" datetime="2024-06-06T16:57:46+08:00">2024-06-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
         </span>
     </span>
 
@@ -259,7 +257,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>314</span>
+      <span>168</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -277,14 +275,21 @@
     
     
     <div class="post-body" itemprop="articleBody"><hr>
-<p>与操作系统线程的状态定义不同，Java线程中的状态有6种，各自对应不同的操作系统中的线程状态<br><a name="GWG7A"></a></p>
-<h1 id="NEW"><a href="#NEW" class="headerlink" title="NEW"></a>NEW</h1><p>调用start（）方法之前，对应于操作系统线程的启动态<br><a name="nJaTf"></a></p>
-<h1 id="RUNNABLE"><a href="#RUNNABLE" class="headerlink" title="RUNNABLE"></a>RUNNABLE</h1><p>调用start（）方法之后，对应于操作系统线程的就绪态&#x2F;运行态<br><img src="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic1.png"></p>
-<p><a name="AbcZk"></a></p>
-<h1 id="BLOCKED"><a href="#BLOCKED" class="headerlink" title="BLOCKED"></a>BLOCKED</h1><p>线程请求资源未能得到满足，对应于操作系统线程的阻塞态<br><a name="DlXdF"></a></p>
-<h1 id="WAITING"><a href="#WAITING" class="headerlink" title="WAITING"></a>WAITING</h1><p>调用Thread.wait()，Thread.join()方法之后，对应于操作系统线程的挂起态<br>需要有其他线程来唤醒它<br><a name="gHUY3"></a></p>
-<h1 id="TIME-WAITING"><a href="#TIME-WAITING" class="headerlink" title="TIME-WAITING"></a>TIME-WAITING</h1><p>调用Thread.sleep(long millis)、Thread.join(long millis)方法之后，对应于操作系统线程的挂起态<br>可以自动唤醒<br><img src="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/pic2.png"><br><a name="ne74J"></a></p>
-<h1 id="TERMINATED"><a href="#TERMINATED" class="headerlink" title="TERMINATED"></a>TERMINATED</h1><h2 id><a href="#" class="headerlink" title></a><a name="qrcG4"></a></h2>
+<ol>
+<li><p>先通过go env命令查看相关变量的值</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/06/06/%E3%80%90Go%E3%80%91Modules/1.png"></p>
+</li>
+<li><p>设置GO111MODULE</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env -w GO111MODULE=on // 启用gomodule</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置GOPROXY</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env -w GOPROXY=https://goproxy.cn,direct // 使用国内代理</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在GOPRIVATE中设置私有库地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env -w GOPRIVATE=XXX</span><br></pre></td></tr></table></figure></li>
+</ol>
+
     </div>
 
     
@@ -292,19 +297,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Java/" rel="tag"># Java</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2024/06/06/%E3%80%90Go%E3%80%91json/" rel="prev" title="【Go】json">
+                  <i class="fa fa-angle-left"></i> 【Go】json
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E5%90%AF%E5%8A%A8/" rel="next" title="线程的创建和启动">
-                  线程的创建和启动 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
