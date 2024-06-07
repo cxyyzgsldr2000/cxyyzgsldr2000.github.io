@@ -832,4 +832,23 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Go】new和make</title>
+    <url>/2024/06/07/%E3%80%90Go%E3%80%91new%E5%92%8Cmake/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li>new是返回一个指向新分配了内存空间并初始化为<strong>零值</strong>的对象的<strong>指针</strong></li>
+</ol>
+<p><img src="/2024/06/07/%E3%80%90Go%E3%80%91new%E5%92%8Cmake/1.png"></p>
+<ol start="2">
+<li>make是返回一个新分配了内存并初始化的<strong>对象</strong></li>
+</ol>
+<p><img src="/2024/06/07/%E3%80%90Go%E3%80%91new%E5%92%8Cmake/2.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// make</span></span><br><span class="line">	object := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">3</span>)</span><br><span class="line">	fmt.Println(reflect.TypeOf(object)) <span class="comment">// []int</span></span><br><span class="line">	fmt.Println(object)                 <span class="comment">// [0 0 0]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// new</span></span><br><span class="line">	object2 := <span class="built_in">new</span>(<span class="type">int</span>)</span><br><span class="line">	fmt.Println(reflect.TypeOf(object2)) <span class="comment">// *int</span></span><br><span class="line">	fmt.Println(object2)                 <span class="comment">// 0xc00000a108</span></span><br><span class="line">	fmt.Println(*object2)                <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Go</category>
+      </categories>
+  </entry>
 </search>
