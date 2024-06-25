@@ -851,4 +851,51 @@
         <category>Go</category>
       </categories>
   </entry>
+  <entry>
+    <title>【JUnit】单元测试</title>
+    <url>/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<hr>
+<ol>
+<li>Before注解</li>
+</ol>
+<p>：在标有@Test注解的方法执行前先执行，每一个测试方法的执行都会执行一遍Before注解所在的方法</p>
+<ol start="2">
+<li>After注解</li>
+</ol>
+<p>:  在标有@Test注解的方法执行后再执行，每一个测试方法执行完都会执行一遍After注解所在的方法</p>
+<ol start="3">
+<li>Test注解</li>
+</ol>
+<p>： 表明该方法为测试方法，可以直接启动，不用通过main（）函数入口启动</p>
+<ol start="4">
+<li>BeforeClass注解</li>
+</ol>
+<p>： 在测试类加载完，所有方法执行前执行，由于该注解只能存在于静态方法上，所以只执行一次</p>
+<ol start="5">
+<li>AfterClass注解</li>
+</ol>
+<p>： 在所有方法执行完毕后执行，由于该注解只能存在于静态方法上，所以只执行一次</p>
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_03_sequences</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shutDown</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;  after...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">afterClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;afterClass...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">beforeClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;beforeClass...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;  before...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;   testA...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testB</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;   testB...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果：<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%5Bimage.png"></p>
+]]></content>
+      <categories>
+        <category>JUnit</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【JUnit】异常测试</title>
+    <url>/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<hr>
+<p>测试是否有异常抛出</p>
+<p>测试_有异常</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_04_exception</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test(expected = NumberFormatException.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;&amp;||!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/1.png"><br>测试_无异常</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_04_exception</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test(expected = NumberFormatException.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/2.png"></p>
+]]></content>
+      <categories>
+        <category>JUnit</category>
+      </categories>
+  </entry>
 </search>

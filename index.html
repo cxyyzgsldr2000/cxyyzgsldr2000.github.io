@@ -153,12 +153,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -187,6 +187,223 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">【JUnit】异常测试</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-25 14:49:59 / 修改时间：14:51:44" itemprop="dateCreated datePublished" datetime="2024-06-25T14:49:59+08:00">2024-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JUnit/" itemprop="url" rel="index"><span itemprop="name">JUnit</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>434</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>测试是否有异常抛出</p>
+<p>测试_有异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_04_exception</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test(expected = NumberFormatException.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;&amp;||!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/1.png"><br>测试_无异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_04_exception</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test(expected = NumberFormatException.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> Integer.parseInt(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/2.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">【JUnit】单元测试</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-25 14:47:50 / 修改时间：14:49:39" itemprop="dateCreated datePublished" datetime="2024-06-25T14:47:50+08:00">2024-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JUnit/" itemprop="url" rel="index"><span itemprop="name">JUnit</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>899</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<ol>
+<li>Before注解</li>
+</ol>
+<p>：在标有@Test注解的方法执行前先执行，每一个测试方法的执行都会执行一遍Before注解所在的方法</p>
+<ol start="2">
+<li>After注解</li>
+</ol>
+<p>:  在标有@Test注解的方法执行后再执行，每一个测试方法执行完都会执行一遍After注解所在的方法</p>
+<ol start="3">
+<li>Test注解</li>
+</ol>
+<p>： 表明该方法为测试方法，可以直接启动，不用通过main（）函数入口启动</p>
+<ol start="4">
+<li>BeforeClass注解</li>
+</ol>
+<p>： 在测试类加载完，所有方法执行前执行，由于该注解只能存在于静态方法上，所以只执行一次</p>
+<ol start="5">
+<li>AfterClass注解</li>
+</ol>
+<p>： 在所有方法执行完毕后执行，由于该注解只能存在于静态方法上，所以只执行一次</p>
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_03_sequences</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shutDown</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;  after...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">afterClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;afterClass...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">beforeClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;beforeClass...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;  before...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;   testA...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testB</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;   testB...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果：<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%5Bimage.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1035,220 +1252,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/" class="post-title-link" itemprop="url">【Go】指针</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-02 12:25:55 / 修改时间：12:27:00" itemprop="dateCreated datePublished" datetime="2024-06-02T12:25:55+08:00">2024-06-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>574</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
-<li><p>值传递</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 值传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap1</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = a</span><br><span class="line">	a = b</span><br><span class="line">	b = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>引用传递</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引用传递</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap2</span><span class="params">(pa *<span class="type">int</span>, pb *<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> temp <span class="type">int</span></span><br><span class="line">	temp = *pa</span><br><span class="line">	*pa = *pb</span><br><span class="line">	*pb = temp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a <span class="type">int</span> = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="type">int</span> = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// swap前</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----初始值----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 值传递后</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----值传递后----&quot;</span>)</span><br><span class="line">	swap1(a, b)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 引用传递后</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;----引用传递后----&quot;</span>)</span><br><span class="line">	swap2(&amp;a, &amp;b)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试结果<br><img src="/2024/06/02/%E3%80%90Go%E3%80%91%E6%8C%87%E9%92%88/1.png"></p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/" class="post-title-link" itemprop="url">【Go】函数返回值</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-06-01 12:35:47 / 修改时间：12:39:44" itemprop="dateCreated datePublished" datetime="2024-06-01T12:35:47+08:00">2024-06-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>525</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<ol>
-<li><p>单个返回值</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个函数返回值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">(a <span class="type">string</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----fun1-----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;a = &quot;</span>, a)</span><br><span class="line">	fmt.Println(<span class="string">&quot;b = &quot;</span>, b)</span><br><span class="line"></span><br><span class="line">	c := <span class="number">100</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>执行结果<br><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/1.png"></p>
-</li>
-<li><p>多个返回值（不带形参名称）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多个函数返回值-无形参名称</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun2</span><span class="params">()</span></span> (<span class="type">string</span>, <span class="type">int</span>) &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----fun2-----&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>, <span class="number">100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/2.png"></p>
-</li>
-<li><p>多个返回值（带形参名称）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多个函数返回值-有形参名称</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun3</span><span class="params">()</span></span> (r1 <span class="type">string</span>, r2 <span class="type">int</span>) &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;-----fun3-----&quot;</span>)</span><br><span class="line">	fmt.Println(<span class="string">&quot;r1 = &quot;</span>, r1)</span><br><span class="line">	fmt.Println(<span class="string">&quot;r2 = &quot;</span>, r2)</span><br><span class="line"></span><br><span class="line">	r1 = <span class="string">&quot;hello world&quot;</span></span><br><span class="line">	r2 = <span class="number">100</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2024/06/01/%E3%80%90Go%E3%80%91%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC/3.png"></p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1272,13 +1275,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">19k</span>
+    <span title="站点总字数">21k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">38 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

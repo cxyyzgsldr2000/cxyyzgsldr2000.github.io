@@ -153,12 +153,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -187,6 +187,224 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/" class="post-title-link" itemprop="url">【zookeeper】安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-15 16:06:24 / 修改时间：17:58:35" itemprop="dateCreated datePublished" datetime="2024-04-15T16:06:24+08:00">2024-04-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>737</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1-Apache-Zookeeper官网下载"><a href="#1-Apache-Zookeeper官网下载" class="headerlink" title="1. Apache Zookeeper官网下载"></a>1. Apache Zookeeper官网下载</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic1.png"><br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"></p>
+<h1 id="2-解压后创建log和data文件夹"><a href="#2-解压后创建log和data文件夹" class="headerlink" title="2. 解压后创建log和data文件夹"></a>2. 解压后创建log和data文件夹</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic3.png">这个其实不一定要建在zookeeper文件夹下，建在任意一个文件夹里都行，只要配置文件中的路径配置能找到就行</p>
+<h1 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3. 修改配置文件"></a>3. 修改配置文件</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic4.png"><br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic5.png"><br><strong>这里要注意！！！<br>win系统下路径分隔符用</strong></p>
+<blockquote>
+<p>&#x2F;</p>
+</blockquote>
+<p>有点疑问：为什么win系统磁盘中文件的绝对路径的分隔符是\，但在配置文件中文件路径的分隔符要用&#x2F;？</p>
+<p>查询后得出结论：</p>
+<blockquote>
+<p>在Windows操作系统中，文件路径的绝对路径分隔符是反斜杠\，这是因为反斜杠在Windows系统中被用作文件路径分隔符的标准约定。例如，C:\Users\Admin\Desktop\file.txt 是Windows系统中文件的绝对路径表示方式。<br>而在配置文件中，特别是在类Unix系统（如Linux、MacOS等）中，文件路径的分隔符是正斜杠&#x2F;。<strong>这是因为Unix系统中的路径分隔符是正斜杠，而且正斜杠在配置文件中通常用作路径分隔符的约定</strong>。所以，即使在Windows系统中使用的是反斜杠作为文件路径分隔符，<strong>但在配置文件中为了与Unix系统的约定保持一致，通常会使用正斜杠作为文件路径分隔符</strong>。<br>因此，为了确保在不同操作系统和不同环境下都能正确解析文件路径，通常会建议在配置文件中使用正斜杠&#x2F;作为文件路径的分隔符。这样可以避免在不同系统下出现路径解析错误的情况，保证程序的可移植性和通用性。</p>
+</blockquote>
+<h1 id="4-启动zookeeper"><a href="#4-启动zookeeper" class="headerlink" title="4.启动zookeeper"></a>4.启动zookeeper</h1><p> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic6.png"></p>
+<ol>
+<li>zkServer.cmd正常启动如下<br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic7.png"><br> 如遇闪退，可以在zkServer.cmd文件末尾加上<strong>pause</strong>，以便查看报错原因<br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic8.png"></li>
+<li>zkCli.cmd正常启动如下<br> <img src="/2024/04/15/%E3%80%90zookeeper%E3%80%91%E5%AE%89%E8%A3%85/pic9.png"><br>至此，zookeeper启动成功</li>
+</ol>
+<p><strong>安装过程中遇到过许多问题，感谢将这些问题解决过程分享出来的同路人们！</strong></p>
+<p>希望这篇文章能帮到你~</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/" class="post-title-link" itemprop="url">volatile关键字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-04-15 09:21:37 / 修改时间：21:50:33" itemprop="dateCreated datePublished" datetime="2024-04-15T09:21:37+08:00">2024-04-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>volitile关键字用于解决多线程并发执行时可能出现的<strong>可见性</strong>问题<br><a name="sYfCx"></a></p>
+<h2 id="缓存锁定"><a href="#缓存锁定" class="headerlink" title="缓存锁定"></a>缓存锁定</h2><p>处理器在对已经加载到cache当中的共享数据进行修改时，会向总线发出命令，其他处理器通过<strong>嗅探总线</strong>发现有处理器请求写内存地址，而该内存地址为共享地址，处理器就会使存有该共享内存地址的cache行失效。<strong>处理器修改完共享数据后，会将结果写回内存</strong>。这样，其他处理器下次对共享数据的操作就会先从主存当中读取该数据到cache中，然后再进行处理，这样得到的就是最新的数据，避免了可见性问题。</p>
+<p>根据书中所写，对加了volatile关键字的变量进行读写操作时，生成的汇编代码前会加上lock。<br><img src="/2024/04/15/%E3%80%90Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E3%80%91volatile%E5%85%B3%E9%94%AE%E5%AD%97/pic1.png"><br><br>于是，我写了这样一段demo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        temp++;</span><br><span class="line">        <span class="type">Goods</span> <span class="variable">bottle</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Goods</span>();</span><br><span class="line">        bottle.price++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Goods</span>&#123;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">price</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    Goods()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后通过javac以及javap命令在终端查看它编译后的汇编代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">javac -g:none -d out src/test.java</span><br><span class="line">javap -c -v -p out/test.class &gt; out/test.asm</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>得到的汇编文件中关键代码部分如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  static volatile int temp;</span><br><span class="line">    descriptor: I</span><br><span class="line">    flags: (0x0048) ACC_STATIC, ACC_VOLATILE</span><br><span class="line"></span><br><span class="line">  public test();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: (0x0001) ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=1, args_size=1</span><br><span class="line">         0: aload_0</span><br><span class="line">         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">         4: return</span><br><span class="line"></span><br><span class="line">  public static void main(java.lang.String[]);</span><br><span class="line">    descriptor: ([Ljava/lang/String;)V</span><br><span class="line">    flags: (0x0009) ACC_PUBLIC, ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=3, locals=2, args_size=1</span><br><span class="line">         0: getstatic     #7                  // Field temp:I</span><br><span class="line">         3: iconst_1</span><br><span class="line">         4: iadd</span><br><span class="line">         5: putstatic     #7                  // Field temp:I</span><br><span class="line">         8: new           #13                 // class Goods</span><br><span class="line">        11: dup</span><br><span class="line">        12: invokespecial #15                 // Method Goods.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">        15: astore_1</span><br><span class="line">        16: aload_1</span><br><span class="line">        17: dup</span><br><span class="line">        18: getfield      #16                 // Field Goods.price:I</span><br><span class="line">        21: iconst_1</span><br><span class="line">        22: iadd</span><br><span class="line">        23: putfield      #16                 // Field Goods.price:I</span><br><span class="line">        26: return</span><br><span class="line"></span><br><span class="line">  static &#123;&#125;;</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: (0x0008) ACC_STATIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=0, args_size=0</span><br><span class="line">         0: bipush        10</span><br><span class="line">         2: putstatic     #7                  // Field temp:I</span><br><span class="line">         5: return</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>没有找到带有lock前缀的汇编指令，于是我去求助了一下gpt，得到的解答如下<br>当你查看 Java 代码编译后的汇编代码时，如果发现加了 volatile 的变量对应的汇编语句没有出现 lock 前缀，可能有以下几个原因：</p>
+<ol>
+<li><strong>编译器优化</strong>：编译器在生成汇编代码时可能会进行优化，将 volatile 变量的读写操作优化为更高效的方式，而不是简单地添加 lock 前缀。</li>
+<li><strong>硬件层面支持</strong>：某些处理器对 volatile 变量的操作可能有硬件层面的支持，因此在汇编代码中不需要显式添加 lock。</li>
+<li><strong>汇编代码层面隐藏</strong>：lock 前缀可能被隐藏在汇编代码的更底层的指令中，不一定会直接出现在你查看的汇编代码中。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -411,13 +629,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">19k</span>
+    <span title="站点总字数">21k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">38 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

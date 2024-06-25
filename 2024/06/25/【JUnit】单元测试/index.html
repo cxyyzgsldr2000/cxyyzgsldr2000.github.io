@@ -20,30 +20,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"cxyyzgsldr2000.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="客户端首先和MySQL服务器建立连接 建立连接后将MySQL语句发送给服务器 解析器首先对语句进行解析（词法、语法分析） 解析完成后交由预处理器进行预处理操作 判断查询语句的表和字段是否存在 将select * 拓展成查询全列（select id,…)的语句   然后交由优化器给出执行方案 最后交给执行器执行 执行器通过调用存储引擎提供的API接口进行数据的存取">
+    <meta name="description" content="Before注解  ：在标有@Test注解的方法执行前先执行，每一个测试方法的执行都会执行一遍Before注解所在的方法  After注解  :  在标有@Test注解的方法执行后再执行，每一个测试方法执行完都会执行一遍After注解所在的方法  Test注解  ： 表明该方法为测试方法，可以直接启动，不用通过main（）函数入口启动  BeforeClass注解  ： 在测试类加载完，所有方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一条mysql语句的执行">
-<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:title" content="【JUnit】单元测试">
+<meta property="og:url" content="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="客户端首先和MySQL服务器建立连接 建立连接后将MySQL语句发送给服务器 解析器首先对语句进行解析（词法、语法分析） 解析完成后交由预处理器进行预处理操作 判断查询语句的表和字段是否存在 将select * 拓展成查询全列（select id,…)的语句   然后交由优化器给出执行方案 最后交给执行器执行 执行器通过调用存储引擎提供的API接口进行数据的存取">
+<meta property="og:description" content="Before注解  ：在标有@Test注解的方法执行前先执行，每一个测试方法的执行都会执行一遍Before注解所在的方法  After注解  :  在标有@Test注解的方法执行后再执行，每一个测试方法执行完都会执行一遍After注解所在的方法  Test注解  ： 表明该方法为测试方法，可以直接启动，不用通过main（）函数入口启动  BeforeClass注解  ： 在测试类加载完，所有方">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg">
-<meta property="article:published_time" content="2024-04-16T02:05:08.000Z">
-<meta property="article:modified_time" content="2024-04-16T02:08:41.022Z">
+<meta property="og:image" content="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%5Bimage.png">
+<meta property="article:published_time" content="2024-06-25T06:47:50.000Z">
+<meta property="article:modified_time" content="2024-06-25T06:49:39.338Z">
 <meta property="article:author" content="Cx">
-<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Java,Spring,Mysql,Redis,invest,thinking">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg">
+<meta name="twitter:image" content="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%5Bimage.png">
 
 
-<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/">
+<link rel="canonical" href="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/","path":"2024/04/16/【MySql】一条mysql语句的执行/","title":"一条mysql语句的执行"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/","path":"2024/06/25/【JUnit】单元测试/","title":"【JUnit】单元测试"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>一条mysql语句的执行 | Blog</title>
+<title>【JUnit】单元测试 | Blog</title>
   
 
 
@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -214,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="一条mysql语句的执行 | Blog">
+      <meta itemprop="name" content="【JUnit】单元测试 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          一条mysql语句的执行
+          【JUnit】单元测试
         </h1>
 
         <div class="post-meta-container">
@@ -231,7 +231,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-04-16 10:05:08 / 修改时间：10:08:41" itemprop="dateCreated datePublished" datetime="2024-04-16T10:05:08+08:00">2024-04-16</time>
+      <time title="创建时间：2024-06-25 14:47:50 / 修改时间：14:49:39" itemprop="dateCreated datePublished" datetime="2024-06-25T14:47:50+08:00">2024-06-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -239,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+          <a href="/categories/JUnit/" itemprop="url" rel="index"><span itemprop="name">JUnit</span></a>
         </span>
     </span>
 
@@ -257,14 +257,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>169</span>
+      <span>899</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -275,20 +275,29 @@
     
     
     <div class="post-body" itemprop="articleBody"><hr>
-<p><img src="/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg"></p>
 <ol>
-<li>客户端首先和MySQL服务器建立连接</li>
-<li>建立连接后将MySQL语句发送给服务器</li>
-<li>解析器首先对语句进行解析（词法、语法分析）</li>
-<li>解析完成后交由预处理器进行预处理操作<ol>
-<li>判断查询语句的表和字段是否存在</li>
-<li>将select * 拓展成查询全列（select id,…)的语句</li>
+<li>Before注解</li>
 </ol>
-</li>
-<li>然后交由优化器给出执行方案</li>
-<li>最后交给执行器执行</li>
-<li>执行器通过调用存储引擎提供的API接口进行数据的存取</li>
+<p>：在标有@Test注解的方法执行前先执行，每一个测试方法的执行都会执行一遍Before注解所在的方法</p>
+<ol start="2">
+<li>After注解</li>
 </ol>
+<p>:  在标有@Test注解的方法执行后再执行，每一个测试方法执行完都会执行一遍After注解所在的方法</p>
+<ol start="3">
+<li>Test注解</li>
+</ol>
+<p>： 表明该方法为测试方法，可以直接启动，不用通过main（）函数入口启动</p>
+<ol start="4">
+<li>BeforeClass注解</li>
+</ol>
+<p>： 在测试类加载完，所有方法执行前执行，由于该注解只能存在于静态方法上，所以只执行一次</p>
+<ol start="5">
+<li>AfterClass注解</li>
+</ol>
+<p>： 在所有方法执行完毕后执行，由于该注解只能存在于静态方法上，所以只执行一次</p>
+<p>测试代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> JUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JUnit_03_sequences</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shutDown</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;  after...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@AfterClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">afterClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;afterClass...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">beforeClass</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;beforeClass...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUp</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;  before...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testA</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;   testA...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testB</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;   testB...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试结果：<br><img src="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%5Bimage.png"></p>
 
     </div>
 
@@ -297,21 +306,18 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/04/15/%E3%80%90kafka%E3%80%91%E5%AE%89%E8%A3%85/" rel="prev" title="【kafka】安装">
-                  <i class="fa fa-angle-left"></i> 【kafka】安装
+                <a href="/2024/06/07/%E3%80%90Go%E3%80%91new%E5%92%8Cmake/" rel="prev" title="【Go】new和make">
+                  <i class="fa fa-angle-left"></i> 【Go】new和make
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/" rel="next" title="【ElasticSearch】安装">
-                  【ElasticSearch】安装 <i class="fa fa-angle-right"></i>
+                <a href="/2024/06/25/%E3%80%90JUnit%E3%80%91%E5%BC%82%E5%B8%B8%E6%B5%8B%E8%AF%95/" rel="next" title="【JUnit】异常测试">
+                  【JUnit】异常测试 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
