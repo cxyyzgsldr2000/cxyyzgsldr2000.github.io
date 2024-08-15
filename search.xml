@@ -898,4 +898,25 @@
         <category>JUnit</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】存储引擎</title>
+    <url>/2024/08/15/%E3%80%90Mysql%E3%80%91%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/</url>
+    <content><![CDATA[<hr>
+<h2 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h2><ol>
+<li>支持事务</li>
+<li>聚簇索引</li>
+<li>锁的最小颗粒度是行级锁</li>
+<li>count语句需要扫描全表</li>
+</ol>
+<h2 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h2><ol>
+<li>不支持事务</li>
+<li>非聚簇索引</li>
+<li>锁的最小颗粒度是表级锁</li>
+<li>用一个变量维护行数，所以count语句的时间复杂度为O（1）</li>
+</ol>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+  </entry>
 </search>

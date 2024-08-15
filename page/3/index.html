@@ -153,12 +153,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
@@ -187,6 +187,108 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/15/%E3%80%90Mysql%E3%80%91%E9%94%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/15/%E3%80%90Mysql%E3%80%91%E9%94%81/" class="post-title-link" itemprop="url">【Mysql】锁</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-15 10:02:57 / 修改时间：10:04:50" itemprop="dateCreated datePublished" datetime="2024-05-15T10:02:57+08:00">2024-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>268</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h2><p>对行记录上锁，但本质上是对行记录的<strong>索引</strong>上锁</p>
+<h3 id="记录锁"><a href="#记录锁" class="headerlink" title="记录锁"></a>记录锁</h3><p>对一条记录上锁，被上锁的记录不能被删除、修改</p>
+<h3 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h3><p>对一个范围内的记录上锁，范围内的数据不能被删除、修改；增加新的数据到范围内</p>
+<h3 id="next-key-lock"><a href="#next-key-lock" class="headerlink" title="next-key lock"></a>next-key lock</h3><p>记录锁+间隙锁，左开右闭</p>
+<ul>
+<li>一般的select语句并不会对记录上锁，因为innodb默认的隔离级别是可重复读，采用<strong>快照读</strong>的形式，通过MVCC做事务的隔离。</li>
+<li>只有当使用<strong>select … for update</strong>语句的时候，采取的是<strong>当前读</strong>的形式，会对范围内的数据加next-key lock。但在一些特殊情况下，next-key lock会退化成间隙锁或记录锁</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1094,103 +1196,6 @@
 <p>redis通过哨兵机制来实现<strong>故障转移</strong></p>
 <p>哨兵的监测机制：<br>哨兵有多个，并且会每隔一段时间通过ping命令和主服务器建立连接来判断主服务器是否出现故障。当有一个哨兵<strong>主观判定</strong>主服务器出现故障下线后，该哨兵会请求其他哨兵再进行一次判断，如果超过一定比例的哨兵都主观认定该主服务器下线，则redis<strong>客观判定</strong>该主服务器下线。</p>
 <p>新的主服务器选拔流程：<br>当旧主服务器被客观判定下线后，哨兵们会选出一个leader，一般由第一个主观判定主服务器下线的哨兵当选。<br>leader通过以下规则从从服务器中选出新的主服务器：1. <strong>优先级</strong> 2.<strong>从服务器复制主服务器数据的进程</strong> 3.<strong>从服务器的id号</strong><br>选出新的主服务器后，哨兵就要通过slave命令将新的主服务器的ip地址和端口号告知所有从服务器，让从服务器与新的主服务器建立连接。并且还要通过<strong>发布者&#x2F;订阅模式</strong>将该地址发布到哨兵的频道上，以便客户端能够重新和新的主服务器建立连接<br>当旧的主服务器重新上线后，哨兵也要将该主服务器的地址告知它</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/07/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4/" class="post-title-link" itemprop="url">【Redis】集群</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-07 15:31:24 / 修改时间：15:33:20" itemprop="dateCreated datePublished" datetime="2024-05-07T15:31:24+08:00">2024-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>120</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>redis通过采取一主多从的模式形成一个集群，以增强系统的可靠性和安全性</p>
-<p>主服务器：负责处理读写请求，与从服务器建立连接后就将数据以全量复制的形式同步给从服务器，后续数据的更新以基于长连接的命令完成</p>
-<p>从服务器：负责处理读请求，分散主服务器的压力</p>
 
       
     </div>
