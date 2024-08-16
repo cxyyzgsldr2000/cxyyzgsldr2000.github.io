@@ -224,8 +224,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-08-16 16:53:09" itemprop="dateCreated datePublished" datetime="2024-08-16T16:53:09+08:00">2024-08-16</time>
+      <time title="创建时间：2024-08-16 16:53:09 / 修改时间：16:54:55" itemprop="dateCreated datePublished" datetime="2024-08-16T16:53:09+08:00">2024-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/RPC/" itemprop="url" rel="index"><span itemprop="name">RPC</span></a>
+        </span>
     </span>
 
   
@@ -235,7 +245,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>207</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -253,7 +263,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <hr>
+<h2 id="漏桶算法"><a href="#漏桶算法" class="headerlink" title="漏桶算法"></a>漏桶算法</h2><p>固定桶容量（负载上限）以及固定的出水速率（处理请求），不固定的入水速率（请求量）<br>优点：实现简单，可以控制限流速率，避免网络拥塞<br>缺点：无法应对突发的激增流量，可能造成大量请求的丢失</p>
+<h2 id="令牌桶算法"><a href="#令牌桶算法" class="headerlink" title="令牌桶算法"></a>令牌桶算法</h2><p>按一定速率生成令牌，到来的请求必须有令牌分配才可以被处理，令牌数目到达上限后就不再生成令牌，直至有请求到来消耗之<br>优点：可以应对激增流量<br>缺点：令牌产生速率和桶的容量设置不合理，可能会出现问题比如大量的请求被丢弃、系统过载</p>
+
       
     </div>
 
