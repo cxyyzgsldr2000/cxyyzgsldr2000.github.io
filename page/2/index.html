@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/" class="post-title-link" itemprop="url">【Go】切片</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-06-05 09:44:24 / 修改时间：09:45:48" itemprop="dateCreated datePublished" datetime="2024-06-05T09:44:24+08:00">2024-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>717</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<ol>
+<li><p>声明变量-》分配空间-》赋值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 声明切片，但不赋值</span></span><br><span class="line"><span class="keyword">var</span> slice1 []<span class="type">int</span> <span class="comment">// 声明切片</span></span><br><span class="line">slice1 = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">3</span>) <span class="comment">// 开辟空间</span></span><br><span class="line">slice1[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// 赋值</span></span><br><span class="line">slice1[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">slice1[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">fmt.Println(slice1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>声明变量并分配空间-》赋值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 声明切片并分配空间</span></span><br><span class="line">slice2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">3</span>) <span class="comment">// 声明并分配空间</span></span><br><span class="line">slice2[<span class="number">0</span>] = <span class="number">1</span> <span class="comment">// 赋值</span></span><br><span class="line">slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">slice2[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">fmt.Println(slice2)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>截取</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3.截取 [startIndex:endIndex) 左闭右开</span></span><br><span class="line">slice3 := slice2[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">fmt.Println(slice3)</span><br><span class="line"><span class="comment">// slice3指向slice2所在内存空间的起始地址处</span></span><br><span class="line">slice3[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">fmt.Println(<span class="string">&quot;slice2 :&quot;</span>, slice2)</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/1.png"></p>
+</li>
+<li><p>复制 （若没有分配内存空间，则无法进行有效复制）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 4.复制 需要分配内存空间才能有效复制</span></span><br><span class="line"><span class="keyword">var</span> slice4 []<span class="type">int</span></span><br><span class="line">fmt.Println(<span class="string">&quot;----未分配内存空间的复制----&quot;</span>)</span><br><span class="line"><span class="built_in">copy</span>(slice4, slice2)</span><br><span class="line">fmt.Println(<span class="string">&quot;slice4 :&quot;</span>, slice4)</span><br><span class="line">fmt.Println(<span class="string">&quot;----分配完内存空间的复制----&quot;</span>)</span><br><span class="line">slice4 = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(slice2))</span><br><span class="line"><span class="built_in">copy</span>(slice4, slice2)</span><br><span class="line">fmt.Println(<span class="string">&quot;slice4 :&quot;</span>, slice4)</span><br></pre></td></tr></table></figure>
+<p>测试结果<br><img src="/2024/06/05/%E3%80%90Go%E3%80%91%E5%88%87%E7%89%87/2.png"></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1115,111 +1225,6 @@
 <h3 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h3><p>磁盘中存放redo log的文件有大小限制，当文件满时，就需要对没用的数据进行覆盖。而数据是否有用则取决于对应的数据页（脏页）是否落盘，对那些已经落盘的数据可以清理，避免文件不够用</p>
 <h2 id="bin-log"><a href="#bin-log" class="headerlink" title="bin log"></a>bin log</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>bin log存储了所有数据表结构变更和数据表数据修改的操作，主要用于主从复制和备份恢复</p>
 <h3 id="注意点-2"><a href="#注意点-2" class="headerlink" title="注意点"></a>注意点</h3><p>bin log采取的是追加写的备份形式，一个bin log文件写满了，就再新建一个，也正因此，bin log保存了数据库中所有数据变更的内容，也因此可以用于主从复制的全量复制以及备份恢复</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%85%A2%E6%9F%A5%E8%AF%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/16/%E3%80%90Mysql%E3%80%91%E6%85%A2%E6%9F%A5%E8%AF%A2/" class="post-title-link" itemprop="url">【Mysql】慢查询</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-05-16 11:03:05 / 修改时间：15:56:15" itemprop="dateCreated datePublished" datetime="2024-05-16T11:03:05+08:00">2024-05-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>136</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>当一条查询语句的执行时间超出了设定的查询时间，就发生了慢查询</p>
-<h2 id="排查与解决办法"><a href="#排查与解决办法" class="headerlink" title="排查与解决办法"></a>排查与解决办法</h2><h3 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h3><pre><code>   可以通过查询慢查询日志得知是否发生了慢查询
-</code></pre>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><pre><code>  1. 优化查询语句
-     1. 减少查询不必要的列（尽量避免使用select *）
-     2. 避免联表查询
-  2. 优化索引
-     1. 前缀索引优化
-     2. 覆盖索引优化
-     3. 避免索引失效
-</code></pre>
 
       
     </div>
