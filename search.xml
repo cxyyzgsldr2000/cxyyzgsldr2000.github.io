@@ -919,4 +919,21 @@
         <category>mysql</category>
       </categories>
   </entry>
+  <entry>
+    <title>【RPC】熔断机制</title>
+    <url>/2024/08/16/%E3%80%90RPC%E3%80%91%E7%86%94%E6%96%AD%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<hr>
+<p>当客户端发来的请求连续多次失败后，为了减轻服务端的压力，引入了熔断器</p>
+<p>熔断器有三种状态</p>
+<ol>
+<li>打开——没有请求能通过</li>
+<li>关闭——所有请求都能通过</li>
+<li>半开——请求可以通过，但要跟踪响应状态来判断服务器此时的状态用以作为是否变更熔断器状态的依据</li>
+</ol>
+<p>执行逻辑：<br><img src="https://cdn.nlark.com/yuque/0/2024/jpeg/43333018/1723793754387-79c0b9f6-8bd1-4f85-8819-0476432e9cab.jpeg"><br>放行通过的请求要继续跟踪执行结果，根据执行结果对熔断器中的计数器进行修改</p>
+]]></content>
+      <categories>
+        <category>RPC</category>
+      </categories>
+  </entry>
 </search>

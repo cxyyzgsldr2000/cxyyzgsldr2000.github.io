@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,6 +187,103 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="Cx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/08/%E3%80%90Redis%E3%80%91%E9%9B%86%E7%BE%A4-%E5%93%A8%E5%85%B5%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">【Redis】集群-哨兵机制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-08 10:14:12 / 修改时间：10:15:17" itemprop="dateCreated datePublished" datetime="2024-05-08T10:14:12+08:00">2024-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>423</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>redis通过哨兵机制来实现<strong>故障转移</strong></p>
+<p>哨兵的监测机制：<br>哨兵有多个，并且会每隔一段时间通过ping命令和主服务器建立连接来判断主服务器是否出现故障。当有一个哨兵<strong>主观判定</strong>主服务器出现故障下线后，该哨兵会请求其他哨兵再进行一次判断，如果超过一定比例的哨兵都主观认定该主服务器下线，则redis<strong>客观判定</strong>该主服务器下线。</p>
+<p>新的主服务器选拔流程：<br>当旧主服务器被客观判定下线后，哨兵们会选出一个leader，一般由第一个主观判定主服务器下线的哨兵当选。<br>leader通过以下规则从从服务器中选出新的主服务器：1. <strong>优先级</strong> 2.<strong>从服务器复制主服务器数据的进程</strong> 3.<strong>从服务器的id号</strong><br>选出新的主服务器后，哨兵就要通过slave命令将新的主服务器的ip地址和端口号告知所有从服务器，让从服务器与新的主服务器建立连接。并且还要通过<strong>发布者&#x2F;订阅模式</strong>将该地址发布到哨兵的频道上，以便客户端能够重新和新的主服务器建立连接<br>当旧的主服务器重新上线后，哨兵也要将该主服务器的地址告知它</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1135,114 +1232,6 @@
 <h1 id="2-解压并启动"><a href="#2-解压并启动" class="headerlink" title="2.解压并启动"></a>2.解压并启动</h1><p><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/pic2.png"><br>然后在浏览器输入<a target="_blank" rel="noopener" href="http://localhost:9200/%EF%BC%8C%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F">http://localhost:9200/，判断是否启动成功</a></p>
 <p>如下所示，则表示启动成功<br><img src="/2024/04/16/%E3%80%90ElasticSearch%E3%80%91%E5%AE%89%E8%A3%85/pic3.png"><br>安装过程中遇到过几个bug，记录在这篇文章中</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48453504/article/details/137819854?csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22137819854%22,%22source%22:%22weixin_48453504%22%7D">【ElasticSearch】安装（bug篇）</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://cxyyzgsldr2000.github.io/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpg">
-      <meta itemprop="name" content="Cx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="it is a blog for sharing and writng something about technology and personal thinking">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/" class="post-title-link" itemprop="url">一条mysql语句的执行</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-04-16 10:05:08 / 修改时间：10:08:41" itemprop="dateCreated datePublished" datetime="2024-04-16T10:05:08+08:00">2024-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>169</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p><img src="/2024/04/16/%E3%80%90MySql%E3%80%91%E4%B8%80%E6%9D%A1mysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C/pic1.jpg"></p>
-<ol>
-<li>客户端首先和MySQL服务器建立连接</li>
-<li>建立连接后将MySQL语句发送给服务器</li>
-<li>解析器首先对语句进行解析（词法、语法分析）</li>
-<li>解析完成后交由预处理器进行预处理操作<ol>
-<li>判断查询语句的表和字段是否存在</li>
-<li>将select * 拓展成查询全列（select id,…)的语句</li>
-</ol>
-</li>
-<li>然后交由优化器给出执行方案</li>
-<li>最后交给执行器执行</li>
-<li>执行器通过调用存储引擎提供的API接口进行数据的存取</li>
-</ol>
 
       
     </div>
