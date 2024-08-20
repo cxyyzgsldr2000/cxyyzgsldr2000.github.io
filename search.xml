@@ -947,4 +947,16 @@
         <category>RPC</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Mysql】分库分表</title>
+    <url>/2024/08/20/%E3%80%90Mysql%E3%80%91%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/</url>
+    <content><![CDATA[<hr>
+<h2 id="垂直分库"><a href="#垂直分库" class="headerlink" title="垂直分库"></a>垂直分库</h2><p>减轻单库的存储压力，采用：“专库专用”的原则，将数据库依照<strong>不同的业务模块</strong>进行拆分，进行分布式存储</p>
+<h2 id="垂直分表"><a href="#垂直分表" class="headerlink" title="垂直分表"></a>垂直分表</h2><p>避免单表数据量太大造成的存取速率低下，针对表中<strong>不常用的字段和常用的字段</strong>进行拆分，提高内存中能够存储的行数据的数量，减少io次数，提高读取速度</p>
+<h2 id="水平分库-分表"><a href="#水平分库-分表" class="headerlink" title="水平分库&#x2F;分表"></a>水平分库&#x2F;分表</h2><p>将一张表以水平切割的方式进行拆分，将拆分后的表分布存储到不同的库中，避免单表数据量过大</p>
+]]></content>
+      <categories>
+        <category>Mysql</category>
+      </categories>
+  </entry>
 </search>
